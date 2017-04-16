@@ -22,10 +22,10 @@ Kerjasama
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/kerjasama/'. $kerjasama->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/kerjasama/'. $kerjasama->id .'')}}" method="post" enctype="multipart/form-data">
 
-		<textarea name="isi" rows="10" cols="40" placeholder="kerjasama">{{$kerjasama->logo}}</textarea>
-		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}
+		<input type="file" name="gambar" value="" placeholder="namanya">
+		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 
 		<br />
 

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Storage;
 use Illuminate\Http\Request;
-use App\Kerjasama;
+use App\Strukturorganisasi;
 
-class KerjasamaController extends Controller
+class StrukturorganisasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class KerjasamaController extends Controller
     public function index()
     {
         //
-        $kerjasamas = DB::table('tbl_kerjasamas')->paginate(5);
-        return view('admin.diamond.kerjasama.index', ['kerjasama' => $kerjasamas]);
+        $strukturorganisasis = Strukturorganisasi::all();
+        return view('admin.emerald.strukturorganisasi.index', ['strukturorganisasi' => $strukturorganisasis]);
     }
 
     /**
@@ -29,7 +28,7 @@ class KerjasamaController extends Controller
     public function create()
     {
         //
-        return view('admin.diamond.kerjasama.create');
+        return view('admin.emerald.strukturorganisasi.create');
     }
 
     /**
@@ -47,15 +46,15 @@ class KerjasamaController extends Controller
         $filename = $images->getClientOriginalName();
         Storage::put('upload/images/' . $filename, file_get_contents($file));
 
-        $this->validate($request, [
-            // 'isi' => 'required',
-            ]);
+        // $this->validate($request, [
+        //     'gambar' => 'required',
+        //     ]);
 
-        $kerjasamas = new Kerjasama;
-        $kerjasamas->logo = $filename;
-        $kerjasamas->save();
+        $strukturorganisasis = new Strukturorganisasi;
+        $strukturorganisasis->gambar = $filename;
+        $strukturorganisasis->save();
 
-        return redirect(url('/admin/kerjasama'));
+        return redirect(url('/admin/strukturorganisasi'));
     }
 
     /**
@@ -78,12 +77,12 @@ class KerjasamaController extends Controller
     public function edit($id)
     {
         //
-        $kerjasamas = Kerjasama::find($id);
-        if (!$kerjasamas) {
+        $strukturorganisasis = Strukturorganisasi::find($id);
+        if (!$strukturorganisasis) {
             abort(404);
         }
 
-        return view('admin.diamond.kerjasama.update')->with('kerjasama', $kerjasamas);
+        return view('admin.emerald.strukturorganisasi.update')->with('strukturorganisasi', $strukturorganisasis);
     }
 
     /**
@@ -96,24 +95,15 @@ class KerjasamaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            // 'isi' => 'required',
-            ]);
+        // $this->validate($request, [
+        //     'gambar' => 'required',
+        //     ]);
 
-        $kerjasamas = Kerjasama::find($id);
+        $strukturorganisasis = Strukturorganisasi::find($id);
+        $strukturorganisasis->gambar = $request->gambar;
+        $strukturorganisasis->save();
 
-        if($request->gambar) {
-            $images = $request->file('gambar');
-            $file = $images->getRealPath();
-            $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
-
-            $kerjasamas->logo = $filename;
-        }
-
-        $kerjasamas->save();
-
-        return redirect(url('/admin/kerjasama'));
+        return redirect(url('/admin/strukturorganisasi'));
     }
 
     /**
@@ -125,8 +115,8 @@ class KerjasamaController extends Controller
     public function destroy($id)
     {
         //
-        $kerjasamas = Kerjasama::find($id);
-        $kerjasamas->delete();
-        return redirect(url('/admin/kerjasama'));
+        $strukturorganisasis = Strukturorganisasi::find($id);
+        $strukturorganisasis->delete();
+        return redirect(url('/admin/strukturorganisasi'));
     }
 }

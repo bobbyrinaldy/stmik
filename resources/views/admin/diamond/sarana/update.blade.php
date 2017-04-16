@@ -22,7 +22,7 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/sarana/'. $sarana->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/sarana/'. $sarana->id .'')}}" method="post" enctype="multipart/form-data">
 		
 		<input type="text" name="judul" value="{{$sarana->nama}}" placeholder="Judul">
 		{{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
@@ -31,6 +31,11 @@ Sarana Dan Prasarana
 
 		<textarea name="isi" rows="10" cols="40" placeholder="Sarana dan prasarana">{{$sarana->deskripsi}}</textarea>
 		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+
+		<br />
+
+		<input type="file" name="gambar" value="" placeholder="namanya">
+		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 
 		<br />
 

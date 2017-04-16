@@ -35,9 +35,9 @@ Testimoni
 						{{$testimonis->nama}}
 					</div>
 					<div>
-						<a href="{{url('/testimoni/'. $testimonis->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/testimoni/'. $testimonis->id .'/edit')}}" class="btn btn-warning">Edit</a>
 						<button type="submit" class="btn btn-danger">Delete</button>
-						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/testimoni/'. $testimonis->id .'')}}" method="post">
+						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/admin/testimoni/'. $testimonis->id .'')}}" method="post">
 							<input style="display: inline;" type="hidden" name="_method" value="delete">
 	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
 	                        <input class="icon_close_alt2" type="submit" name="name" value="">
@@ -45,10 +45,8 @@ Testimoni
 					</div>
 					
 					<div class="panel-body">
+						<img src="{{url('../storage/app/upload/images/' . $testimonis->profile. '')}}">
 						<p>{{$testimonis->komentar}}</p>
-					</div>
-					<div class="panel-body">
-						<p>{{$testimonis->profile}}</p>
 					</div>
 					<div class="panel-body">
 						<p>{{$testimonis->tag}}</p>

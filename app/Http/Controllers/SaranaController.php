@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Storage;
 use Illuminate\Http\Request;
 use App\Sarana;
 
@@ -41,6 +42,12 @@ class SaranaController extends Controller
     public function store(Request $request)
     {
         //
+
+        $images = $request->file('gambar');
+        $file = $images->getRealPath();
+        $filename = $images->getClientOriginalName();
+        Storage::put('upload/images/' . $filename, file_get_contents($file));
+
         $this->validate($request, [
             'judul' => 'required',
             'isi' => 'required',
@@ -49,7 +56,7 @@ class SaranaController extends Controller
         $saranas = new Sarana;
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
-        $saranas->cover = "null";
+        $saranas->cover = $filename;
         $saranas->save();
 
         return redirect(url('/admin/sarana'));
@@ -94,6 +101,14 @@ class SaranaController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        // $images = $request->file('gambar');
+        // $file = $images->getRealPath();
+        // $filename = $images->getClientOriginalName();
+        // Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            
+
         $this->validate($request, [
             'judul' => 'required',
             'isi' => 'required',
@@ -103,7 +118,18 @@ class SaranaController extends Controller
         $saranas = Sarana::find($id);
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
-        $saranas->cover = "null";
+        // $saranas->cover = $filename;
+        
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $saranas->cover = $filename;
+        }
+
         $saranas->save();
 
         return redirect(url('/admin/sarana'));

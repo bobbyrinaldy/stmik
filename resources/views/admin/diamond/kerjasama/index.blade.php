@@ -31,7 +31,8 @@ Kerjasama
 			<div class="col-md-14">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						{{$kerjasamas->logo}}
+						
+						<!-- {{$kerjasamas->logo}} -->
 					</div>
 					<div>
 						<a href="{{url('/admin/kerjasama/'. $kerjasamas->id .'/edit')}}" class="btn btn-warning">Edit</a>
@@ -41,6 +42,10 @@ Kerjasama
 	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
 	                        <input class="icon_close_alt2" type="submit" name="name" value="">
 	                    </form>
+					</div>
+
+					<div class="panel-body">
+						<img src="{{url('../storage/app/upload/images/' . $kerjasamas->logo. '')}}">
 					</div>
 				</div>
 			</div>

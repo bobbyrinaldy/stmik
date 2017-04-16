@@ -69,7 +69,7 @@
 					</li>
 
 					<li>
-						<a class="" href="#">
+						<a class="" href="{{url('/admin/strukturorganisasi')}}">
 							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Struktur Organisasi
 						</a>
 					</li>

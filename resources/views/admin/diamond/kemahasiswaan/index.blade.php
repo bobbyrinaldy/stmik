@@ -43,12 +43,9 @@ Kemahasiswaan
 	                    </form>
 					</div>
 					<div class="panel-body">
+						<img src="{{url('../storage/app/upload/images/' . $kemahasiswaans->logo. '')}}">
 						<p>{{$kemahasiswaans->deskripsi}}</p>
 					</div>
-					<div class="panel-body">
-						<p>{{$kemahasiswaans->logo}}</p>
-					</div>
-
 				</div>
 			</div>
 		@endforeach
@@ -77,10 +74,9 @@ Kemahasiswaan
 	                    </form>
 					</div>
 					<div class="panel-body">
+						<img src="{{url('../storage/app/upload/images/' . $subkemahasiswaans->logo. '')}}">
 						<p>{{$subkemahasiswaans->deskripsi}}</p>
 					</div>
-					<div class="panel-body">
-						<p>{{$kemahasiswaans->logo}}</p>
 				</div>
 			</div>
 		@endforeach

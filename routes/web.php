@@ -18,7 +18,7 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('admin/testimoni', 'TestimoniController');
 	Route::resource('admin/kemahasiswaan', 'KemahasiswaanController');
 	Route::resource('admin/subkemahasiswaan', 'SubkemahasiswaanController');
-
+	
 });
 
 Route::group(['middleware' => ['web']], function(){
@@ -31,5 +31,6 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('admin/sejarah', 'SejarahController');
 	Route::resource('admin/sisfo', 'SisfoController');
 	Route::resource('admin/visimisi', 'VisimisiController');
+	Route::resource('admin/strukturorganisasi', 'StrukturorganisasiController');
 
 });

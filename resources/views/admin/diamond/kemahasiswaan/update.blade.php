@@ -22,7 +22,7 @@ Kemahasiswaan
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/kemahasiswaan/'. $kemahasiswaan->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/kemahasiswaan/'. $kemahasiswaan->id .'')}}" method="post" enctype="multipart/form-data">
 
 		<input type="text" name="nama" value="{{$kemahasiswaan->nama}}">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
@@ -34,8 +34,10 @@ Kemahasiswaan
 
 		<br />
 
-		<input type="text" name="logo" value="{{$kemahasiswaan->logo}}">
-		{{ ($errors->has('logo')) ?  $errors->first('logo') : '' }}
+		<input type="file" name="gambar" value="" placeholder="namanya">
+		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+
+		<br/>
 
 		<input type="submit" name="name" value="edit">
 

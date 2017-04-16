@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Storage;
 use Illuminate\Http\Request;
 use App\Testimoni;
 
@@ -40,17 +41,23 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         //
+
+        $images = $request->file('gambar');
+        $file = $images->getRealPath();
+        $filename = $images->getClientOriginalName();
+        Storage::put('upload/images/' . $filename, file_get_contents($file));
+
         $this->validate($request, [
             'nama' => 'required',
             'komentar' => 'required',
-            'profile' => 'required',
+            // 'profile' => 'required',
             'tag' => 'required',
             ]);
 
         $testimonis = new Testimoni;
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
-        $testimonis->profile = $request->profile;
+        $testimonis->profile = $filename;
         $testimonis->tag = $request->tag;
         $testimonis->save();
 
@@ -99,15 +106,25 @@ class TestimoniController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'komentar' => 'required',
-            'profile' => 'required',
+            // 'profile' => 'required',
             'tag' => 'required',
             ]);
 
         $testimonis = Testimoni::find($id);
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
-        $testimonis->profile = $request->profile;
+        
         $testimonis->tag = $request->tag;
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $testimonis->profile = $filename;
+        }
+
         $testimonis->save();
 
         return redirect(url('/admin/testimoni'));

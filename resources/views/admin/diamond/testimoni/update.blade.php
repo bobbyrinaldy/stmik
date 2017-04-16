@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Sarana Dan Prasarana</title>
+<title>Testimoni</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Sarana Dan Prasarana
+Testimoni
 
 @endsection
 
@@ -22,7 +22,7 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/testimoni/'. $testimoni->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/testimoni/'. $testimoni->id .'')}}" method="post" enctype="multipart/form-data">
 		
 		<input type="text" name="nama" value="{{$testimoni->nama}}" placeholder="nama">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
@@ -34,8 +34,8 @@ Sarana Dan Prasarana
 
 		<br />
 
-		<textarea name="profile" rows="10" cols="40" placeholder="profile">{{$testimoni->profile}}</textarea>
-		{{ ($errors->has('profile')) ?  $errors->first('profile') : '' }}
+		<input type="file" name="gambar" value="" placeholder="namanya">
+		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 
 		<br />
 

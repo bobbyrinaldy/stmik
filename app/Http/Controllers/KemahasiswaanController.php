@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use Illuminate\Http\Request;
 use App\Kemahasiswaan;
 use App\Subkemahasiswaan;
@@ -45,16 +46,21 @@ class KemahasiswaanController extends Controller
     public function store(Request $request)
     {
         //
+
+        $images = $request->file('gambar');
+        $file = $images->getRealPath();
+        $filename = $images->getClientOriginalName();
+        Storage::put('upload/images/' . $filename, file_get_contents($file));
+
         $this->validate($request, [
             'nama' => 'required',
             'deskripsi' => 'required',
-            'logo' => 'required',
             ]);
 
         $kemahasiswaans = new Kemahasiswaan;
         $kemahasiswaans->nama = $request->nama;
         $kemahasiswaans->deskripsi = $request->deskripsi;
-        $kemahasiswaans->logo = $request->logo;
+        $kemahasiswaans->logo = $filename;
         $kemahasiswaans->save();
 
         return redirect(url('/admin/kemahasiswaan'));
@@ -101,14 +107,23 @@ class KemahasiswaanController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'deskripsi' => 'required',
-            'logo' => 'required',
             ]);
 
 
         $kemahasiswaans = Kemahasiswaan::find($id);
         $kemahasiswaans->nama = $request->nama;
         $kemahasiswaans->deskripsi = $request->deskripsi;
-        $kemahasiswaans->logo = $request->logo;
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $kemahasiswaans->logo = $filename;
+        }
+
+        
         $kemahasiswaans->save();
 
         return redirect(url('/admin/kemahasiswaan'));

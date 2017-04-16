@@ -1,10 +1,10 @@
-<!-- Create Testimoni -->
+<!-- CREATE Struktur Organisasi -->
 
 @extends('admin.main')
 
 @section('pageInfo')
 
-<title>Testimoni</title>
+<title>Sarana Dan Prasarana</title>
 
 @section('rute')
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Testimoni
+Struktur Organisasi
 
 @endsection
 
@@ -22,25 +22,10 @@ Testimoni
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/testimoni')}}" method="post" enctype="multipart/form-data">
-		
-		<input type="text" name="nama" value="" placeholder="nama">
-		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
-
-		<br />
-
-		<textarea name="komentar" rows="10" cols="40" placeholder="Komentar"></textarea>
-		{{ ($errors->has('komentar')) ?  $errors->first('komentar') : '' }}
-
-		<br />
+	<form class="" action="{{url('/admin/strukturorganisasi')}}" method="post" enctype="multipart/form-data">
 
 		<input type="file" name="gambar" value="" placeholder="namanya">
 		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
-
-		<br />
-
-		<input type="text" name="tag" value="" placeholder="tag">
-		{{ ($errors->has('tag')) ?  $errors->first('tag') : '' }}
 
 		<br />
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use Illuminate\Http\Request;
 use App\Subkemahasiswaan;
 
@@ -37,18 +38,22 @@ class SubkemahasiswaanController extends Controller
     public function store(Request $request)
     {
         //
+        $images = $request->file('gambar');
+        $file = $images->getRealPath();
+        $filename = $images->getClientOriginalName();
+        Storage::put('upload/images/' . $filename, file_get_contents($file));
+
         $this->validate($request, [
             'id_org' => 'required',
             'nama' => 'required',
             'deskripsi' => 'required',
-            'logo' => 'required',
             ]);
 
         $subkemahasiswaans = new Subkemahasiswaan;
         $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
-        $subkemahasiswaans->logo = $request->logo;
+        $subkemahasiswaans->logo = $filename;
         $subkemahasiswaans->save();
 
         return redirect(url('/admin/kemahasiswaan'));
@@ -96,7 +101,6 @@ class SubkemahasiswaanController extends Controller
             'id_org' => 'required',
             'nama' => 'required',
             'deskripsi' => 'required',
-            'logo' => 'required',
             ]);
 
 
@@ -104,7 +108,17 @@ class SubkemahasiswaanController extends Controller
         $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
-        $subkemahasiswaans->logo = $request->logo;
+        
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $subkemahasiswaans->logo = $filename;
+        }
+
         $subkemahasiswaans->save();
 
         return redirect(url('/admin/kemahasiswaan'));
