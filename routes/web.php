@@ -1,16 +1,39 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/a','HomeController@index');
+
+
+
+Route::group(['middleware' => ['web']], function(){
+	// Master
+	Route::resource('admin/sarana', 'SaranaController');
+	Route::resource('admin/sertifikasi', 'SertifikasiController');
+	Route::resource('admin/beasiswa', 'BeasiswaController');
+	Route::resource('admin/kerjasama', 'KerjasamaController');
+	Route::resource('admin/berita', 'BeritaController');
+	Route::resource('admin/testimoni', 'TestimoniController');
+
+	// Route::get('bayar/buat/{id}', 'BayarController@buat');
+	// Route::resource('bayar', 'BayarController');
+
+});
+
+Route::group(['middleware' => ['web']], function(){
+	// Master
+	Route::resource('admin/btk', 'BtkController');
+	Route::resource('admin/kontak', 'KontakController');
+	Route::resource('admin/si', 'SiController');
+	Route::resource('admin/if', 'IfController');
+	Route::resource('admin/kurikulum', 'KurikulumController');
+	Route::resource('admin/sejarah', 'SejarahController');
+	Route::resource('admin/sisfo', 'SisfoController');
+	Route::resource('admin/visimisi', 'VisimisiController');
+
+	// Route::get('bayar/buat/{id}', 'BayarController@buat');
+	// Route::resource('bayar', 'BayarController');
+
 });
