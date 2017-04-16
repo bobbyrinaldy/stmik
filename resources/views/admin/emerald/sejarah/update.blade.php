@@ -1,6 +1,6 @@
 <!-- Update SEJARAH -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Sejarah
 
 	<!-- form -->
 
-	<form class="" action="{{url('/sejarah/'. $sejarah->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/sejarah/'. $sejarah->id .'')}}" method="post">
 
 		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$sejarah->deskripsi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}

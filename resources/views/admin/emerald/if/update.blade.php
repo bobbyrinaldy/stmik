@@ -1,10 +1,10 @@
-<!-- update sertifikasi-->
+<!-- UPDATE IF update.blade.php -->
 
 @extends('admin.main')
 
 @section('pageInfo')
 
-<title>Sarana Dan Prasarana</title>
+<title>Sistem Informasi</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Sarana Dan Prasarana
+Sistem Informasi
 
 @endsection
 
@@ -22,10 +22,10 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/sertifikasi/'. $sertifikasi->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/if/'. $if->id .'')}}" method="post">
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Sarana dan prasarana">{{$sertifikasi->deskripsi}}</textarea>
-		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}
+		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$if->deskripsi}}</textarea>
+		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
 
 		<br />
 
@@ -36,6 +36,7 @@ Sarana Dan Prasarana
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
 		
+
 	</form>
 
 	<!-- End Form -->

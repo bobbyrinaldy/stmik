@@ -1,6 +1,6 @@
 <!-- Update sisfo -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/sisfo/'. $sisfo->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/sisfo/'. $sisfo->id .'')}}" method="post">
 
 		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$sisfo->deskripsi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}

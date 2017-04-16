@@ -1,6 +1,6 @@
 <!-- idex kontak -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -30,7 +30,7 @@ Kontak Kami
 						Kontak Kami
 					</div>
 					<div>
-						<a href="{{url('/kontak/'. $kontaks->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/kontak/'. $kontaks->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
 						<p>{{$kontaks->deskripsi}}</p>

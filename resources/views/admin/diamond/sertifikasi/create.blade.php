@@ -1,6 +1,6 @@
 <!-- CREATE SERTIFIKASI -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Sertifikasi
 
 	<!-- form -->
 
-	<form class="" action="{{url('/sertifikasi')}}" method="post">
+	<form class="" action="{{url('/admin/sertifikasi')}}" method="post">
 
 		<textarea name="isi" rows="10" cols="40" placeholder="Deskripsi"></textarea>
 		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}

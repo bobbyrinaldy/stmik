@@ -1,10 +1,10 @@
-<!-- SI update.blade.php -->
+<!-- UPDATE KEMAHASISWAAAN -->
 
 @extends('admin.main')
 
 @section('pageInfo')
 
-<title>Sistem Informasi</title>
+<title>Beasiswa</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Sistem Informasi
+Kemahasiswaan
 
 @endsection
 
@@ -22,12 +22,20 @@ Sistem Informasi
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/si/'. $si->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/kemahasiswaan/'. $kemahasiswaan->id .'')}}" method="post">
 
-		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$si->deskripsi}}</textarea>
+		<input type="text" name="nama" value="{{$kemahasiswaan->nama}}">
+		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+
+		<br />
+
+		<textarea name="deskripsi" rows="10" cols="40" placeholder="deskripsi">{{$kemahasiswaan->deskripsi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
 
 		<br />
+
+		<input type="text" name="logo" value="{{$kemahasiswaan->logo}}">
+		{{ ($errors->has('logo')) ?  $errors->first('logo') : '' }}
 
 		<input type="submit" name="name" value="edit">
 
@@ -36,7 +44,6 @@ Sistem Informasi
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
 		
-
 	</form>
 
 	<!-- End Form -->

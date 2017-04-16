@@ -1,6 +1,6 @@
 <!-- index BTK -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -30,7 +30,7 @@ Bursa Tenaga Kerja
 						Bursa Tenaga Kerja
 					</div>
 					<div>
-						<a href="{{url('/btk/'. $btks->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/btk/'. $btks->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
 						<p>{{$btks->deskripsi}}</p>

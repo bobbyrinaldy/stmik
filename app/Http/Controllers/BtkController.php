@@ -16,7 +16,7 @@ class BtkController extends Controller
     {
         //
         $btks = Btk::all();
-        return view('emerald.btk.index', ['btk' => $btks]);
+        return view('admin.emerald.btk.index', ['btk' => $btks]);
     }
 
     /**
@@ -65,7 +65,7 @@ class BtkController extends Controller
             abort(404);
         }
 
-        return view('emerald.btk.update')->with('btk', $btks);
+        return view('admin.emerald.btk.update')->with('btk', $btks);
     }
 
     /**
@@ -87,7 +87,7 @@ class BtkController extends Controller
         $btks->deskripsi = $request->deskripsi;
         $btks->save();
 
-        return redirect(url('/btk'));
+        return redirect(url('/admin/btk'));
     }
 
     /**

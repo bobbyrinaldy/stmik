@@ -17,7 +17,7 @@ class TestimoniController extends Controller
     {
         //
         $testimonis = DB::table('tbl_testimonis')->paginate(5);
-        return view('diamond.testimoni.index', ['testimoni' => $testimonis]);
+        return view('admin.diamond.testimoni.index', ['testimoni' => $testimonis]);
     }
 
     /**
@@ -28,7 +28,7 @@ class TestimoniController extends Controller
     public function create()
     {
         //
-        return view('diamond.testimoni.create');
+        return view('admin.diamond.testimoni.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class TestimoniController extends Controller
         $testimonis->tag = $request->tag;
         $testimonis->save();
 
-        return redirect(url('/testimoni'));
+        return redirect(url('/admin/testimoni'));
     }
 
     /**
@@ -82,7 +82,7 @@ class TestimoniController extends Controller
             abort(404);
         }
 
-        return view('diamond.testimoni.update')->with('testimoni', $testimonis);
+        return view('admin.diamond.testimoni.update')->with('testimoni', $testimonis);
     }
 
     /**
@@ -110,7 +110,7 @@ class TestimoniController extends Controller
         $testimonis->tag = $request->tag;
         $testimonis->save();
 
-        return redirect(url('/testimoni'));
+        return redirect(url('/admin/testimoni'));
     }
 
     /**
@@ -124,6 +124,6 @@ class TestimoniController extends Controller
         //
         $saranas = Testimoni::find($id);
         $saranas->delete();
-        return redirect(url('/testimoni'));
+        return redirect(url('/admin/testimoni'));
     }
 }

@@ -1,6 +1,6 @@
 <!-- CREATE KERJASAMA -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Kerjasama
 
 	<!-- form -->
 
-	<form class="" action="{{url('/kerjasama')}}" method="post">
+	<form class="" action="{{url('/admin/kerjasama')}}" method="post">
 
 		<textarea name="isi" rows="10" cols="40" placeholder="Kerjasama"></textarea>
 		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}

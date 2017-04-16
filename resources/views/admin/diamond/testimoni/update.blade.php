@@ -1,6 +1,6 @@
 <!-- Update Testimoni -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/testimoni/'. $testimoni->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/testimoni/'. $testimoni->id .'')}}" method="post">
 		
 		<input type="text" name="nama" value="{{$testimoni->nama}}" placeholder="nama">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}

@@ -1,4 +1,4 @@
-<!-- SEJARAH index -->
+<!-- Index If -->
 
 @extends('admin.main')
 
@@ -13,7 +13,7 @@
 
 @section('pageTitle')
 
-Sejarah
+Informatika
 
 @endsection
 
@@ -23,17 +23,17 @@ Sejarah
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
 		
-		@foreach($sejarah as $sejarahs)
+		@foreach($if as $ifs)
 			<div class="col-md-14">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						Bursa Tenaga Kerja
+						Informatika
 					</div>
 					<div>
-						<a href="{{url('/admin/sejarah/'. $sejarahs->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/if/'. $ifs->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{{$sejarahs->deskripsi}}</p>
+						<p>{{$ifs->deskripsi}}</p>
 					</div>
 					
 				</div>

@@ -16,7 +16,7 @@ class KurikulumController extends Controller
     {
         //
         $kurikulums = Kurikulum::all();
-        return view('emerald.kurikulum.index', ['kurikulum' => $kurikulums]);
+        return view('admin.emerald.kurikulum.index', ['kurikulum' => $kurikulums]);
     }
 
     /**
@@ -65,7 +65,7 @@ class KurikulumController extends Controller
             abort(404);
         }
 
-        return view('emerald.kurikulum.update')->with('kurikulum', $kurikulums);
+        return view('admin.emerald.kurikulum.update')->with('kurikulum', $kurikulums);
     }
 
     /**
@@ -87,7 +87,7 @@ class KurikulumController extends Controller
         $kurikulums->deskripsi = $request->deskripsi;
         $kurikulums->save();
 
-        return redirect(url('/kurikulum'));
+        return redirect(url('/admin/kurikulum'));
     }
 
     /**

@@ -4,7 +4,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/a','HomeController@index');
+Route::get('/administrator','HomeController@index');
 
 
 
@@ -16,9 +16,8 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('admin/kerjasama', 'KerjasamaController');
 	Route::resource('admin/berita', 'BeritaController');
 	Route::resource('admin/testimoni', 'TestimoniController');
-
-	// Route::get('bayar/buat/{id}', 'BayarController@buat');
-	// Route::resource('bayar', 'BayarController');
+	Route::resource('admin/kemahasiswaan', 'KemahasiswaanController');
+	Route::resource('admin/subkemahasiswaan', 'SubkemahasiswaanController');
 
 });
 
@@ -32,8 +31,5 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('admin/sejarah', 'SejarahController');
 	Route::resource('admin/sisfo', 'SisfoController');
 	Route::resource('admin/visimisi', 'VisimisiController');
-
-	// Route::get('bayar/buat/{id}', 'BayarController@buat');
-	// Route::resource('bayar', 'BayarController');
 
 });

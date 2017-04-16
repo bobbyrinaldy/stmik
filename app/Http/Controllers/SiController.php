@@ -16,7 +16,7 @@ class SiController extends Controller
     {
         //
         $sis = Si::all();
-        return view('emerald.si.index', ['si' => $sis]);
+        return view('admin.emerald.si.index', ['si' => $sis]);
     }
 
     /**
@@ -65,7 +65,7 @@ class SiController extends Controller
             abort(404);
         }
 
-        return view('emerald.si.update')->with('si', $sis);
+        return view('admin.emerald.si.update')->with('si', $sis);
     }
 
     /**
@@ -87,7 +87,7 @@ class SiController extends Controller
         $sis->deskripsi = $request->deskripsi;
         $sis->save();
 
-        return redirect(url('/btk'));
+        return redirect(url('/admin/si'));
     }
 
     /**

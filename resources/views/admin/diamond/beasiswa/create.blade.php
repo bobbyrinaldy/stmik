@@ -1,6 +1,6 @@
 <!-- CREATE BEASISWA -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Beasiswa
 
 	<!-- form -->
 
-	<form class="" action="{{url('/beasiswa')}}" method="post">
+	<form class="" action="{{url('/admin/beasiswa')}}" method="post">
 
 		<textarea name="isi" rows="10" cols="40" placeholder="Beasiswa"></textarea>
 		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}

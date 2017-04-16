@@ -1,6 +1,6 @@
 <!-- update BEASISWA -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Beasiswa
 
 	<!-- form -->
 
-	<form class="" action="{{url('/beasiswa/'. $beasiswa->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/beasiswa/'. $beasiswa->id .'')}}" method="post">
 
 		<textarea name="isi" rows="10" cols="40" placeholder="beasiswa">{{$beasiswa->deskripsi}}</textarea>
 		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}

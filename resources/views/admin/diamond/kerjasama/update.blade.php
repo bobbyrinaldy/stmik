@@ -1,8 +1,6 @@
 <!-- UPDATE kerjaSAMA -->
 
-<!-- update BEASISWA -->
-
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -24,7 +22,7 @@ Kerjasama
 
 	<!-- form -->
 
-	<form class="" action="{{url('/kerjasama/'. $kerjasama->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/kerjasama/'. $kerjasama->id .'')}}" method="post">
 
 		<textarea name="isi" rows="10" cols="40" placeholder="kerjasama">{{$kerjasama->logo}}</textarea>
 		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}

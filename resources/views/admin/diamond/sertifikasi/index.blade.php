@@ -2,7 +2,7 @@
 
 <!-- INDEX SARANA DAN PRASARANA -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -23,7 +23,7 @@ Sertifikasi
 
 	<!-- NAVIGATOR FOR THIS FITUR-->
 	<div class="col-xs-12 col-md-6 col-lg-3">
-		<a href="{{url('/sertifikasi/create')}}" class="btn btn-primary">Add</a>
+		<a href="{{url('/admin/sertifikasi/create')}}" class="btn btn-primary">Add</a>
 	</div>
 	<!-- endnav -->
 	<!-- <div class="row"> -->
@@ -36,9 +36,9 @@ Sertifikasi
 						{{$sertifikasis->deskripsi}}
 					</div>
 					<div>
-						<a href="{{url('/sertifikasi/'. $sertifikasis->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/sertifikasi/'. $sertifikasis->id .'/edit')}}" class="btn btn-warning">Edit</a>
 						<button type="submit" class="btn btn-danger">Delete</button>
-						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/sertifikasi/'. $sertifikasis->id .'')}}" method="post">
+						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/admin/sertifikasi/'. $sertifikasis->id .'')}}" method="post">
 							<input style="display: inline;" type="hidden" name="_method" value="delete">
 	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
 	                        <input class="icon_close_alt2" type="submit" name="name" value="">

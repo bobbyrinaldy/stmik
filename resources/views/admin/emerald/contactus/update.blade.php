@@ -1,6 +1,6 @@
 <!-- update Contaks -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Sarana Dan Prasarana
+Kontak
 
 @endsection
 
@@ -22,9 +22,9 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/kontak/'. $kontak->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/kontak/'. $kontak->id .'')}}" method="post">
 
-		<textarea name="kontak" rows="10" cols="40" placeholder="Komentar">{{$btk->kontak}}</textarea>
+		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$kontak->deskripsi}}</textarea>
 		{{ ($errors->has('kontak')) ?  $errors->first('kontak') : '' }}
 
 		<br />

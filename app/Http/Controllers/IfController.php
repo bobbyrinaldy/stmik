@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\If_model;
 
 class IfController extends Controller
 {
@@ -14,6 +15,8 @@ class IfController extends Controller
     public function index()
     {
         //
+        $ifs = If_model::all();
+        return view('admin.emerald.if.index', ['if' => $ifs]);
     }
 
     /**
@@ -57,6 +60,12 @@ class IfController extends Controller
     public function edit($id)
     {
         //
+        $ifs = If_model::find($id);
+        if (!$ifs) {
+            abort(404);
+        }
+
+        return view('admin.emerald.if.update')->with('if', $ifs);
     }
 
     /**
@@ -69,6 +78,16 @@ class IfController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+            ]);
+
+
+        $ifs = If_model::find($id);
+        $ifs->deskripsi = $request->deskripsi;
+        $ifs->save();
+
+        return redirect(url('/admin/if'));
     }
 
     /**

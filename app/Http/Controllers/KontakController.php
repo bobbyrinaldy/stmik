@@ -16,7 +16,7 @@ class KontakController extends Controller
     {
         //
         $kontaks = Kontak::all();
-        return view('emerald.contactus.index', ['kontak' => $kontaks]);
+        return view('admin.emerald.contactus.index', ['kontak' => $kontaks]);
     }
 
     /**
@@ -60,12 +60,12 @@ class KontakController extends Controller
     public function edit($id)
     {
         //
-        $btks = Btk::find($id);
-        if (!$btks) {
+        $kontaks = Kontak::find($id);
+        if (!$kontaks) {
             abort(404);
         }
 
-        return view('emerald.contactus.update')->with('btk', $btks);
+        return view('admin.emerald.contactus.update')->with('kontak', $kontaks);
     }
 
     /**
@@ -87,7 +87,7 @@ class KontakController extends Controller
         $kontaks->deskripsi = $request->deskripsi;
         $kontaks->save();
 
-        return redirect(url('/btk'));
+        return redirect(url('/admin/kontak'));
     }
 
     /**

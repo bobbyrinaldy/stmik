@@ -18,7 +18,7 @@ class SertifikasiController extends Controller
         //
         // $saranas = Sarana::all();
         $sertifikasis = DB::table('tbl_sertifikasis')->paginate(5);
-        return view('diamond.sertifikasi.index', ['sertifikasi' => $sertifikasis]);
+        return view('admin.diamond.sertifikasi.index', ['sertifikasi' => $sertifikasis]);
     }
 
     /**
@@ -29,7 +29,7 @@ class SertifikasiController extends Controller
     public function create()
     {
         //
-        return view('diamond.sertifikasi.create');
+        return view('admin.diamond.sertifikasi.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class SertifikasiController extends Controller
         $sertifikasis->deskripsi = $request->isi;
         $sertifikasis->save();
 
-        return redirect(url('/sertifikasi'));
+        return redirect(url('/admin/sertifikasi'));
     }
 
     /**
@@ -77,7 +77,7 @@ class SertifikasiController extends Controller
             abort(404);
         }
 
-        return view('diamond.sertifikasi.update')->with('sertifikasi', $sertifikasis);
+        return view('admin.diamond.sertifikasi.update')->with('sertifikasi', $sertifikasis);
     }
 
     /**
@@ -99,7 +99,7 @@ class SertifikasiController extends Controller
         $sertifikasis->deskripsi = $request->isi;
         $sertifikasis->save();
 
-        return redirect(url('/sertifikasi'));
+        return redirect(url('/admin/sertifikasi'));
     }
 
     /**
@@ -113,6 +113,6 @@ class SertifikasiController extends Controller
         //
         $sertifikasis = Sertifikasi::find($id);
         $sertifikasis->delete();
-        return redirect(url('/sertifikasi'));
+        return redirect(url('/admin/sertifikasi'));
     }
 }

@@ -1,6 +1,6 @@
 <!-- Index Testimoni -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Testimoni
 
 	<!-- NAVIGATOR FOR THIS FITUR-->
 	<div class="col-xs-12 col-md-6 col-lg-3">
-		<a href="{{url('/testimoni/create')}}" class="btn btn-primary">Add</a>
+		<a href="{{url('/admin/testimoni/create')}}" class="btn btn-primary">Add</a>
 	</div>
 	<!-- endnav -->
 	<!-- <div class="row"> -->

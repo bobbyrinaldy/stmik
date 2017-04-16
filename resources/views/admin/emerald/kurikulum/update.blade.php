@@ -1,6 +1,6 @@
 <!-- UPdate Kurikulum -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/kurikulum/'. $kurikulum->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/kurikulum/'. $kurikulum->id .'')}}" method="post">
 
 		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$kurikulum->deskripsi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}

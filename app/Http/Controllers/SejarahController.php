@@ -16,7 +16,7 @@ class SejarahController extends Controller
     {
         //
         $sejarahs = Sejarah::all();
-        return view('emerald.sejarah.index', ['sejarah' => $sejarahs]);
+        return view('admin.emerald.sejarah.index', ['sejarah' => $sejarahs]);
     }
 
     /**
@@ -65,7 +65,7 @@ class SejarahController extends Controller
             abort(404);
         }
 
-        return view('emerald.sejarah.update')->with('sejarah', $sejarahs);
+        return view('admin.emerald.sejarah.update')->with('sejarah', $sejarahs);
     }
 
     /**
@@ -87,7 +87,7 @@ class SejarahController extends Controller
         $sejarahs->deskripsi = $request->deskripsi;
         $sejarahs->save();
 
-        return redirect(url('/sejarah'));
+        return redirect(url('/admin/sejarah'));
     }
 
     /**

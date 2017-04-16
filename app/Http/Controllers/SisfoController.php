@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sisfo
+use App\Sisfo;
 
 class SisfoController extends Controller
 {
@@ -15,8 +15,8 @@ class SisfoController extends Controller
     public function index()
     {
         //
-        $sifos = Sisfo::all();
-        return view('emerald.Sisfo.index', ['Sisfo' => $sisfos]);
+        $sisfos = Sisfo::all();
+        return view('admin.emerald.Sisfo.index', ['sisfo' => $sisfos]);
     }
 
     /**
@@ -60,12 +60,12 @@ class SisfoController extends Controller
     public function edit($id)
     {
         //
-        $sisfos = Btk::find($id);
+        $sisfos = Sisfo::find($id);
         if (!$sisfos) {
             abort(404);
         }
 
-        return view('emerald.sisfo.update')->with('sisfo', $sisfos);
+        return view('admin.emerald.sisfo.update')->with('sisfo', $sisfos);
     }
 
     /**
@@ -87,7 +87,7 @@ class SisfoController extends Controller
         $sisfos->deskripsi = $request->deskripsi;
         $sisfos->save();
 
-        return redirect(url('/sisfo'));
+        return redirect(url('/admin/sisfo'));
     }
 
     /**

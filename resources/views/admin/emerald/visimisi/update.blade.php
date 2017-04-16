@@ -1,6 +1,6 @@
 <!-- UPdate Visi Misi -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Visi Misi
 
 	<!-- form -->
 
-	<form class="" action="{{url('/visimisi/'. $visimisi->id .'')}}" method="post">
+	<form class="" action="{{url('/admin/visimisi/'. $visimisi->id .'')}}" method="post">
 
 		<textarea name="visi" rows="10" cols="40" placeholder="Visi">{{$visimisi->visi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}

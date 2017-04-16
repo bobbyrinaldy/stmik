@@ -2,7 +2,7 @@
 
 <!-- index BTK -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -32,7 +32,7 @@ Visi Misi
 						Bursa Tenaga Kerja
 					</div>
 					<div>
-						<a href="{{url('/visimisi/'. $visimisis->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/visimisi/'. $visimisis->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
 						<p>{{$visimisis->visi}}</p>

@@ -1,10 +1,6 @@
 <!-- SI INDEX -->
 
-<!-- index BTK -->
-
-<!-- Index Testimoni -->
-
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -34,7 +30,7 @@ Sistem Informasi
 						Sistem Informasi
 					</div>
 					<div>
-						<a href="{{url('/si/'. $sis->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/si/'. $sis->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
 						<p>{{$sis->deskripsi}}</p>

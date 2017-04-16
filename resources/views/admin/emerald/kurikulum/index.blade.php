@@ -1,6 +1,6 @@
 <!-- IndexKurikulum -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -30,7 +30,7 @@ Kurikulum
 						Bursa Tenaga Kerja
 					</div>
 					<div>
-						<a href="{{url('/kurikulum/'. $kurikulums->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/kurikulum/'. $kurikulums->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
 						<p>{{$kurikulums->deskripsi}}</p>

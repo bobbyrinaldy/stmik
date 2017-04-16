@@ -17,7 +17,7 @@ class BeasiswaController extends Controller
     {
         //
         $beasiswas = DB::table('tbl_beasiswas')->paginate(5);
-        return view('diamond.beasiswa.index', ['beasiswa' => $beasiswas]);
+        return view('admin.diamond.beasiswa.index', ['beasiswa' => $beasiswas]);
     }
 
     /**
@@ -28,7 +28,7 @@ class BeasiswaController extends Controller
     public function create()
     {
         //
-        return view('diamond.beasiswa.create');
+        return view('admin.diamond.beasiswa.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class BeasiswaController extends Controller
         $beasiswas->deskripsi = $request->isi;
         $beasiswas->save();
 
-        return redirect(url('/beasiswa'));
+        return redirect(url('/admin/beasiswa'));
     }
 
     /**
@@ -76,7 +76,7 @@ class BeasiswaController extends Controller
             abort(404);
         }
 
-        return view('diamond.beasiswa.update')->with('beasiswa', $beasiswas);
+        return view('admin.diamond.beasiswa.update')->with('beasiswa', $beasiswas);
     }
 
     /**
@@ -98,7 +98,7 @@ class BeasiswaController extends Controller
         $beasiswas->deskripsi = $request->isi;
         $beasiswas->save();
 
-        return redirect(url('/beasiswa'));
+        return redirect(url('/admin/beasiswa'));
     }
 
     /**
@@ -113,6 +113,6 @@ class BeasiswaController extends Controller
         //
         $beasiswas = Beasiswa::find($id);
         $beasiswas->delete();
-        return redirect(url('/beasiswa'));
+        return redirect(url('/admin/beasiswa'));
     }
 }

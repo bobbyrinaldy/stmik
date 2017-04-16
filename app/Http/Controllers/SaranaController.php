@@ -29,7 +29,7 @@ class SaranaController extends Controller
     public function create()
     {
         //
-        return view('diamond.sarana.create');
+        return view('admin.diamond.sarana.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class SaranaController extends Controller
         $saranas->cover = "null";
         $saranas->save();
 
-        return redirect(url('/sarana'));
+        return redirect(url('/admin/sarana'));
 
     }
 
@@ -81,7 +81,7 @@ class SaranaController extends Controller
             abort(404);
         }
 
-        return view('diamond.sarana.update')->with('sarana', $saranas);
+        return view('admin.diamond.sarana.update')->with('sarana', $saranas);
     }
 
     /**
@@ -106,7 +106,7 @@ class SaranaController extends Controller
         $saranas->cover = "null";
         $saranas->save();
 
-        return redirect(url('/sarana'));
+        return redirect(url('/admin/sarana'));
     }
 
     /**
@@ -120,6 +120,6 @@ class SaranaController extends Controller
         //
         $saranas = Sarana::find($id);
         $saranas->delete();
-        return redirect(url('/sarana'));
+        return redirect(url('/admin/sarana'));
     }
 }

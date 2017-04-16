@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Illuminate\Http\Request;
-use App\Kerjasama;
+use App\Subkemahasiswaan;
 
-class KerjasamaController extends Controller
+class SubkemahasiswaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,6 @@ class KerjasamaController extends Controller
     public function index()
     {
         //
-        $kerjasamas = DB::table('tbl_kerjasamas')->paginate(5);
-        return view('admin.diamond.kerjasama.index', ['kerjasama' => $kerjasamas]);
     }
 
     /**
@@ -28,7 +25,7 @@ class KerjasamaController extends Controller
     public function create()
     {
         //
-        return view('admin.diamond.kerjasama.create');
+        return view('admin.diamond.subkemahasiswaan.create');
     }
 
     /**
@@ -41,14 +38,20 @@ class KerjasamaController extends Controller
     {
         //
         $this->validate($request, [
-            'isi' => 'required',
+            'id_org' => 'required',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'logo' => 'required',
             ]);
 
-        $kerjasamas = new Kerjasama;
-        $kerjasamas->logo = $request->isi;
-        $kerjasamas->save();
+        $subkemahasiswaans = new Subkemahasiswaan;
+        $subkemahasiswaans->id_org = $request->id_org;
+        $subkemahasiswaans->nama = $request->nama;
+        $subkemahasiswaans->deskripsi = $request->deskripsi;
+        $subkemahasiswaans->logo = $request->logo;
+        $subkemahasiswaans->save();
 
-        return redirect(url('/admin/kerjasama'));
+        return redirect(url('/admin/kemahasiswaan'));
     }
 
     /**
@@ -71,12 +74,12 @@ class KerjasamaController extends Controller
     public function edit($id)
     {
         //
-        $kerjasamas = Kerjasama::find($id);
-        if (!$kerjasamas) {
+        $subkemahasiswaans = Subkemahasiswaan::find($id);
+        if (!$subkemahasiswaans) {
             abort(404);
         }
 
-        return view('admin.diamond.kerjasama.update')->with('kerjasama', $kerjasamas);
+        return view('admin.diamond.subkemahasiswaan.update')->with('subkemahasiswaan', $subkemahasiswaans);
     }
 
     /**
@@ -90,15 +93,21 @@ class KerjasamaController extends Controller
     {
         //
         $this->validate($request, [
-            'isi' => 'required',
+            'id_org' => 'required',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'logo' => 'required',
             ]);
 
 
-        $kerjasamas = Kerjasama::find($id);
-        $kerjasamas->logo = $request->isi;
-        $kerjasamas->save();
+        $subkemahasiswaans = Subkemahasiswaan::find($id);
+        $subkemahasiswaans->id_org = $request->id_org;
+        $subkemahasiswaans->nama = $request->nama;
+        $subkemahasiswaans->deskripsi = $request->deskripsi;
+        $subkemahasiswaans->logo = $request->logo;
+        $subkemahasiswaans->save();
 
-        return redirect(url('/admin/kerjasama'));
+        return redirect(url('/admin/kemahasiswaan'));
     }
 
     /**
@@ -110,8 +119,9 @@ class KerjasamaController extends Controller
     public function destroy($id)
     {
         //
-        $kerjasamas = Kerjasama::find($id);
-        $kerjasamas->delete();
-        return redirect(url('/admin/kerjasama'));
+        //
+        $subkemahasiswaans = Subkemahasiswaan::find($id);
+        $subkemahasiswaans->delete();
+        return redirect(url('/admin/kemahasiswaan'));
     }
 }

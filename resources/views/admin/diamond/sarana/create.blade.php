@@ -1,6 +1,6 @@
 <!-- CREATE SARANA DAN PRASARANA -->
 
-@extends('main')
+@extends('admin.main')
 
 @section('pageInfo')
 
@@ -22,7 +22,7 @@ Sarana Dan Prasarana
 
 	<!-- form -->
 
-	<form class="" action="{{url('/sarana')}}" method="post">
+	<form class="" action="{{url('/admin/sarana')}}" method="post">
 		
 		<input type="text" name="judul" value="" placeholder="Judul">
 		{{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
