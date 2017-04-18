@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Sarana Dan Prasarana</title>
+<title>Sertifikasi</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Sarana Dan Prasarana
+Sertifikasi
 
 @endsection
 
@@ -24,8 +24,8 @@ Sarana Dan Prasarana
 
 	<form class="" action="{{url('/admin/sertifikasi/'. $sertifikasi->id .'')}}" method="post">
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Sarana dan prasarana">{{$sertifikasi->deskripsi}}</textarea>
-		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}
+		<input type="text" name="isi" value="{{$sertifikasi->deskripsi}}" placeholder="Sertifikasi">
+		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
 
 		<br />
 

@@ -44,7 +44,7 @@ Berita
 					</div>
 					<div class="panel-body">
 						<img src="{{url('../storage/app/upload/images/' . $beritas->cover. '')}}">
-						<p>{{$beritas->deskripsi}}</p>
+						<p>{!! $beritas->deskripsi !!}</p>
 					</div>
 					<di
 				</div>

@@ -46,7 +46,7 @@ Sarana Dan Prasarana
 					
 					<div class="panel-body">
 						<img src="{{url('../storage/app/upload/images/' . $saranas->cover. '')}}">
-						<p>{{$saranas->deskripsi}}</p>
+						<p>{!! $saranas->deskripsi !!}</p>
 					</div>
 				</div>
 			</div>

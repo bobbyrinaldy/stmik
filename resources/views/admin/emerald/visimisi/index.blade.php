@@ -39,12 +39,12 @@ Visi Misi
 					</div>
 					<div class="panel-body">
 						<h3>Visi</h3>
-						<p>{{$visimisis->visi}}</p>
+						<p>{!! $visimisis->visi !!}</p>
 					</div>
 
 					<div class="panel-body">
 						<h3>Misi</h3>
-						<p>{{$visimisis->misi}}</p>
+						<p>{!! $visimisis->misi !!}</p>
 					</div>
 					
 				</div>

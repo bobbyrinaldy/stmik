@@ -38,7 +38,7 @@ Sejarah
 						<a href="{{url('/admin/sejarah/'. $sejarahs->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{{$sejarahs->deskripsi}}</p>
+						<p>{!! $sejarahs->deskripsi !!}</p>
 					</div>
 					
 				</div>

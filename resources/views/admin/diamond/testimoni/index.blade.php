@@ -46,7 +46,7 @@ Testimoni
 					
 					<div class="panel-body">
 						<img src="{{url('../storage/app/upload/images/' . $testimonis->profile. '')}}">
-						<p>{{$testimonis->komentar}}</p>
+						<p>{!! $testimonis->komentar !!}</p>
 					</div>
 					<div class="panel-body">
 						<p>{{$testimonis->tag}}</p>

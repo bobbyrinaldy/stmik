@@ -24,8 +24,8 @@ Sertifikasi
 
 	<form class="" action="{{url('/admin/sertifikasi')}}" method="post">
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Deskripsi"></textarea>
-		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}
+		<input type="text" name="isi" value="" placeholder="Sertifikasi">
+		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
 
 		<br />
 

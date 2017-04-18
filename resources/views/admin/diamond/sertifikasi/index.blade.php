@@ -33,7 +33,7 @@ Sertifikasi
 			<div class="col-md-14">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						{{$sertifikasis->deskripsi}}
+						{!! $sertifikasis->deskripsi !!}
 					</div>
 					<div>
 						<a href="{{url('/admin/sertifikasi/'. $sertifikasis->id .'/edit')}}" class="btn btn-warning">Edit</a>

@@ -38,7 +38,7 @@ Sisfo
 						<a href="{{url('/admin/sisfo/'. $sisfos->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{{$sisfos->deskripsi}}</p>
+						<p>{!! $sisfos->deskripsi !!}</p>
 					</div>
 					
 				</div>

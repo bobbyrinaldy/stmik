@@ -38,7 +38,7 @@ Informatika
 						<a href="{{url('/admin/if/'. $ifs->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{{$ifs->deskripsi}}</p>
+						<p>{!! $ifs->deskripsi !!}</p>
 					</div>
 					
 				</div>

@@ -38,7 +38,7 @@ Sistem Informasi
 						<a href="{{url('/admin/si/'. $sis->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						{{$sis->deskripsi}}
+						{!! $sis->deskripsi !!}
 					</div>
 					
 				</div>

@@ -59,7 +59,7 @@ class StrukturorganisasiController extends Controller
             $filename = $images->getClientOriginalName();
             Storage::put('upload/images/' . $filename, file_get_contents($file));
 
-            $strukturorganisasis->logo = $filename;
+            $strukturorganisasis->gambar = $filename;
         }
 
         $strukturorganisasis->save();
@@ -117,12 +117,12 @@ class StrukturorganisasiController extends Controller
             $filename = $images->getClientOriginalName();
             Storage::put('upload/images/' . $filename, file_get_contents($file));
 
-            $strukturorganisasis->logo = $filename;
+            $strukturorganisasis->gambar = $filename;
         }
         
         $strukturorganisasis->save();
 
-        return redirect(url('/admin/strukturorganisasi'));
+        // return redirect(url('/admin/strukturorganisasi'));
     }
 
     /**

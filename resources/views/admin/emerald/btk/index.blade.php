@@ -38,7 +38,7 @@ Bursa Tenaga Kerja
 						<a href="{{url('/admin/btk/'. $btks->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{{$btks->deskripsi}}</p>
+						<p>{!! $btks->deskripsi !!}</p>
 					</div>
 					
 				</div>
