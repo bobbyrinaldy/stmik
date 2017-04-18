@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Sarana Dan Prasarana</title>
+<title>Sejarah</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>

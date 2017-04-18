@@ -17,7 +17,13 @@ class StrukturorganisasiController extends Controller
     {
         //
         $strukturorganisasis = Strukturorganisasi::all();
-        return view('admin.emerald.strukturorganisasi.index', ['strukturorganisasi' => $strukturorganisasis]);
+        $count = Strukturorganisasi::count();
+
+        if($count > 0){
+            return view('admin.emerald.strukturorganisasi.index', ['strukturorganisasi' => $strukturorganisasis]);
+        } elseif ($count == 0){
+            return view('admin.emerald.strukturorganisasi.index', ['add' => 1, 'strukturorganisasi' => $strukturorganisasis]);
+        }
     }
 
     /**
@@ -41,17 +47,21 @@ class StrukturorganisasiController extends Controller
     {
         //
 
-        $images = $request->file('gambar');
-        $file = $images->getRealPath();
-        $filename = $images->getClientOriginalName();
-        Storage::put('upload/images/' . $filename, file_get_contents($file));
-
         // $this->validate($request, [
         //     'gambar' => 'required',
         //     ]);
 
         $strukturorganisasis = new Strukturorganisasi;
-        $strukturorganisasis->gambar = $filename;
+        
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $strukturorganisasis->logo = $filename;
+        }
+
         $strukturorganisasis->save();
 
         return redirect(url('/admin/strukturorganisasi'));
@@ -100,7 +110,16 @@ class StrukturorganisasiController extends Controller
         //     ]);
 
         $strukturorganisasis = Strukturorganisasi::find($id);
-        $strukturorganisasis->gambar = $request->gambar;
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $strukturorganisasis->logo = $filename;
+        }
+        
         $strukturorganisasis->save();
 
         return redirect(url('/admin/strukturorganisasi'));

@@ -16,7 +16,13 @@ class IfController extends Controller
     {
         //
         $ifs = If_model::all();
-        return view('admin.emerald.if.index', ['if' => $ifs]);
+        $count = If_model::count();
+        
+        if($count > 0){
+            return view('admin.emerald.if.index', ['if' => $ifs]);
+        } elseif ($count == 0){
+            return view('admin.emerald.if.index', ['add' => 1, 'if' => $ifs]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class IfController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.if.create');
     }
 
     /**
@@ -38,6 +45,15 @@ class IfController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+            ]);
+
+        $ifs = new If_model;
+        $ifs->deskripsi = $request->deskripsi;
+        $ifs->save();
+
+        return redirect(url('/admin/if'));
     }
 
     /**

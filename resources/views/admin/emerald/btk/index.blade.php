@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>btk</title>
+<title>Bursa Tenaga Kerja</title>
 
 @section('rute')
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -19,6 +19,11 @@ Bursa Tenaga Kerja
 
 @section('content')
 
+	@if(!empty($add))
+		<div class="col-xs-12 col-md-6 col-lg-3">
+			<a href="{{url('/admin/btk/create')}}" class="btn btn-primary">Add</a>
+		</div>
+	@endif
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">

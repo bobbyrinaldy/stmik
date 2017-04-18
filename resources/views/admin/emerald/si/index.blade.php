@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>btk</title>
+<title>Sistem Informasi</title>
 
 @section('rute')
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -19,6 +19,11 @@ Sistem Informasi
 
 @section('content')
 
+	@if(!empty($add))
+		<div class="col-xs-12 col-md-6 col-lg-3">
+			<a href="{{url('/admin/si/create')}}" class="btn btn-primary">Add</a>
+		</div>
+	@endif
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
@@ -33,7 +38,7 @@ Sistem Informasi
 						<a href="{{url('/admin/si/'. $sis->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{{$sis->deskripsi}}</p>
+						{{$sis->deskripsi}}
 					</div>
 					
 				</div>

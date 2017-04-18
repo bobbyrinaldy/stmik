@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Btk;
 
@@ -15,8 +16,17 @@ class BtkController extends Controller
     public function index()
     {
         //
-        $btks = Btk::all();
-        return view('admin.emerald.btk.index', ['btk' => $btks]);
+
+        
+        $btks = Btk::all();        
+        $count = Btk::count();
+        
+        if($count > 0){
+            return view('admin.emerald.btk.index', ['btk' => $btks]);
+        } elseif ($count == 0){
+            return view('admin.emerald.btk.index', ['add' => 1, 'btk' => $btks]);
+        }
+        
     }
 
     /**
@@ -27,6 +37,7 @@ class BtkController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.btk.create');
     }
 
     /**
@@ -38,6 +49,15 @@ class BtkController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+            ]);
+
+        $btks = new Btk;
+        $btks->deskripsi = $request->deskripsi;
+        $btks->save();
+
+        return redirect(url('/admin/btk'));
     }
 
     /**

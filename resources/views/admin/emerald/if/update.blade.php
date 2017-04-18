@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Sistem Informasi</title>
+<title>Informatika</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Sistem Informasi
+Informatika
 
 @endsection
 

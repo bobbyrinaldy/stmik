@@ -22,9 +22,11 @@ Sistem Informasi
 
 	<!-- form -->
 
+	<!-- WYSIWYG -->
+
 	<form class="" action="{{url('/admin/si/'. $si->id .'')}}" method="post">
 
-		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$si->deskripsi}}</textarea>
+		<textarea name="deskripsi" placeholder="Komentar">{{$si->deskripsi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
 
 		<br />
@@ -35,9 +37,10 @@ Sistem Informasi
 		<input type="hidden" name="_method" value="put">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
 
 	</form>
+
+	
 
 	<!-- End Form -->
 

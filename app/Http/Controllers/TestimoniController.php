@@ -42,11 +42,6 @@ class TestimoniController extends Controller
     {
         //
 
-        $images = $request->file('gambar');
-        $file = $images->getRealPath();
-        $filename = $images->getClientOriginalName();
-        Storage::put('upload/images/' . $filename, file_get_contents($file));
-
         $this->validate($request, [
             'nama' => 'required',
             'komentar' => 'required',
@@ -57,7 +52,19 @@ class TestimoniController extends Controller
         $testimonis = new Testimoni;
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
-        $testimonis->profile = $filename;
+        
+        $filename = "defaulttestimoni.png";
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $testimonis->profile = $filename;
+        } else {
+            $testimonis->profile = $filename;
+        }
+
         $testimonis->tag = $request->tag;
         $testimonis->save();
 

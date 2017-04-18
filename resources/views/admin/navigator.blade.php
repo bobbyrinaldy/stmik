@@ -99,7 +99,7 @@
 
 			<li><a href="{{url('/admin/kontak')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Hubungi Kami</a></li>
 
-			<li><a href="#"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Berita</a></li>
+			<li><a href="{{url('/admin/berita')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Berita</a></li>
 
 			<li><a href="{{url('/admin/testimoni')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Testimoni</a></li>
 		</ul>

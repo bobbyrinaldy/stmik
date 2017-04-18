@@ -32,5 +32,6 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('admin/sisfo', 'SisfoController');
 	Route::resource('admin/visimisi', 'VisimisiController');
 	Route::resource('admin/strukturorganisasi', 'StrukturorganisasiController');
+	Route::resource('admin/berita', 'BeritaController');
 
 });

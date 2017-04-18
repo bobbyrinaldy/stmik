@@ -16,7 +16,13 @@ class SisfoController extends Controller
     {
         //
         $sisfos = Sisfo::all();
-        return view('admin.emerald.Sisfo.index', ['sisfo' => $sisfos]);
+        $count = Sisfo::count();
+
+        if($count > 0){
+            return view('admin.emerald.sisfo.index', ['sisfo' => $sisfos]);
+        } elseif ($count == 0){
+            return view('admin.emerald.sisfo.index', ['add' => 1, 'sisfo' => $sisfos]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class SisfoController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.sisfo.create');
     }
 
     /**
@@ -38,6 +45,15 @@ class SisfoController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+        ]);
+
+        $sisfos = new Sisfo;
+        $sisfos->deskripsi = $request->deskripsi;
+        $sisfos->save();
+
+        return redirect(url('/admin/sisfo'));
     }
 
     /**

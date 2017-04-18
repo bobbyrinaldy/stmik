@@ -24,7 +24,7 @@ Kerjasama
 
 	<form class="" action="{{url('/admin/kerjasama')}}" method="post" enctype="multipart/form-data">
 
-		<input type="file" name="gambar" value="" placeholder="namanya">
+		<input type="file" name="gambar" value="" placeholder="namanya" required>
 		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 
 		<br />

@@ -16,7 +16,13 @@ class VisimisiController extends Controller
     {
         //
         $visimisis = Visimisi::all();
-        return view('admin.emerald.visimisi.index', ['visimisi' => $visimisis]);
+        $count = Visimisi::count();
+
+        if($count > 0){
+            return view('admin.emerald.visimisi.index', ['visimisi' => $visimisis]);
+        } elseif ($count == 0){
+            return view('admin.emerald.visimisi.index', ['add' => 1, 'visimisi' => $visimisis]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class VisimisiController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.visimisi.create');
     }
 
     /**
@@ -38,6 +45,17 @@ class VisimisiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'visi' => 'required',
+            'misi' => 'required',
+        ]);
+
+        $visimisis = new Visimisi;
+        $visimisis->visi = $request->visi;
+        $visimisis->misi = $request->misi;
+        $visimisis->save();
+
+        return redirect(url('/admin/visimisi'));
     }
 
     /**

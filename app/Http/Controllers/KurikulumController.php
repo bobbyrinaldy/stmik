@@ -16,7 +16,13 @@ class KurikulumController extends Controller
     {
         //
         $kurikulums = Kurikulum::all();
-        return view('admin.emerald.kurikulum.index', ['kurikulum' => $kurikulums]);
+        $count = Kurikulum::count();
+        
+        if($count > 0){
+            return view('admin.emerald.kurikulum.index', ['kurikulum' => $kurikulums]);
+        } elseif ($count == 0){
+            return view('admin.emerald.kurikulum.index', ['add' => 1, 'kurikulum' => $kurikulums]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class KurikulumController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.kurikulum.create');
     }
 
     /**
@@ -38,6 +45,15 @@ class KurikulumController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+        ]);
+
+        $kurikulums = new Kurikulum;
+        $kurikulums->deskripsi = $request->deskripsi;
+        $kurikulums->save();
+
+        return redirect(url('/admin/kurikulum'));
     }
 
     /**

@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Sarana Dan Prasarana</title>
+<title>Kontak Kami</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -14,7 +14,7 @@
 
 @section('pageTitle')
 
-Kontak
+Kontak Kami
 
 @endsection
 

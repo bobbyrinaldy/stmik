@@ -16,7 +16,13 @@ class KontakController extends Controller
     {
         //
         $kontaks = Kontak::all();
-        return view('admin.emerald.contactus.index', ['kontak' => $kontaks]);
+        $count = Kontak::count();
+        
+        if($count > 0){
+            return view('admin.emerald.contactus.index', ['kontak' => $kontaks]);
+        } elseif ($count == 0){
+            return view('admin.emerald.contactus.index', ['add' => 1, 'kontak' => $kontaks]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class KontakController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.contactus.create');
     }
 
     /**
@@ -38,6 +45,15 @@ class KontakController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+        ]);
+
+        $kontaks = new Kontak;
+        $kontaks->deskripsi = $request->deskripsi;
+        $kontaks->save();
+
+        return redirect(url('/admin/kontak'));
     }
 
     /**
@@ -49,6 +65,7 @@ class KontakController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -86,7 +103,7 @@ class KontakController extends Controller
         $kontaks = Kontak::find($id);
         $kontaks->deskripsi = $request->deskripsi;
         $kontaks->save();
-
+ // m_completeauthorizations(conn, array)
         return redirect(url('/admin/kontak'));
     }
 

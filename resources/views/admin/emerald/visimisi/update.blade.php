@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Sarana Dan Prasarana</title>
+<title>Visi Misi</title>
 
 @section('rute')
     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -24,11 +24,13 @@ Visi Misi
 
 	<form class="" action="{{url('/admin/visimisi/'. $visimisi->id .'')}}" method="post">
 
+		<h3>Visi</h3> <br />
 		<textarea name="visi" rows="10" cols="40" placeholder="Visi">{{$visimisi->visi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
 
 		<br />
 
+		<h3>Misi</h3> <br />
 		<textarea name="misi" rows="10" cols="40" placeholder="Misi">{{$visimisi->misi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
 

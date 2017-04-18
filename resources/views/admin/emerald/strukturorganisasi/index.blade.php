@@ -21,6 +21,11 @@ Struktur Organisasi
 
 @section('content')
 
+	@if(!empty($add))
+		<div class="col-xs-12 col-md-6 col-lg-3">
+			<a href="{{url('/admin/strukturorganisasi/create')}}" class="btn btn-primary">Add</a>
+		</div>
+	@endif
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">

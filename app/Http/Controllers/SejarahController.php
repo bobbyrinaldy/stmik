@@ -16,7 +16,13 @@ class SejarahController extends Controller
     {
         //
         $sejarahs = Sejarah::all();
-        return view('admin.emerald.sejarah.index', ['sejarah' => $sejarahs]);
+        $count = Sejarah::count();
+        
+        if($count > 0){
+            return view('admin.emerald.sejarah.index', ['sejarah' => $sejarahs]);
+        } elseif ($count == 0){
+            return view('admin.emerald.sejarah.index', ['add' => 1, 'sejarah' => $sejarahs]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class SejarahController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.sejarah.create');
     }
 
     /**
@@ -38,6 +45,15 @@ class SejarahController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+        ]);
+
+        $sejarahs = new Sejarah;
+        $sejarahs->deskripsi = $request->deskripsi;
+        $sejarahs->save();
+
+        return redirect(url('/admin/sejarah'));
     }
 
     /**

@@ -43,11 +43,6 @@ class SaranaController extends Controller
     {
         //
 
-        $images = $request->file('gambar');
-        $file = $images->getRealPath();
-        $filename = $images->getClientOriginalName();
-        Storage::put('upload/images/' . $filename, file_get_contents($file));
-
         $this->validate($request, [
             'judul' => 'required',
             'isi' => 'required',
@@ -56,8 +51,22 @@ class SaranaController extends Controller
         $saranas = new Sarana;
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
-        $saranas->cover = $filename;
+        
+        $filename = "defaultsarana.png";
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('upload/images/' . $filename, file_get_contents($file));
+
+            $saranas->cover = $filename;
+        } else {
+            $saranas->cover = $filename;
+        }
+
         $saranas->save();
+
+
 
         return redirect(url('/admin/sarana'));
 

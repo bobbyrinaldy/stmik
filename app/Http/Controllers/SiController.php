@@ -16,7 +16,13 @@ class SiController extends Controller
     {
         //
         $sis = Si::all();
-        return view('admin.emerald.si.index', ['si' => $sis]);
+        $count = Si::count();
+        
+        if($count > 0){
+            return view('admin.emerald.si.index', ['si' => $sis]);
+        } elseif ($count == 0){
+            return view('admin.emerald.si.index', ['add' => 1, 'si' => $sis]);
+        }
     }
 
     /**
@@ -27,6 +33,7 @@ class SiController extends Controller
     public function create()
     {
         //
+        return view('admin.emerald.si.create');
     }
 
     /**
@@ -38,6 +45,15 @@ class SiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'deskripsi' => 'required',
+        ]);
+
+        $sis = new Si;
+        $sis->deskripsi = $request->deskripsi;
+        $sis->save();
+
+        return redirect(url('/admin/si'));
     }
 
     /**
