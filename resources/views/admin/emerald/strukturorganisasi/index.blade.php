@@ -9,8 +9,8 @@
 <title>Struktur Organisasi</title>
 
 @section('rute')
-                <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-                <li class="active">Icons</li>
+      <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+      <li class="active">Icons</li>
 @endsection
 
 @section('pageTitle')
@@ -29,7 +29,7 @@ Struktur Organisasi
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
-		
+
 		@foreach($strukturorganisasi as $strukturorganisasis)
 			<div class="col-md-14">
 				<div class="panel panel-primary">
@@ -42,7 +42,7 @@ Struktur Organisasi
 					<div class="panel-body">
 						<img src="{{url('../storage/app/upload/images/' . $strukturorganisasis->gambar. '')}}">
 					</div>
-					
+
 				</div>
 			</div>
 		@endforeach
@@ -51,7 +51,7 @@ Struktur Organisasi
 
 	<!-- </div> -->
 
-	
+
 
 @endsection
 

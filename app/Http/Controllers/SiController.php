@@ -17,7 +17,7 @@ class SiController extends Controller
         //
         $sis = Si::all();
         $count = Si::count();
-        
+
         if($count > 0){
             return view('admin.emerald.si.index', ['si' => $sis]);
         } elseif ($count == 0){
@@ -115,5 +115,13 @@ class SiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function main()
+    {
+      $si = Si::all()->first();
+
+
+      return view('/prodi/si/index',['informasi'=>$si]);
     }
 }

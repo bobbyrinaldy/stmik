@@ -129,4 +129,11 @@ class KerjasamaController extends Controller
         $kerjasamas->delete();
         return redirect(url('/admin/kerjasama'));
     }
+
+    public function main()
+    {
+      $kerjasama = kerjasama::all()->first();
+      
+      return view('/kerjasama/index',['kerjasama'=>$kerjasama]);
+    }
 }

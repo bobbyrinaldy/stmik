@@ -116,4 +116,11 @@ class SisfoController extends Controller
     {
         //
     }
+
+    public function main()
+    {
+      $sisfo = sisfo::all()->first();
+
+      return view('/layanan/sisfo_akademik/index',['sisfo'=>$sisfo]);
+    }
 }

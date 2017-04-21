@@ -115,4 +115,12 @@ class SertifikasiController extends Controller
         $sertifikasis->delete();
         return redirect(url('/admin/sertifikasi'));
     }
+
+    public function main()
+    {
+      $sertifikasi = sertifikasi::all();
+
+
+      return view('/layanan/sertifikasi_internasional/index',['sertifikasi'=>$sertifikasi]);
+    }
 }

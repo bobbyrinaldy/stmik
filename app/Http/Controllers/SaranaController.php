@@ -51,7 +51,7 @@ class SaranaController extends Controller
         $saranas = new Sarana;
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
-        
+
         $filename = "defaultsarana.png";
         if($request->gambar) {
             $images = $request->file('gambar');
@@ -116,7 +116,7 @@ class SaranaController extends Controller
         // $filename = $images->getClientOriginalName();
         // Storage::put('upload/images/' . $filename, file_get_contents($file));
 
-            
+
 
         $this->validate($request, [
             'judul' => 'required',
@@ -128,7 +128,7 @@ class SaranaController extends Controller
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
         // $saranas->cover = $filename;
-        
+
 
         if($request->gambar) {
             $images = $request->file('gambar');
@@ -156,5 +156,13 @@ class SaranaController extends Controller
         $saranas = Sarana::find($id);
         $saranas->delete();
         return redirect(url('/admin/sarana'));
+    }
+
+    public function main()
+    {
+      $saranas = sarana::all();
+
+
+      return view('/layanan/sarana_prasarana/index',['sarana'=>$saranas]);
     }
 }

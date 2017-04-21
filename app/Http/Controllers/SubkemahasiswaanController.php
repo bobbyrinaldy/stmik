@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Storage;
 use Illuminate\Http\Request;
 use App\Subkemahasiswaan;
+use App\Berita;
 
 class SubkemahasiswaanController extends Controller
 {
@@ -108,7 +109,7 @@ class SubkemahasiswaanController extends Controller
         $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
-        
+
 
         if($request->gambar) {
             $images = $request->file('gambar');
@@ -137,5 +138,37 @@ class SubkemahasiswaanController extends Controller
         $subkemahasiswaans = Subkemahasiswaan::find($id);
         $subkemahasiswaans->delete();
         return redirect(url('/admin/kemahasiswaan'));
+    }
+
+    public function loopcommunity()
+    {
+      $loop = subkemahasiswaan::where('nama','loop')->orWhere('nama','loopc')->orWhere('nama','loopcommunity')->first();
+
+      return view('/kemahasiswaan/subhima/loop/index',['loop'=>$loop]);
+    }
+
+    public function crash()
+    {
+      $crash = subkemahasiswaan::where('nama','crash')->orWhere('nama','crash')->first();
+
+      return view('/kemahasiswaan/subhima/crash/index',['crash'=>$crash]);
+    }
+
+    public function comic()
+    {
+      $comic = subkemahasiswaan::where('nama','comic')->orWhere('nama','comiclpkia')->first();
+
+      return view('/kemahasiswaan/subhima/comic/index',['comic'=>$comic]);
+    }
+
+    public function move()
+    {
+      $move = subkemahasiswaan::where('nama','move')->orWhere('nama','movelpkia')->first();
+      $berita = berita::all()->take(5);
+
+      return view('/kemahasiswaan/subhima/move/index',[
+        'move'=>$move,
+        'berita'=>$berita
+      ]);
     }
 }

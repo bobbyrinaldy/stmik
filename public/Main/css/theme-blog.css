@@ -34,7 +34,7 @@ article.post .post-meta i {
 }
 
 article.post .post-date {
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 2px 0 #525252;
 	float: left;
 	margin-right: 10px;
 	text-align: center;
@@ -50,7 +50,7 @@ article.post .post-date .month {
 }
 
 article.post .post-date .day {
-	background: #F4F4F4;
+	background: #FFF;
 	border-radius: 2px 2px 0 0;
 	color: #CCC;
 	display: block;
@@ -372,7 +372,7 @@ ul.simple-post-list .post-image {
 }
 
 ul.simple-post-list .post-meta {
-	color: #888;
+	color: #a72184;
 	font-size: 0.8em;
 }
 

@@ -52,7 +52,7 @@ class StrukturorganisasiController extends Controller
         //     ]);
 
         $strukturorganisasis = new Strukturorganisasi;
-        
+
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
@@ -119,7 +119,7 @@ class StrukturorganisasiController extends Controller
 
             $strukturorganisasis->gambar = $filename;
         }
-        
+
         $strukturorganisasis->save();
 
         // return redirect(url('/admin/strukturorganisasi'));
@@ -137,5 +137,12 @@ class StrukturorganisasiController extends Controller
         $strukturorganisasis = Strukturorganisasi::find($id);
         $strukturorganisasis->delete();
         return redirect(url('/admin/strukturorganisasi'));
+    }
+
+    public function main()
+    {
+      $strukturorganisasis = Strukturorganisasi::all()->first();
+
+      return view('/tentang/strukturorganisasi/index',['strukturorganisasi'=>$strukturorganisasis]);
     }
 }

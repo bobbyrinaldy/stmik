@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 	<head>
 
@@ -62,8 +63,8 @@
 						<div class="header-row">
 							<div class="header-column">
 								<div class="header-logo">
-									<a href="index.html">
-										<img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" data-sticky-top="33" src="{{asset('Main/img/logo.png')}}">
+									<a href="/">
+										<img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" data-sticky-top="33" src="{{asset('Main/img/lpkia.png')}}">
 									</a>
 								</div>
 							</div>
@@ -82,13 +83,10 @@
 									<nav class="header-nav-top">
 										<ul class="nav nav-pills">
 											<li class="hidden-xs">
-												<a href="about-us.html"><i class="fa fa-angle-right"></i> Developer</a>
+												<a href="/developer"><i class="fa fa-angle-right"></i> Developer</a>
 											</li>
 											<li class="hidden-xs">
-												<a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact Us</a>
-											</li>
-											<li>
-												<span class="ws-nowrap"><i class="fa fa-phone"></i> (022) 7564283 / 7564284</span>
+												<a href="/hubungi_kami"><i class="fa fa-angle-right"></i> Hubungi Kami</a>
 											</li>
 										</ul>
 									</nav>
@@ -98,112 +96,90 @@
 										<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
 											<i class="fa fa-bars"></i>
 										</button>
+
 										<div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
 											<nav>
 												<ul class="nav nav-pills" id="mainNav">
-													<li class="dropdown active">
-														<a class="" href="/">
+													<li class="">
+														<a href="/">
 															Beranda
 														</a>
 													</li>
-
 													<li class="dropdown">
 														<a class="dropdown-toggle" href="#">
 															Tentang Kami
 														</a>
-
 														<ul class="dropdown-menu">
-															<li class="">
-																<a href="#">Visi & Misi</a>
-															</li>
-															<li class="">
-																<a href="#">Sejarah</a>
-															</li>
-															<li class="">
-																<a href="#">Struktur Organisasi</a>
-															</li>
+															<li><a href="/tentang/sejarah">Sejarah</a></li>
+															<li><a href="/tentang/visimisi">Visi dan Misi</a></li>
+															<li><a href="/tentang/struktur_organisasi">Struktur Organisasi</a></li>
 														</ul>
 													</li>
-                          <li class="dropdown">
+													<li class="dropdown">
 														<a class="dropdown-toggle" href="#">
 															Program Studi
 														</a>
-
 														<ul class="dropdown-menu">
-															<li class="">
-																<a href="#">Teknik Informatika</a>
-															</li>
-															<li class="">
-																<a href="#">Sistem Informasi</a>
-															</li>
+															<li><a href="/prodi/si">Sistem Informasi (SI)</a></li>
+															<li><a href="/prodi/if">Teknik Informatika (IF)</a></li>
 														</ul>
 													</li>
-                          <li class="dropdown">
+													<li class="dropdown dropdown-mega">
 														<a class="dropdown-toggle" href="#">
 															Layanan
 														</a>
-
 														<ul class="dropdown-menu">
-															<li class="">
-																<a href="#">Sarana dan Prasana</a>
-															</li>
-															<li class="">
-																<a href="#">Sertifikasi Internasional</a>
-															</li>
-                              <li class="">
-																<a href="#">Kurikulum</a>
-															</li>
-                              <li class="">
-																<a href="#">Sistem Informasi Akademik</a>
-															</li>
-                              <li class="">
-																<a href="#">Beasiswa</a>
+															<li>
+																<div class="dropdown-mega-content">
+																	<div class="row">
+																		<div class="col-md-7">
+																			<ul class="dropdown-mega-sub-nav">
+																				<li><a href="/layanan/sarana_prasarana">Sarana dan Prasarana</a></li>
+																				<li><a href="/layanan/sertifikasi_internasional">Sertifikasi Internasional</a></li>
+																				<li><a href="/layanan/kurikulum">Kurikulum</a></li>
+																			</ul>
+																		</div>
+																		<div class="col-md-5">
+																			<ul class="dropdown-mega-sub-nav">
+																				<li><a href="/layanan/sisfo_akademik">Sistem Informasi Akademik</a></li>
+																				<li><a href="/layanan/beasiswa">Beasiswa</a></li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
 															</li>
 														</ul>
 													</li>
-                          <li class="">
-														<a class="" href="#">
+													<li class="">
+														<a href="/btk">
 															BTK
 														</a>
 													</li>
-                          <li class="">
-														<a class="" href="#">
-															Berita
-														</a>
-													</li>
-                          <li class="dropdown">
+													<li class="dropdown">
 														<a class="dropdown-toggle" href="#">
 															Kemahasiswaan
 														</a>
-
 														<ul class="dropdown-menu">
-															<li class="">
-																<a href="#">HIMA STMIK</a>
-															</li>
-															<li class="">
-																<a href="#">HIMA KOMPUTER</a>
-															</li>
-                              <li class="">
-																<a href="#">LOOP COMMUNITY</a>
-															</li>
-                              <li class="">
-																<a href="#">CRASH</a>
-															</li>
-                              <li class="">
-																<a href="#">COMIC</a>
-															</li>
-                              <li class="">
-																<a href="#">MOVE</a>
-															</li>
+															<li class=""><a href="/kemahasiswaan/himastmik">HIMA STMIK</a></li>
+															<li class=""><a href="/kemahasiswaan/himakom">HIMAKOM</a></li>
+															<li class=""><a href="/kemahasiswaan/loopcommunity">LOOP COMMUNITY</a></li>
+															<li class=""><a href="/kemahasiswaan/crash">CRASH</a></li>
+															<li class=""><a href="/kemahasiswaan/comic">COMIC</a></li>
+															<li class=""><a href="/kemahasiswaan/move">MOVE</a></li>
 														</ul>
 													</li>
-                          <li class="">
-														<a class="" href="#">
+													<li class="">
+														<a href="/berita">
+															Berita
+														</a>
+													</li>
+													<li class="">
+														<a href="/kerjasama">
 															Kerjasama
 														</a>
 													</li>
-                          <li class="">
-														<a class="" href="#">
+													<li class="">
+														<a href="/testimonial">
 															Testimonial
 														</a>
 													</li>
@@ -273,9 +249,9 @@
 						<div class="col-md-3">
 							<h3 class="mb-sm">HUBUNGI KAMI</h3>
 							<ul class="list list-icons mt-xl">
-                <li> <i class="fa fa-phone"></i><strong> Phone : (022) 7564283 / 7564284 </strong></li>
-								<li><i class="fa fa-map-marker"></i> <strong>Address:</strong> <br/>Jl. Soekarno Hatta No.456, Batununggal, Bandung Kidul, Kota Bandung, Jawa Barat 40266</li>
-								<li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+                <li> <i class="fa fa-phone"></i><strong> <p style="color:white;">Phone : (022) 7564283 / 7564284</p> </strong></li>
+								<li><i class="fa fa-map-marker"></i><p style="color:white;"> <strong>Address:</strong> <br/>Jl. Soekarno Hatta No.456, Batununggal, Bandung Kidul, Kota Bandung, Jawa Barat 40266</p></li>
+								<li><i class="fa fa-envelope"></i> <p style="color:white;"><strong>Email:</strong><a href="mailto:mail@example.com">mail@example.com</p></a></li>
 							</ul>
 							<ul class="social-icons">
 								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
@@ -289,7 +265,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-								<p>© Copyright 2017 LPKIA. All Rights Reserved.</p>
+								<p>© Copyright 2017 <strong>STMIK LPKIA</strong> & <strong>LOOP COMMUNITY</strong>. All Rights Reserved.</p>
 							</div>
 						</div>
 					</div>

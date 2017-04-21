@@ -17,7 +17,7 @@ class SejarahController extends Controller
         //
         $sejarahs = Sejarah::all();
         $count = Sejarah::count();
-        
+
         if($count > 0){
             return view('admin.emerald.sejarah.index', ['sejarah' => $sejarahs]);
         } elseif ($count == 0){
@@ -115,5 +115,13 @@ class SejarahController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function main()
+    {
+      $sejarahs = Sejarah::all()->first();
+
+
+      return view('/tentang/sejarah/index',['sejarah'=> $sejarahs]);
     }
 }

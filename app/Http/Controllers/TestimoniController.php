@@ -52,7 +52,7 @@ class TestimoniController extends Controller
         $testimonis = new Testimoni;
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
-        
+
         $filename = "defaulttestimoni.png";
         if($request->gambar) {
             $images = $request->file('gambar');
@@ -120,7 +120,7 @@ class TestimoniController extends Controller
         $testimonis = Testimoni::find($id);
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
-        
+
         $testimonis->tag = $request->tag;
 
         if($request->gambar) {
@@ -149,5 +149,12 @@ class TestimoniController extends Controller
         $saranas = Testimoni::find($id);
         $saranas->delete();
         return redirect(url('/admin/testimoni'));
+    }
+
+    public function main()
+    {
+      $testi = testimoni::all();
+
+      return view('/testimoni/index',['testimoni'=>$testi]);
     }
 }

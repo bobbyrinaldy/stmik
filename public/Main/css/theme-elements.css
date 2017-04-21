@@ -6,7 +6,7 @@ Version: 		4.3.1
 */
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-	color: #1d2127;
+	color: #700153;
 	font-weight: 200;
 	letter-spacing: -1px;
 	margin: 0;
@@ -316,7 +316,13 @@ blockquote.with-borders {
 
 /* Paragraphs */
 p {
-	color: #777;
+	color: #000;
+	line-height: 24px;
+	margin: 0 0 20px;
+}
+
+.p1 {
+	color: #25001b;
 	line-height: 24px;
 	margin: 0 0 20px;
 }
@@ -5106,7 +5112,7 @@ section.timeline .timeline-box .owl-carousel {
 	background: #CCC;
 	border-radius: 10px;
 	border: 0;
-	color: #666;
+	color: #700153;
 	font-family: Georgia, serif;
 	font-style: italic;
 	margin: 0;
@@ -5269,11 +5275,6 @@ section.timeline .timeline-box .owl-carousel {
 .testimonial.testimonial-style-4 {
 	border-radius: 6px;
 	padding: 8px;
-	border-top: 1px solid #DFDFDF;
-	border-bottom: 1px solid #DFDFDF;
-	border-left: 1px solid #ECECEC;
-	border-right: 1px solid #ECECEC;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 .testimonial.testimonial-style-4 blockquote {
@@ -6152,7 +6153,7 @@ html .scroll-to-top {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-	background: #404040;
+	background: #a72184;
 	border-radius: 7px 7px 0 0;
 	bottom: 0px;
 	color: #FFF;

@@ -120,4 +120,12 @@ class VisimisiController extends Controller
     {
         //
     }
+
+    public function main()
+   {
+     $visimisis = visimisi::all()->first();
+
+
+     return view('/tentang/visimisi/index',['visimisi'=>$visimisis]);
+   }
 }

@@ -22,7 +22,7 @@ Struktur Organisasi
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/strukturorganisasi/'. $strukturorganisasi->id .')}}" method="post" enctype="multipart/form-data">
+	<form class="" action="{{url('/admin/strukturorganisasi/'. $strukturorganisasi->id .)}}" method="post" enctype="multipart/form-data">
 
 		<input type="file" name="gambar" value="" placeholder="namanya">
 		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
@@ -35,7 +35,7 @@ Struktur Organisasi
 		<input type="hidden" name="_method" value="put">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
 

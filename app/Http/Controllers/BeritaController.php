@@ -149,4 +149,19 @@ class BeritaController extends Controller
         $beritas->delete();
         return redirect(url('/admin/berita'));
     }
+
+    public function main()
+    {
+      $berita = berita::all();
+
+
+      return view('/berita/index',['berita'=>$berita]);
+    }
+
+    public function detail($id)
+    {
+      $detail = berita::find($id)->first();
+
+      return view('/berita/view',['detail'=>$detail]);
+    }
 }

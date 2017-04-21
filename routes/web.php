@@ -1,12 +1,49 @@
 <?php
-
+//MAIN WEBSITE
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/administrator','HomeController@index');
+Route::get('/btk','BtkController@main');
+
+Route::get('/tentang/visimisi','VisimisiController@main');
+Route::get('/tentang/sejarah','SejarahController@main');
+Route::get('/tentang/struktur_organisasi','StrukturorganisasiController@main');
+
+Route::get('/prodi/if','IfController@main');
+Route::get('/prodi/si','SiController@main');
+
+Route::get('/layanan/beasiswa', function () {
+    return view('layanan/beasiswa/index');
+});
+Route::get('/layanan/kurikulum','KurikulumController@main');
+Route::get('/layanan/sarana_prasarana','SaranaController@main');
+Route::get('/layanan/sisfo_akademik','SisfoController@main');
+Route::get('/layanan/sertifikasi_internasional','SertifikasiController@main');
+Route::get('/berita','BeritaController@main');
+Route::get('/berita/{id}','BeritaController@detail');
+
+Route::get('/kemahasiswaan/himastmik','KemahasiswaanController@himastmik');
+Route::get('/kemahasiswaan/himakom','KemahasiswaanController@himakom');
+Route::get('/kemahasiswaan/loopcommunity','SubkemahasiswaanController@loopcommunity');
+Route::get('/kemahasiswaan/crash','SubkemahasiswaanController@crash');
+Route::get('/kemahasiswaan/comic','SubkemahasiswaanController@comic');
+Route::get('/kemahasiswaan/move','SubkemahasiswaanController@move');
 
 
+Route::get('/hubungi_kami', function () {
+    return view('hubungi');
+});
+Route::get('/developer', function () {
+    return view('developer');
+});
+Route::get('/kerjasama','KerjasamaController@main');
+Route::get('/testimonial','TestimoniController@main');
+
+
+//ADMINISTRATOR
+
+Route::get('/administrator','AdminController@index');
 
 Route::group(['middleware' => ['web']], function(){
 	// Master
@@ -18,7 +55,7 @@ Route::group(['middleware' => ['web']], function(){
 	Route::resource('admin/testimoni', 'TestimoniController');
 	Route::resource('admin/kemahasiswaan', 'KemahasiswaanController');
 	Route::resource('admin/subkemahasiswaan', 'SubkemahasiswaanController');
-	
+
 });
 
 Route::group(['middleware' => ['web']], function(){

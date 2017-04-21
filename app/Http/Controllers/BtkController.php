@@ -17,16 +17,16 @@ class BtkController extends Controller
     {
         //
 
-        
-        $btks = Btk::all();        
+
+        $btks = Btk::all();
         $count = Btk::count();
-        
+
         if($count > 0){
             return view('admin.emerald.btk.index', ['btk' => $btks]);
         } elseif ($count == 0){
             return view('admin.emerald.btk.index', ['add' => 1, 'btk' => $btks]);
         }
-        
+
     }
 
     /**
@@ -119,5 +119,13 @@ class BtkController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function main()
+    {
+      $btk = btk::all();
+
+
+      return view('/btk/index',['btk'=>$btk]);
     }
 }

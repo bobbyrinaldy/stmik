@@ -17,7 +17,7 @@ class IfController extends Controller
         //
         $ifs = If_model::all();
         $count = If_model::count();
-        
+
         if($count > 0){
             return view('admin.emerald.if.index', ['if' => $ifs]);
         } elseif ($count == 0){
@@ -115,5 +115,13 @@ class IfController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function main()
+    {
+      $if = If_model::all()->first();
+
+
+      return view('/prodi/if/index',['informatika'=>$if]);
     }
 }

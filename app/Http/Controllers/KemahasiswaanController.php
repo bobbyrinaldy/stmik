@@ -123,7 +123,7 @@ class KemahasiswaanController extends Controller
             $kemahasiswaans->logo = $filename;
         }
 
-        
+
         $kemahasiswaans->save();
 
         return redirect(url('/admin/kemahasiswaan'));
@@ -142,5 +142,21 @@ class KemahasiswaanController extends Controller
         $kemahasiswaans = Kemahasiswaan::find($id);
         $kemahasiswaans->delete();
         return redirect(url('/admin/kemahasiswaan'));
+    }
+
+    public function himastmik()
+    {
+      $stmik = kemahasiswaan::where('nama','himastmik')->orWhere('nama','HIMA STMIK LPKIA')->orWhere('nama','stmik')->first();
+
+
+      return view('/kemahasiswaan/hima/himastmik/index',['stmik'=>$stmik]);
+    }
+
+    public function himakom()
+    {
+      $himakom = kemahasiswaan::where('nama','HIMAKOM')->orWhere('nama','himakomputer')->orWhere('nama','himakomlpkia')->first();
+
+
+      return view('/kemahasiswaan/hima/himakom/index',['himakom'=>$himakom]);
     }
 }

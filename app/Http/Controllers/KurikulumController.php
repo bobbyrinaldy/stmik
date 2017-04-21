@@ -17,7 +17,7 @@ class KurikulumController extends Controller
         //
         $kurikulums = Kurikulum::all();
         $count = Kurikulum::count();
-        
+
         if($count > 0){
             return view('admin.emerald.kurikulum.index', ['kurikulum' => $kurikulums]);
         } elseif ($count == 0){
@@ -115,5 +115,13 @@ class KurikulumController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function main()
+    {
+      $kurikulum = kurikulum::all()->first();
+
+
+      return view('/layanan/kurikulum/index',['kurikulum'=>$kurikulum]);
     }
 }

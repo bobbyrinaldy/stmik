@@ -115,4 +115,12 @@ class BeasiswaController extends Controller
         $beasiswas->delete();
         return redirect(url('/admin/beasiswa'));
     }
+
+    public function main()
+    {
+      $beasiswa = beasiswa::all();
+
+
+      return view('/layanan/beasiswa/index',['beasiswa'=>$beasiswa]);
+    }
 }
