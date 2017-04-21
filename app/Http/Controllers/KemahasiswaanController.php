@@ -50,7 +50,7 @@ class KemahasiswaanController extends Controller
         $images = $request->file('gambar');
         $file = $images->getRealPath();
         $filename = $images->getClientOriginalName();
-        Storage::put('upload/images/' . $filename, file_get_contents($file));
+        Storage::put('public/' . $filename, file_get_contents($file));
 
         $this->validate($request, [
             'nama' => 'required',
@@ -58,6 +58,10 @@ class KemahasiswaanController extends Controller
             ]);
 
         $kemahasiswaans = new Kemahasiswaan;
+        if (!$kemahasiswaans) {
+            abort(404);
+        }
+
         $kemahasiswaans->nama = $request->nama;
         $kemahasiswaans->deskripsi = $request->deskripsi;
         $kemahasiswaans->logo = $filename;
@@ -111,6 +115,10 @@ class KemahasiswaanController extends Controller
 
 
         $kemahasiswaans = Kemahasiswaan::find($id);
+        if (!$kemahasiswaans) {
+            abort(404);
+        }
+
         $kemahasiswaans->nama = $request->nama;
         $kemahasiswaans->deskripsi = $request->deskripsi;
 
@@ -118,7 +126,7 @@ class KemahasiswaanController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $kemahasiswaans->logo = $filename;
         }
@@ -147,6 +155,9 @@ class KemahasiswaanController extends Controller
     public function himastmik()
     {
       $stmik = kemahasiswaan::where('nama','himastmik')->orWhere('nama','HIMA STMIK LPKIA')->orWhere('nama','stmik')->first();
+      // if (!$stmik) {
+      //       abort(404);
+      //   }
 
 
       return view('/kemahasiswaan/hima/himastmik/index',['stmik'=>$stmik]);
@@ -155,6 +166,9 @@ class KemahasiswaanController extends Controller
     public function himakom()
     {
       $himakom = kemahasiswaan::where('nama','HIMAKOM')->orWhere('nama','himakomputer')->orWhere('nama','himakomlpkia')->first();
+      if (!$himakom) {
+            abort(404);
+        }
 
 
       return view('/kemahasiswaan/hima/himakom/index',['himakom'=>$himakom]);

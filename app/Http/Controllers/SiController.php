@@ -50,6 +50,10 @@ class SiController extends Controller
         ]);
 
         $sis = new Si;
+        if (!$sis) {
+            abort(404);
+        }
+
         $sis->deskripsi = $request->deskripsi;
         $sis->save();
 
@@ -100,6 +104,10 @@ class SiController extends Controller
 
 
         $sis = Si::find($id);
+        if (!$sis) {
+            abort(404);
+        }
+        
         $sis->deskripsi = $request->deskripsi;
         $sis->save();
 
@@ -120,7 +128,9 @@ class SiController extends Controller
     public function main()
     {
       $si = Si::all()->first();
-
+      // if (!$si) {
+      //       abort(404);
+      //   }
 
       return view('/prodi/si/index',['informasi'=>$si]);
     }

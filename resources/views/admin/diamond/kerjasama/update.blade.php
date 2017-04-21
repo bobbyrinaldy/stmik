@@ -24,6 +24,16 @@ Kerjasama
 
 	<form class="" action="{{url('/admin/kerjasama/'. $kerjasama->id .'')}}" method="post" enctype="multipart/form-data">
 
+		<input type="text" name="perusahaan" value="{{$kerjasama->perusahaan}}" placeholder="perusahaan">
+		{{ ($errors->has('perusahaan')) ?  $errors->first('perusahaan') : '' }}
+
+		<br />
+
+		<textarea name="isi" rows="10" cols="40" placeholder="Isi">{{$kerjasama->deskripsi}}</textarea>
+		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+
+		<br />
+
 		<input type="file" name="gambar" value="" placeholder="namanya">
 		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 

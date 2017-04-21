@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use DB;
 use Illuminate\Http\Request;
 use App\Berita;
@@ -18,6 +19,10 @@ class BeritaController extends Controller
     {
         //
         $beritas = DB::table('tbl_beritas')->paginate(5);
+        // if (!$beritas) {
+        //     abort(404);
+        // }
+
         return view('admin.diamond.berita.index', ['berita' => $beritas]);
     }
 
@@ -49,13 +54,15 @@ class BeritaController extends Controller
         $beritas = new Berita;
         $beritas->judul = $request->judul;
         $beritas->deskripsi = $request->isi;
+        $beritas->id_usr = Auth::user()->id;
 
         $filename = "defaultberita.png";
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            // Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $beritas->cover = $filename;
         } else {
@@ -120,12 +127,13 @@ class BeritaController extends Controller
         $beritas = Berita::find($id);
         $beritas->judul = $request->judul;
         $beritas->deskripsi = $request->isi;
+        $beritas->id_usr = Auth::user()->id;
 
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $beritas->cover = $filename;
         }
@@ -146,13 +154,20 @@ class BeritaController extends Controller
         //
         //
         $beritas = Berita::find($id);
+        if (!$beritas) {
+            abort(404);
+        }
+
         $beritas->delete();
         return redirect(url('/admin/berita'));
     }
 
     public function main()
     {
-      $berita = berita::all();
+        $berita = berita::all();
+        if (!$beritas) {
+            abort(404);
+        }
 
 
       return view('/berita/index',['berita'=>$berita]);
@@ -160,8 +175,11 @@ class BeritaController extends Controller
 
     public function detail($id)
     {
-      $detail = berita::find($id)->first();
+        $detail = berita::find($id)->first();
+        // if (!$detail) {
+        //     abort(404);
+        // }
 
-      return view('/berita/view',['detail'=>$detail]);
+        return view('/berita/view',['detail'=>$detail]);
     }
 }

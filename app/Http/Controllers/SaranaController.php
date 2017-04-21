@@ -19,6 +19,10 @@ class SaranaController extends Controller
         //
         // $saranas = Sarana::all();
         $saranas = DB::table('tbl_sarana_prasaranas')->paginate(5);
+        // if (!$saranas) {
+        //     abort(404);
+        // }
+
         return view('admin/diamond/sarana/index', ['sarana' => $saranas]);
     }
 
@@ -49,6 +53,10 @@ class SaranaController extends Controller
             ]);
 
         $saranas = new Sarana;
+        if (!$saranas) {
+            abort(404);
+        }
+
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
 
@@ -57,7 +65,7 @@ class SaranaController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $saranas->cover = $filename;
         } else {
@@ -125,6 +133,10 @@ class SaranaController extends Controller
 
 
         $saranas = Sarana::find($id);
+        if (!$saranas) {
+            abort(404);
+        }
+
         $saranas->nama = $request->judul;
         $saranas->deskripsi = $request->isi;
         // $saranas->cover = $filename;
@@ -134,7 +146,7 @@ class SaranaController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $saranas->cover = $filename;
         }
@@ -154,6 +166,10 @@ class SaranaController extends Controller
     {
         //
         $saranas = Sarana::find($id);
+        if (!$saranas) {
+            abort(404);
+        }
+        
         $saranas->delete();
         return redirect(url('/admin/sarana'));
     }
@@ -161,7 +177,9 @@ class SaranaController extends Controller
     public function main()
     {
       $saranas = sarana::all();
-
+        // if (!$saranas) {
+        //     abort(404);
+        // }
 
       return view('/layanan/sarana_prasarana/index',['sarana'=>$saranas]);
     }

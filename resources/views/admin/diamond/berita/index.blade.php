@@ -43,10 +43,11 @@ Berita
 	                    </form>
 					</div>
 					<div class="panel-body">
-						<img src="{{url('../storage/app/upload/images/' . $beritas->cover. '')}}">
+						<!-- <img src="{{url('../storage/app/upload/images/' . $beritas->cover. '')}}">Storage::url('file1.jpg'); -->
+						<p>Di post oleh : {{$beritas->id_usr}}</p>
+						<img src="{{Storage::url($beritas->cover)}}">
 						<p>{!! $beritas->deskripsi !!}</p>
 					</div>
-					<di
 				</div>
 			</div>
 		@endforeach

@@ -50,6 +50,10 @@ class KurikulumController extends Controller
         ]);
 
         $kurikulums = new Kurikulum;
+        if (!$kurikulums) {
+            abort(404);
+        }
+
         $kurikulums->deskripsi = $request->deskripsi;
         $kurikulums->save();
 
@@ -100,6 +104,10 @@ class KurikulumController extends Controller
 
 
         $kurikulums = Kurikulum::find($id);
+        if (!$kurikulums) {
+            abort(404);
+        }
+        
         $kurikulums->deskripsi = $request->deskripsi;
         $kurikulums->save();
 
@@ -119,8 +127,10 @@ class KurikulumController extends Controller
 
     public function main()
     {
-      $kurikulum = kurikulum::all()->first();
-
+        $kurikulum = kurikulum::all()->first();
+        // if (!$kurikulums) {
+        //     abort(404);
+        // }
 
       return view('/layanan/kurikulum/index',['kurikulum'=>$kurikulum]);
     }

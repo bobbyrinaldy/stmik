@@ -33,7 +33,7 @@ Sertifikasi
 			<div class="col-md-14">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						{!! $sertifikasis->deskripsi !!}
+						{{ $sertifikasis->nama }}
 					</div>
 					<div>
 						<a href="{{url('/admin/sertifikasi/'. $sertifikasis->id .'/edit')}}" class="btn btn-warning">Edit</a>
@@ -43,6 +43,10 @@ Sertifikasi
 	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
 	                        <input class="icon_close_alt2" type="submit" name="name" value="">
 	                    </form>
+					</div>
+					<div class="panel-body">
+						<img src="{{url('../storage/app/upload/images/' . $sertifikasis->logo. '')}}">
+						{!! $sertifikasis->deskripsi !!}
 					</div>
 
 				</div>

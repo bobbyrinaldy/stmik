@@ -50,6 +50,10 @@ class SejarahController extends Controller
         ]);
 
         $sejarahs = new Sejarah;
+        if (!$sejarahs) {
+            abort(404);
+        }
+
         $sejarahs->deskripsi = $request->deskripsi;
         $sejarahs->save();
 
@@ -100,6 +104,10 @@ class SejarahController extends Controller
 
 
         $sejarahs = Sejarah::find($id);
+        if (!$sejarahs) {
+            abort(404);
+        }
+
         $sejarahs->deskripsi = $request->deskripsi;
         $sejarahs->save();
 
@@ -120,7 +128,9 @@ class SejarahController extends Controller
     public function main()
     {
       $sejarahs = Sejarah::all()->first();
-
+        if (!$sejarahs) {
+            abort(404);
+        }
 
       return view('/tentang/sejarah/index',['sejarah'=> $sejarahs]);
     }

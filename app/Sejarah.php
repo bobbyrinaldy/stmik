@@ -10,5 +10,5 @@ class Sejarah extends Model
     protected $table = 'tbl_sejarahs';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }

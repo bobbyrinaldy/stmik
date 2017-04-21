@@ -10,5 +10,5 @@ class Kerjasama extends Model
     protected $table = 'tbl_kerjasamas';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }

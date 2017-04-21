@@ -10,5 +10,5 @@ class Si extends Model
     protected $table = 'tbl_sis';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }

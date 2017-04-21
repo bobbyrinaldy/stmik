@@ -50,6 +50,10 @@ class TestimoniController extends Controller
             ]);
 
         $testimonis = new Testimoni;
+        if (!$testimonis) {
+            abort(404);
+        }
+
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
 
@@ -58,7 +62,7 @@ class TestimoniController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $testimonis->profile = $filename;
         } else {
@@ -118,6 +122,10 @@ class TestimoniController extends Controller
             ]);
 
         $testimonis = Testimoni::find($id);
+        if (!$testimonis) {
+            abort(404);
+        }
+
         $testimonis->nama = $request->nama;
         $testimonis->komentar = $request->komentar;
 
@@ -127,7 +135,7 @@ class TestimoniController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $testimonis->profile = $filename;
         }
@@ -147,6 +155,10 @@ class TestimoniController extends Controller
     {
         //
         $saranas = Testimoni::find($id);
+        // if (!$testimonis) {
+        //     abort(404);
+        // }
+
         $saranas->delete();
         return redirect(url('/admin/testimoni'));
     }
@@ -154,6 +166,9 @@ class TestimoniController extends Controller
     public function main()
     {
       $testi = testimoni::all();
+      // if (!$testimonis) {
+      //       abort(404);
+      //   }
 
       return view('/testimoni/index',['testimoni'=>$testi]);
     }

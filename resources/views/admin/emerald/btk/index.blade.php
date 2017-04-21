@@ -40,16 +40,13 @@ Bursa Tenaga Kerja
 					<div class="panel-body">
 						<p>{!! $btks->deskripsi !!}</p>
 					</div>
-					
 				</div>
 			</div>
 		@endforeach
 
 	</div>
 
-	<!-- </div> -->
-
-	
+	<!-- </div> -->	
 
 @endsection
 

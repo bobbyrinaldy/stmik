@@ -18,6 +18,10 @@ class KerjasamaController extends Controller
     {
         //
         $kerjasamas = DB::table('tbl_kerjasamas')->paginate(5);
+        // if (!$kerjasamas) {
+        //     abort(404);
+        // }
+
         return view('admin.diamond.kerjasama.index', ['kerjasama' => $kerjasamas]);
     }
 
@@ -45,13 +49,20 @@ class KerjasamaController extends Controller
         $images = $request->file('gambar');
         $file = $images->getRealPath();
         $filename = $images->getClientOriginalName();
-        Storage::put('upload/images/' . $filename, file_get_contents($file));
+        Storage::put('public/' . $filename, file_get_contents($file));
 
         $this->validate($request, [
-            // 'isi' => 'required',
+            'perusahaan'=> 'required',
+            'isi' => 'required',
             ]);
 
         $kerjasamas = new Kerjasama;
+        if (!$kerjasamas) {
+            abort(404);
+        }
+
+        $kerjasamas->perusahaan = $request->perusahaan;
+        $kerjasamas->deskripsi = $request->isi;
         $kerjasamas->logo = $filename;
         $kerjasamas->save();
 
@@ -97,16 +108,23 @@ class KerjasamaController extends Controller
     {
         //
         $this->validate($request, [
-            // 'isi' => 'required',
+            'perusahaan'=> 'required',
+            'isi' => 'required',
             ]);
 
         $kerjasamas = Kerjasama::find($id);
+        if (!$kerjasamas) {
+            abort(404);
+        }
+
+        $kerjasamas->perusahaan = $request->perusahaan;
+        $kerjasamas->deskripsi = $request->isi;
 
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $kerjasamas->logo = $filename;
         }
@@ -126,6 +144,10 @@ class KerjasamaController extends Controller
     {
         //
         $kerjasamas = Kerjasama::find($id);
+        if (!$kerjasamas) {
+            abort(404);
+        }
+
         $kerjasamas->delete();
         return redirect(url('/admin/kerjasama'));
     }
@@ -133,6 +155,9 @@ class KerjasamaController extends Controller
     public function main()
     {
       $kerjasama = kerjasama::all()->first();
+      // if (!$kerjasamas) {
+      //       abort(404);
+      //   }
       
       return view('/kerjasama/index',['kerjasama'=>$kerjasama]);
     }

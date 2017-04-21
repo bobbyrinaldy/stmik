@@ -54,7 +54,25 @@ class BtkController extends Controller
             ]);
 
         $btks = new Btk;
+        if (!$btks) {
+            abort(404);
+        }
+
         $btks->deskripsi = $request->deskripsi;
+
+        $filename = "defaultbtk.png";
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            // Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
+
+            $btks->cover = $filename;
+        } else {
+            $btks->cover = $filename;
+        }
+        
         $btks->save();
 
         return redirect(url('/admin/btk'));
@@ -102,9 +120,25 @@ class BtkController extends Controller
             'deskripsi' => 'required',
             ]);
 
-
         $btks = Btk::find($id);
+        if (!$btks) {
+            abort(404);
+        }
         $btks->deskripsi = $request->deskripsi;
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            // Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
+
+            $btks->cover = $filename;
+        } else {
+            $btks->cover = $filename;
+        }
+
+        
         $btks->save();
 
         return redirect(url('/admin/btk'));
@@ -123,8 +157,10 @@ class BtkController extends Controller
 
     public function main()
     {
-      $btk = btk::all();
-
+        $btk = btk::all();
+        // if (!$btks) {
+        //     abort(404);
+        // }
 
       return view('/btk/index',['btk'=>$btk]);
     }

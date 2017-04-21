@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Storage;
 use Illuminate\Http\Request;
 use App\Sertifikasi;
 
@@ -43,10 +44,29 @@ class SertifikasiController extends Controller
         //
         $this->validate($request, [
             'isi' => 'required',
+            'nama' => 'required',
             ]);
 
         $sertifikasis = new Sertifikasi;
+        if (!$sertifikasis) {
+            abort(404);
+        }
+
         $sertifikasis->deskripsi = $request->isi;
+        $sertifikasis->nama = $request->nama;
+
+        $filename = "defaultsertifikasi.png";
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('public/' . $filename, file_get_contents($file));
+
+            $sertifikasis->logo = $filename;
+        } else {
+            $sertifikasis->logo = $filename;
+        }
+
         $sertifikasis->save();
 
         return redirect(url('/admin/sertifikasi'));
@@ -90,13 +110,26 @@ class SertifikasiController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            'isi' => 'required',
-            ]);
-
-
         $sertifikasis = Sertifikasi::find($id);
+        if (!$sertifikasis) {
+            abort(404);
+        }
+
         $sertifikasis->deskripsi = $request->isi;
+        $sertifikasis->nama = $request->nama;
+
+        $filename = "defaultsertifikasi.png";
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('public/' . $filename, file_get_contents($file));
+
+            $sertifikasis->logo = $filename;
+        } else {
+            $sertifikasis->logo = $filename;
+        }
+
         $sertifikasis->save();
 
         return redirect(url('/admin/sertifikasi'));
@@ -112,6 +145,10 @@ class SertifikasiController extends Controller
     {
         //
         $sertifikasis = Sertifikasi::find($id);
+        if (!$sertifikasis) {
+            abort(404);
+        }
+
         $sertifikasis->delete();
         return redirect(url('/admin/sertifikasi'));
     }
@@ -119,7 +156,9 @@ class SertifikasiController extends Controller
     public function main()
     {
       $sertifikasi = sertifikasi::all();
-
+        // if (!$sertifikasis) {
+        //     abort(404);
+        // }
 
       return view('/layanan/sertifikasi_internasional/index',['sertifikasi'=>$sertifikasi]);
     }

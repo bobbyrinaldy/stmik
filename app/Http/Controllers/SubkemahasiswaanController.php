@@ -42,7 +42,7 @@ class SubkemahasiswaanController extends Controller
         $images = $request->file('gambar');
         $file = $images->getRealPath();
         $filename = $images->getClientOriginalName();
-        Storage::put('upload/images/' . $filename, file_get_contents($file));
+        Storage::put('public/' . $filename, file_get_contents($file));
 
         $this->validate($request, [
             'id_org' => 'required',
@@ -51,6 +51,10 @@ class SubkemahasiswaanController extends Controller
             ]);
 
         $subkemahasiswaans = new Subkemahasiswaan;
+        if (!$subkemahasiswaans) {
+            abort(404);
+        }
+
         $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
@@ -106,6 +110,10 @@ class SubkemahasiswaanController extends Controller
 
 
         $subkemahasiswaans = Subkemahasiswaan::find($id);
+        if (!$subkemahasiswaans) {
+            abort(404);
+        }
+
         $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
@@ -115,7 +123,7 @@ class SubkemahasiswaanController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $subkemahasiswaans->logo = $filename;
         }
@@ -136,6 +144,10 @@ class SubkemahasiswaanController extends Controller
         //
         //
         $subkemahasiswaans = Subkemahasiswaan::find($id);
+        if (!$subkemahasiswaans) {
+            abort(404);
+        }
+        
         $subkemahasiswaans->delete();
         return redirect(url('/admin/kemahasiswaan'));
     }

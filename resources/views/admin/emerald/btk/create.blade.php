@@ -22,10 +22,15 @@ Bursa Tenaga Kerja
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/btk')}}" method="post">
+	<form class="" action="{{url('/admin/btk')}}" method="post" enctype="multipart/form-data">
 
 		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar"></textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+
+		<br />
+
+		<input type="file" name="gambar" value="" placeholder="namanya">
+		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}		
 
 		<br />
 

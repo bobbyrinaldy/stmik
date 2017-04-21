@@ -17,6 +17,10 @@ class BeasiswaController extends Controller
     {
         //
         $beasiswas = DB::table('tbl_beasiswas')->paginate(5);
+        // if (!$beasiswas) {
+        //     abort(404);
+        // }
+
         return view('admin.diamond.beasiswa.index', ['beasiswa' => $beasiswas]);
     }
 
@@ -41,10 +45,12 @@ class BeasiswaController extends Controller
     {
         //
         $this->validate($request, [
+            'nama' => 'required',
             'isi' => 'required',
             ]);
 
         $beasiswas = new Beasiswa;
+        $beasiswas->nama = $request->isi;
         $beasiswas->deskripsi = $request->isi;
         $beasiswas->save();
 
@@ -90,11 +96,17 @@ class BeasiswaController extends Controller
     {
         //
         $this->validate($request, [
+            'nama' => 'required',
             'isi' => 'required',
             ]);
 
 
         $beasiswas = Beasiswa::find($id);
+        if (!$beasiswas) {
+            abort(404);
+        }
+        
+        $beasiswas->nama = $request->isi;
         $beasiswas->deskripsi = $request->isi;
         $beasiswas->save();
 
@@ -112,14 +124,20 @@ class BeasiswaController extends Controller
         //
         //
         $beasiswas = Beasiswa::find($id);
+        if (!$beasiswas) {
+            abort(404);
+        }
+
         $beasiswas->delete();
         return redirect(url('/admin/beasiswa'));
     }
 
     public function main()
     {
-      $beasiswa = beasiswa::all();
-
+        $beasiswa = beasiswa::all();
+        // if (!$beasiswas) {
+        //     abort(404);
+        // }
 
       return view('/layanan/beasiswa/index',['beasiswa'=>$beasiswa]);
     }

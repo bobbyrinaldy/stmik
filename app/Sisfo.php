@@ -10,5 +10,5 @@ class Sisfo extends Model
     protected $table = 'tbl_sisfo_akademiks';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }

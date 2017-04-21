@@ -50,6 +50,10 @@ class IfController extends Controller
             ]);
 
         $ifs = new If_model;
+        if (!$ifs) {
+            abort(404);
+        }
+
         $ifs->deskripsi = $request->deskripsi;
         $ifs->save();
 
@@ -100,6 +104,10 @@ class IfController extends Controller
 
 
         $ifs = If_model::find($id);
+        if (!$ifs) {
+            abort(404);
+        }
+
         $ifs->deskripsi = $request->deskripsi;
         $ifs->save();
 
@@ -120,6 +128,9 @@ class IfController extends Controller
     public function main()
     {
       $if = If_model::all()->first();
+      // if (!$ifs) {
+      //       abort(404);
+      //   }
 
 
       return view('/prodi/if/index',['informatika'=>$if]);

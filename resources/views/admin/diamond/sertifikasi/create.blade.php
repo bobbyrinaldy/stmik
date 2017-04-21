@@ -22,10 +22,20 @@ Sertifikasi
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/sertifikasi')}}" method="post">
+	<form class="" action="{{url('/admin/sertifikasi')}}" method="post" enctype="multipart/form-data">
 
-		<input type="text" name="isi" value="" placeholder="Sertifikasi">
+		<input type="text" name="nama" value="" placeholder="nama">
+		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+
+		<br />
+
+		<textarea name="isi" rows="10" cols="40" placeholder="Isi"></textarea>
 		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+
+		<br />
+
+		<input type="file" name="gambar" value="" placeholder="namanya">
+		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 
 		<br />
 

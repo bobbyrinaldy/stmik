@@ -50,6 +50,10 @@ class KontakController extends Controller
         ]);
 
         $kontaks = new Kontak;
+        if (!$kontaks) {
+            abort(404);
+        }
+
         $kontaks->deskripsi = $request->deskripsi;
         $kontaks->save();
 
@@ -101,6 +105,10 @@ class KontakController extends Controller
 
 
         $kontaks = Kontak::find($id);
+        if (!$kontaks) {
+            abort(404);
+        }
+        
         $kontaks->deskripsi = $request->deskripsi;
         $kontaks->save();
  // m_completeauthorizations(conn, array)

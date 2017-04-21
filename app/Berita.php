@@ -10,5 +10,5 @@ class Berita extends Model
     protected $table = 'tbl_beritas';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }

@@ -51,6 +51,10 @@ class VisimisiController extends Controller
         ]);
 
         $visimisis = new Visimisi;
+        if (!$visimisis) {
+            abort(404);
+        }
+
         $visimisis->visi = $request->visi;
         $visimisis->misi = $request->misi;
         $visimisis->save();
@@ -103,6 +107,10 @@ class VisimisiController extends Controller
 
 
         $visimisis = Visimisi::find($id);
+        if (!$visimisis) {
+            abort(404);
+        }
+        
         $visimisis->visi = $request->visi;
         $visimisis->misi = $request->misi;
         $visimisis->save();
@@ -124,6 +132,9 @@ class VisimisiController extends Controller
     public function main()
    {
      $visimisis = visimisi::all()->first();
+     // if (!$visimisis) {
+     //        abort(404);
+     //    }
 
 
      return view('/tentang/visimisi/index',['visimisi'=>$visimisis]);

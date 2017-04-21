@@ -24,8 +24,15 @@ Beasiswa
 
 	<form class="" action="{{url('/admin/beasiswa/'. $beasiswa->id .'')}}" method="post">
 
-		<input type="text" name="isi" value="{{$beasiswa->deskripsi}}" placeholder="Isi">
-		{{ ($errors->has('isi')) ?  $errors-> first('isi') : '' }}
+		<input type="nama" name="nama" value="value="{{$beasiswa->nama}}"" placeholder="Nama">
+		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+
+		<br />		
+
+		<textarea name="isi" rows="10" cols="40" placeholder="Isi">value="{!!$beasiswa->deskripsi!!}"</textarea>
+		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+
+		<br />
 
 		<br />
 

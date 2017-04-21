@@ -32,7 +32,7 @@ Kerjasama
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						
-						<!-- {{$kerjasamas->logo}} -->
+						{{$kerjasamas->perusahaan}}
 					</div>
 					<div>
 						<a href="{{url('/admin/kerjasama/'. $kerjasamas->id .'/edit')}}" class="btn btn-warning">Edit</a>
@@ -46,6 +46,7 @@ Kerjasama
 
 					<div class="panel-body">
 						<img src="{{url('../storage/app/upload/images/' . $kerjasamas->logo. '')}}">
+						{!! $kerjasamas->deskripsi !!}
 					</div>
 				</div>
 			</div>

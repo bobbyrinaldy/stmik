@@ -50,6 +50,10 @@ class SisfoController extends Controller
         ]);
 
         $sisfos = new Sisfo;
+        if (!$sisfos) {
+            abort(404);
+        }
+
         $sisfos->deskripsi = $request->deskripsi;
         $sisfos->save();
 
@@ -100,6 +104,10 @@ class SisfoController extends Controller
 
 
         $sisfos = Sisfo::find($id);
+        if (!$sisfos) {
+            abort(404);
+        }
+
         $sisfos->deskripsi = $request->deskripsi;
         $sisfos->save();
 
@@ -120,6 +128,9 @@ class SisfoController extends Controller
     public function main()
     {
       $sisfo = sisfo::all()->first();
+      // if (!$sisfo) {
+      //       abort(404);
+      //   }
 
       return view('/layanan/sisfo_akademik/index',['sisfo'=>$sisfo]);
     }

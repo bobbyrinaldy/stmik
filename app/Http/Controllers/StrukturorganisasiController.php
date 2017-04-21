@@ -52,12 +52,15 @@ class StrukturorganisasiController extends Controller
         //     ]);
 
         $strukturorganisasis = new Strukturorganisasi;
+        if (!$strukturorganisasis) {
+            abort(404);
+        }
 
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $strukturorganisasis->gambar = $filename;
         }
@@ -110,12 +113,15 @@ class StrukturorganisasiController extends Controller
         //     ]);
 
         $strukturorganisasis = Strukturorganisasi::find($id);
+        if (!$strukturorganisasis) {
+            abort(404);
+        }
 
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('upload/images/' . $filename, file_get_contents($file));
+            Storage::put('public/' . $filename, file_get_contents($file));
 
             $strukturorganisasis->gambar = $filename;
         }
@@ -135,6 +141,10 @@ class StrukturorganisasiController extends Controller
     {
         //
         $strukturorganisasis = Strukturorganisasi::find($id);
+        if (!$strukturorganisasis) {
+            abort(404);
+        }
+
         $strukturorganisasis->delete();
         return redirect(url('/admin/strukturorganisasi'));
     }
@@ -142,6 +152,9 @@ class StrukturorganisasiController extends Controller
     public function main()
     {
       $strukturorganisasis = Strukturorganisasi::all()->first();
+      // if (!$strukturorganisasis) {
+      //       abort(404);
+      //   }
 
       return view('/tentang/strukturorganisasi/index',['strukturorganisasi'=>$strukturorganisasis]);
     }

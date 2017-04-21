@@ -10,5 +10,5 @@ class Kontak extends Model
     protected $table = 'tbl_kontaks';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }

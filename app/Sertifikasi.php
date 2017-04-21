@@ -10,5 +10,5 @@ class Sertifikasi extends Model
     protected $table = 'tbl_sertifikasis';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = false;
+    public $timestamps = true;
 }
