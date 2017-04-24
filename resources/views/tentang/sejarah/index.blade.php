@@ -33,6 +33,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<p>{!! $sejarah->deskripsi !!}</p>
+                @yield('sejarah', $sejarah->deskripsi)
 							</div>
 						</div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Btk;
+use Storage;
 
 class BtkController extends Controller
 {
@@ -21,12 +22,7 @@ class BtkController extends Controller
         $btks = Btk::all();
         $count = Btk::count();
 
-        if($count > 0){
-            return view('admin.emerald.btk.index', ['btk' => $btks]);
-        } elseif ($count == 0){
-            return view('admin.emerald.btk.index', ['add' => 1, 'btk' => $btks]);
-        }
-
+        return view('admin.emerald.btk.index', ['btk' => $btks]);
     }
 
     /**
@@ -51,6 +47,7 @@ class BtkController extends Controller
         //
         $this->validate($request, [
             'deskripsi' => 'required',
+            'judul' => 'required',
             ]);
 
         $btks = new Btk;
@@ -58,6 +55,7 @@ class BtkController extends Controller
             abort(404);
         }
 
+        $btks->judul = $request->judul;
         $btks->deskripsi = $request->deskripsi;
 
         $filename = "defaultbtk.png";
@@ -66,13 +64,13 @@ class BtkController extends Controller
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
             // Storage::put('upload/images/' . $filename, file_get_contents($file));
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/btk/' . $filename, file_get_contents($file));
 
-            $btks->cover = $filename;
+            $btks->gambar = $filename;
         } else {
-            $btks->cover = $filename;
+            $btks->gambar = $filename;
         }
-        
+
         $btks->save();
 
         return redirect(url('/admin/btk'));
@@ -118,6 +116,7 @@ class BtkController extends Controller
         //
         $this->validate($request, [
             'deskripsi' => 'required',
+            'judul' => 'required',
             ]);
 
         $btks = Btk::find($id);
@@ -125,6 +124,7 @@ class BtkController extends Controller
             abort(404);
         }
         $btks->deskripsi = $request->deskripsi;
+        $btks->judul = $request->judul;
 
         if($request->gambar) {
             $images = $request->file('gambar');
@@ -133,12 +133,12 @@ class BtkController extends Controller
             // Storage::put('upload/images/' . $filename, file_get_contents($file));
             Storage::put('public/' . $filename, file_get_contents($file));
 
-            $btks->cover = $filename;
+            $btks->gambar = $filename;
         } else {
-            $btks->cover = $filename;
+            $btks->gambar = $filename;
         }
 
-        
+
         $btks->save();
 
         return redirect(url('/admin/btk'));
@@ -157,11 +157,18 @@ class BtkController extends Controller
 
     public function main()
     {
-        $btk = btk::all();
+      $btks = DB::table('tbl_btks')->paginate(5)->sortByDesc('created_at');
         // if (!$btks) {
         //     abort(404);
         // }
 
-      return view('/btk/index',['btk'=>$btk]);
+      return view('/btk/index',['btks'=>$btks]);
+    }
+
+    public function detail($id)
+    {
+      $detail = btk::find($id)->first();
+
+      return view('/btk/view',['detail'=>$detail]);
     }
 }

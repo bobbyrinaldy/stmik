@@ -26,12 +26,12 @@ Kerjasama
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
-		
+
 		@foreach($kerjasama as $kerjasamas)
 			<div class="col-md-14">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						
+
 						{{$kerjasamas->perusahaan}}
 					</div>
 					<div>

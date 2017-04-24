@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Bursa Tenaga Kerja</title>
+<title>Gallery</title>
 
 @section('rute')
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -12,26 +12,16 @@
 
 @endsection
 
-@section('pageTitle')
-
-Bursa Tenaga Kerja
-
-@endsection
+@section('pageTitle','Gallery')
 
 @section('content')
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/btk')}}" method="post" enctype="multipart/form-data">
+	<form class="" action="{{url('/admin/gallery')}}" method="post" enctype="multipart/form-data">
 
     <input type="text" name="judul" value="">
     {{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
-
-
-		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar"></textarea>
-		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
-
-		<br />
 
 		<input type="file" name="gambar" value="" placeholder="namanya">
 		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}

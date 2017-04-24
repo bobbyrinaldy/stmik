@@ -49,7 +49,7 @@ class KerjasamaController extends Controller
         $images = $request->file('gambar');
         $file = $images->getRealPath();
         $filename = $images->getClientOriginalName();
-        Storage::put('public/' . $filename, file_get_contents($file));
+        Storage::put('public/kerjasama/' . $filename, file_get_contents($file));
 
         $this->validate($request, [
             'perusahaan'=> 'required',
@@ -63,6 +63,7 @@ class KerjasamaController extends Controller
 
         $kerjasamas->perusahaan = $request->perusahaan;
         $kerjasamas->deskripsi = $request->isi;
+        $kerjasamas->kategori = $request->kategori;
         $kerjasamas->logo = $filename;
         $kerjasamas->save();
 
@@ -124,7 +125,7 @@ class KerjasamaController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/kerjasama/' . $filename, file_get_contents($file));
 
             $kerjasamas->logo = $filename;
         }
@@ -152,13 +153,23 @@ class KerjasamaController extends Controller
         return redirect(url('/admin/kerjasama'));
     }
 
-    public function main()
+    public function dalam()
     {
-      $kerjasama = kerjasama::all()->first();
+      $kerjasama = kerjasama::all()->where('kategori','dalam');
       // if (!$kerjasamas) {
       //       abort(404);
       //   }
-      
+
+      return view('/kerjasama/index',['kerjasama'=>$kerjasama]);
+    }
+
+    public function luar()
+    {
+      $kerjasama = kerjasama::all()->where('kategori','luar');
+      // if (!$kerjasamas) {
+      //       abort(404);
+      //   }
+
       return view('/kerjasama/index',['kerjasama'=>$kerjasama]);
     }
 }

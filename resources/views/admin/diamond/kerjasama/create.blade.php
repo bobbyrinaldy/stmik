@@ -39,12 +39,18 @@ Kerjasama
 
 		<br />
 
+    <select name="kategori">
+      <option value="luar">Luar Negeri</option>
+      <option value="dalam">Dalam Negeri</option>
+    </select>
+    <br>
+    <br>
 		<input type="submit" name="name" value="post">
 
 		<!-- hidden -->
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 	</form>
 
 	<!-- End Form -->

@@ -22,7 +22,7 @@
 							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sejarah
 						</a>
 					</li>
-					
+
 					<li>
 						<a class="" href="{{url('/admin/btk')}}">
 							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Bursa Tenaga Kerja (BTK)
@@ -73,7 +73,7 @@
 							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Struktur Organisasi
 						</a>
 					</li>
-					
+
 					<li>
 						<a class="" href="{{url('/admin/kurikulum')}}">
 							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Kurikulum
@@ -100,9 +100,9 @@
 			<li><a href="{{url('/admin/kontak')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Hubungi Kami</a></li>
 
 			<li><a href="{{url('/admin/berita')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Berita</a></li>
+			<li><a href="{{url('/admin/gallery')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Gallery</a></li>
 
 			<li><a href="{{url('/admin/testimoni')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Testimoni</a></li>
 		</ul>
 
 	</div><!--/.sidebar-->
-

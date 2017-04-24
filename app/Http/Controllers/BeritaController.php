@@ -164,8 +164,8 @@ class BeritaController extends Controller
 
     public function main()
     {
-        $berita = berita::all();
-        if (!$beritas) {
+      $berita = DB::table('tbl_beritas')->paginate(5)->sortByDesc('created_at');
+        if (!$berita) {
             abort(404);
         }
 
@@ -175,7 +175,7 @@ class BeritaController extends Controller
 
     public function detail($id)
     {
-        $detail = berita::find($id)->first();
+        $detail = berita::find($id);
         // if (!$detail) {
         //     abort(404);
         // }

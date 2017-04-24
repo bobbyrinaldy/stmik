@@ -155,7 +155,7 @@ html .background-color-light {
 }
 
 .alternative-font {
-	color: #0088cc;
+	color: #a72184;
 }
 
 html .blockquote-primary {
@@ -1708,11 +1708,11 @@ html .toggle-light.toggle-simple .toggle > label:after {
 }
 
 .thumb-info .thumb-info-type {
-	background-color: #0088cc;
+	background-color: #700153;
 }
 
 .thumb-info .thumb-info-action-icon {
-	background-color: #0088cc;
+	background-color: #700153;
 }
 
 .thumb-info-social-icons a {
@@ -3757,7 +3757,7 @@ html .feature-box-light .feature-box-icon {
 
 .feature-box.feature-box-style-2 .feature-box-icon i.fa,
 .feature-box.feature-box-style-2 .feature-box-icon .icons {
-	color: #0088cc;
+	color: #a72184;
 }
 
 html .feature-box-primary.feature-box-style-2 .feature-box-icon i.fa,

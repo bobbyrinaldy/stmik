@@ -4481,7 +4481,7 @@ html.boxed .pricing-table .plan, html.boxed .pricing-table h3 {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-	background: rgba(36, 27, 28, 0.9);
+	background: transparent;
 	bottom: 10%;
 	color: #FFF;
 	font-size: 18px;
@@ -4530,7 +4530,7 @@ html.boxed .pricing-table .plan, html.boxed .pricing-table h3 {
 }
 
 .thumb-info:hover .thumb-info-title {
-	background: #000;
+	background: transparent;
 }
 
 .thumb-info:hover img {

@@ -23,26 +23,31 @@
 				</div>
 			</section>
 
+
 			<div class="container">
 
 				<div class="row">
 					<div class="col-md-9">
-
 						<div class="row">
 							<div class="col-md-12">
+
                 <div class="table-responsive">
   								<table class="table">
+                    @foreach ($kerjasama as $item)
                     <tr>
-                      <td>AAA</td>
-                      <td>BBB</td>
-                      <td>CCC</td>
+                      <td width="1%"><img src="{{Storage::url('kerjasama/'.$item->logo)}}" width="130px" height="130px"></td>
+                      <td width="20%"><p>{{$item->perusahaan}}</p></td>
+                      <td>{!!$item->deskripsi!!}</td>
                     </tr>
+                  @endforeach
+
   								</table>
                 </div>
 							</div>
+            </div>
 						</div>
 
-					</div>
+
 
 					<div class="col-md-3">
 						<aside class="sidebar">

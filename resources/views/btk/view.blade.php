@@ -1,15 +1,11 @@
 @extends('layout/master')
 
-@section('title')
-  {{$detail->judul}}
-@endsection
+@section('title','Bursa Tenaga Kerja | Detail')
 
 @section('main')
-
   @php
     $month = $detail->created_at;
-    $date = date('d',strtotime($month));
-    $month = date('M',strtotime($month));
+    $postMonth = date('l ,d F Y',strtotime($month));
     $postTime = date('h:m:s',strtotime($month));
   @endphp
   <div role="main" class="main">
@@ -20,13 +16,14 @@
 							<div class="col-md-12">
 								<ul class="breadcrumb">
 									<li><a href="index.php">Beranda</a></li>
-									<li><a href="/berita">Berita</a></li>
+									<li><a href="/berita">Bursa Tenaga Kerja</a></li>
+									<li class="active">{{$detail->judul}}</li>
 								</ul>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>judul</h1>
+								<h1>{{$detail->judul}}</h1>
 							</div>
 						</div>
 					</div>
@@ -50,8 +47,8 @@
 									</div>
 
 									<div class="post-date">
-										<span class="day">{{$date}}</span>
-										<span class="month">{{$month}}</span>
+										<span class="day">10</span>
+										<span class="month">Jan</span>
 									</div>
 
 									<div class="post-content">
@@ -59,8 +56,9 @@
 										<h2><a class="a1" href="#">{{$detail->judul}}</a></h2>
 
 										<div class="post-meta">
-                      <span><i class="fa fa-clock-o"></i> {{$postTime}} </span>
-                      <span><i class="fa fa-user"></i> By <a class="a1">STMIK LPKIA</a> </span>
+                      <span><i class="fa fa-calendar"></i> {{$postMonth}}</span>
+                      <span><i class="fa fa-clock-o"></i> {{$postTime}}</span>
+                      <span><i class="fa fa-user"></i>By <strong>:</strong> STMIK LPKIA BANDUNG </span>
 										</div>
 
 										<p>{!!$detail->deskripsi!!}</p>

@@ -3,11 +3,10 @@
 
 Route::group(['middleware' => ['web']], function(){
 
-	Route::get('/', function () {
-	    return view('index');
-	});
+	Route::get('/','IndexController@index');
 
 	Route::get('/btk','BtkController@main');
+	Route::get('/btk/{id}','BtkController@detail');
 
 	Route::get('/tentang/visimisi','VisimisiController@main');
 	Route::get('/tentang/sejarah','SejarahController@main');
@@ -40,8 +39,11 @@ Route::group(['middleware' => ['web']], function(){
 	Route::get('/developer', function () {
 	    return view('developer');
 	});
-	Route::get('/kerjasama','KerjasamaController@main');
+	Route::get('/kerjasama/luar_negeri','KerjasamaController@luar');
+	Route::get('/kerjasama/dalam_negeri','KerjasamaController@dalam');
 	Route::get('/testimonial','TestimoniController@main');
+
+	Route::get('/gallery','GalleryController@main');
 
 });
 
@@ -61,9 +63,11 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::resource('admin/testimoni', 'TestimoniController');
 	Route::resource('admin/kemahasiswaan', 'KemahasiswaanController');
 	Route::resource('admin/subkemahasiswaan', 'SubkemahasiswaanController');
+	Route::resource('admin/carousel', 'CarouselController');
 
 	// Master
 	Route::resource('admin/btk', 'BtkController');
+	Route::resource('admin/gallery', 'GalleryController');
 	Route::resource('admin/kontak', 'KontakController');
 	Route::resource('admin/si', 'SiController');
 	Route::resource('admin/if', 'IfController');

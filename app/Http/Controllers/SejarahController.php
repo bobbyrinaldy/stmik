@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sejarah;
+use View;
 
 class SejarahController extends Controller
 {
@@ -133,5 +134,9 @@ class SejarahController extends Controller
         }
 
       return view('/tentang/sejarah/index',['sejarah'=> $sejarahs]);
+
+
     }
+
+
 }

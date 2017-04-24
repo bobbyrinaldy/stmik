@@ -4,7 +4,7 @@
 
 @section('pageInfo')
 
-<title>Bursa Tenaga Kerja</title>
+<title>Gallery</title>
 
 @section('rute')
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -13,31 +13,30 @@
 
 @section('pageTitle')
 
-Bursa Tenaga Kerja
+Gallery
 
 @endsection
 
 @section('content')
 
 		<div class="col-xs-12 col-md-6 col-lg-3">
-			<a href="{{url('/admin/btk/create')}}" class="btn btn-primary">Add</a>
+			<a href="{{url('/admin/gallery/create')}}" class="btn btn-primary">Add</a>
 		</div>
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
 
-		@foreach($btk as $btks)
+		@foreach($gallery as $item)
 			<div class="col-md-14">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						{{$btks->judul}}
+						{{$item->judul}}
 					</div>
 					<div>
-						<a href="{{url('/admin/btk/'. $btks->id .'/edit')}}" class="btn btn-warning">Edit</a>
+						<a href="{{url('/admin/btk/'. $item->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-						<p>{!! $btks->deskripsi !!}</p>
-            <img src="{{Storage::url('btk/'.$btks->gambar)}}">
+            <img src="{{Storage::url('gallery/'.$item->gambar)}}">
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <html>
 	<head>
@@ -137,6 +136,7 @@
 																				<li><a href="/layanan/sarana_prasarana">Sarana dan Prasarana</a></li>
 																				<li><a href="/layanan/sertifikasi_internasional">Sertifikasi Internasional</a></li>
 																				<li><a href="/layanan/kurikulum">Kurikulum</a></li>
+																				<li><a href="/btk">Bursa Tenaga Kerja</a></li>
 																			</ul>
 																		</div>
 																		<div class="col-md-5">
@@ -151,8 +151,8 @@
 														</ul>
 													</li>
 													<li class="">
-														<a href="/btk">
-															BTK
+														<a href="/gallery">
+															Gallery
 														</a>
 													</li>
 													<li class="dropdown">
@@ -173,10 +173,14 @@
 															Berita
 														</a>
 													</li>
-													<li class="">
-														<a href="/kerjasama">
+													<li class="dropdown">
+														<a class="dropdown-toggle" href="#">
 															Kerjasama
 														</a>
+														<ul class="dropdown-menu">
+															<li class=""><a href="/kerjasama/luar_negeri">Luar Negeri</a></li>
+															<li class=""><a href="/kerjasama/dalam_negeri">Dalam Negeri</a></li>
+														</ul>
 													</li>
 													<li class="">
 														<a href="/testimonial">
@@ -200,8 +204,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-9">
-							<h4>About <strong>STMIK LPKIA</strong></h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu pulvinar magna. Phasellus semper scelerisque purus, et semper nisl lacinia sit amet. Praesent venenatis turpis vitae purus semper, eget sagittis velit venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos... <a href="#" class="btn-flat btn-xs">View More <i class="fa fa-arrow-right"></i></a></p>
+							<h4> @section('sejarah') About <strong>STMIK LPKIA</strong></h4>
+							<p><a href="#" class="btn-flat btn-xs">View More <i class="fa fa-arrow-right"></i></a></p>
 							<hr class="light">
 							<div class="row">
 								<div class="col-md-3">
