@@ -18,7 +18,11 @@ class SertifikasiController extends Controller
     {
         //
         // $saranas = Sarana::all();
-        $sertifikasis = DB::table('tbl_sertifikasis')->paginate(5);
+        // $sertifikasis = DB::table('tbl_sertifikasis')->paginate(5);
+
+        $search = \Request::get('search');
+        // $kerjasamas = DB::table('tbl_kerjasamas')->Where('perusahaan', '=' , $search)->paginate(20);
+        $sertifikasis = Sertifikasi::where('nama', 'like' , '%'.$search.'%')->paginate(20);
         return view('admin.diamond.sertifikasi.index', ['sertifikasi' => $sertifikasis]);
     }
 
@@ -60,7 +64,7 @@ class SertifikasiController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/sertifikasi/' . $filename, file_get_contents($file));
 
             $sertifikasis->logo = $filename;
         } else {
@@ -118,15 +122,12 @@ class SertifikasiController extends Controller
         $sertifikasis->deskripsi = $request->isi;
         $sertifikasis->nama = $request->nama;
 
-        $filename = "defaultsertifikasi.png";
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/sertifikasi/' . $filename, file_get_contents($file));
 
-            $sertifikasis->logo = $filename;
-        } else {
             $sertifikasis->logo = $filename;
         }
 
@@ -145,6 +146,7 @@ class SertifikasiController extends Controller
     {
         //
         $sertifikasis = Sertifikasi::find($id);
+        echo "string ".$sertifikasis->nama;
         if (!$sertifikasis) {
             abort(404);
         }
@@ -155,7 +157,7 @@ class SertifikasiController extends Controller
 
     public function main()
     {
-      $sertifikasi = sertifikasi::all();
+      $sertifikasi = sertifikasi::all()->sortByDesc('created_at');
         // if (!$sertifikasis) {
         //     abort(404);
         // }

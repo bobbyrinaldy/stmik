@@ -24,11 +24,6 @@ Kemahasiswaan
 
 	<form class="" action="{{url('/admin/subkemahasiswaan')}}" method="post" enctype="multipart/form-data">
 
-		<input type="text" name="id_org" value="">
-		{{ ($errors->has('id_org')) ?  $errors->first('id_org') : '' }}
-
-		<br />
-
 		<input type="text" name="nama" value="">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
 
@@ -49,7 +44,7 @@ Kemahasiswaan
 		<!-- hidden -->
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
 

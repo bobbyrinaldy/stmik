@@ -46,7 +46,7 @@
 												<div class="owl-carousel owl-theme" data-plugin-options='{"items":1}'>
 													<div>
 														<div class="img-thumbnail">
-                              <img class="img-responsive" src="{{Storage::url($item->cover)}}" width="450px" height="450px">
+                              <img class="img-responsive" src="{{Storage::url('berita/'.$item->cover)}}" width="450px" height="450px">
 														</div>
 													</div>
 												</div>
@@ -57,6 +57,7 @@
 											<div class="post-content">
 
 												<h2><a class="a1" href="/berita/{{$item->id}}">{{$item->judul}}</a></h2>
+                        <div class="wrap">
                         @php
                           if (strlen($item->deskripsi) > 500)
                             echo substr($item->deskripsi, 0, 500) . '...';
@@ -64,6 +65,7 @@
                               echo $item->deskripsi;
                             }
                         @endphp
+                        </div>
 
 											</div>
 										</div>

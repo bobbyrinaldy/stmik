@@ -42,10 +42,10 @@ class SubkemahasiswaanController extends Controller
         $images = $request->file('gambar');
         $file = $images->getRealPath();
         $filename = $images->getClientOriginalName();
-        Storage::put('public/' . $filename, file_get_contents($file));
+        Storage::put('public/kemahasiswaan/' . $filename, file_get_contents($file));
 
         $this->validate($request, [
-            'id_org' => 'required',
+            // 'id_org' => 'required',
             'nama' => 'required',
             'deskripsi' => 'required',
             ]);
@@ -55,7 +55,7 @@ class SubkemahasiswaanController extends Controller
             abort(404);
         }
 
-        $subkemahasiswaans->id_org = $request->id_org;
+        // $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
         $subkemahasiswaans->logo = $filename;
@@ -103,7 +103,7 @@ class SubkemahasiswaanController extends Controller
     {
         //
         $this->validate($request, [
-            'id_org' => 'required',
+            // 'id_org' => 'required',
             'nama' => 'required',
             'deskripsi' => 'required',
             ]);
@@ -114,7 +114,7 @@ class SubkemahasiswaanController extends Controller
             abort(404);
         }
 
-        $subkemahasiswaans->id_org = $request->id_org;
+        // $subkemahasiswaans->id_org = $request->id_org;
         $subkemahasiswaans->nama = $request->nama;
         $subkemahasiswaans->deskripsi = $request->deskripsi;
 
@@ -123,7 +123,7 @@ class SubkemahasiswaanController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/kemahasiswaan/' . $filename, file_get_contents($file));
 
             $subkemahasiswaans->logo = $filename;
         }
@@ -147,7 +147,7 @@ class SubkemahasiswaanController extends Controller
         if (!$subkemahasiswaans) {
             abort(404);
         }
-        
+
         $subkemahasiswaans->delete();
         return redirect(url('/admin/kemahasiswaan'));
     }

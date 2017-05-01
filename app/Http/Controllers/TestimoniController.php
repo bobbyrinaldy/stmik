@@ -62,7 +62,7 @@ class TestimoniController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/testimoni/' . $filename, file_get_contents($file));
 
             $testimonis->profile = $filename;
         } else {
@@ -135,7 +135,7 @@ class TestimoniController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/testimoni' . $filename, file_get_contents($file));
 
             $testimonis->profile = $filename;
         }
@@ -165,11 +165,45 @@ class TestimoniController extends Controller
 
     public function main()
     {
-      $testi = testimoni::all();
+      // $testimoni = DB::table('tbl_testimonis')->paginate(1)->sortByDesc('updated_at');
+      $testimoni = Testimoni::inRandomOrder()->paginate(10);
+      // $testimoni = Testimoni::paginate(10);
+      // $testimoni_mahasiswa = DB::table('tbl_testimonis')->where('tag','=','mahasiswa')->paginate(10)->sortByDesc('updated_at');
+      // $testimoni_alumni = DB::table('tbl_testimonis')->where('tag','=','alumni')->paginate(10)->sortByDesc('updated_at');
+      // $testimoni_perusahaan = DB::table('tbl_testimonis')->where('tag','=','perusahaan')->paginate(10)->sortByDesc('updated_at');
+      // $testimoni_tokoh = DB::table('tbl_testimonis')->where('tag','=','tokohmasyarakat')->paginate(10)->sortByDesc('updated_at');
+        // if (!$testimoni_mahasiswa) {
+        //     abort(404);
+        // }
+
+        return view('/testimoni/index',[
+          'testimoni'=>$testimoni,
+        ]);
+
+        // return view('/testimoni/index',[
+        //   'testimoni_mahasiswa'=>$testimoni_mahasiswa,
+        //   'testimoni_alumni'=>$testimoni_alumni,
+        //   'testimoni_perusahaan'=>$testimoni_perusahaan,
+        //   'testimoni_tokoh'=>$testimoni_tokoh,
+        // ]);
+
+
+      // return view('/berita/index',['berita'=>$berita]);
+      // $testi = testimoni::all();
       // if (!$testimonis) {
       //       abort(404);
       //   }
 
-      return view('/testimoni/index',['testimoni'=>$testi]);
+
     }
+
+    // public function main_mahasiswa(){
+    //   $testimoni = DB::table('tbl_testimonis')->where('tag','=','mahasiswa')->paginate(10)->sortByDesc('updated_at');
+    //   return view('/testimoni/index',[
+    //     'testimoni_mahasiswa'=>$testimoni_mahasiswa,
+    //     'testimoni_alumni'=>$testimoni_alumni,
+    //     'testimoni_perusahaan'=>$testimoni_perusahaan,
+    //     'testimoni_tokoh'=>$testimoni_tokoh,
+    //   ]);
+    // }
 }

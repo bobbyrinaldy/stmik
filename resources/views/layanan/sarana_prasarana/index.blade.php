@@ -27,25 +27,33 @@
 			<div class="container">
 
         @foreach ($sarana as $item)
+
 				<div class="row">
-					<div class="col-md-5">
+					<div class="col-md-3">
 						<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
 							<div>
 
 								<span class="img-thumbnail">
-									<img alt="" class="img-responsive" src="{{asset('/storage/'.$item->cover)}}">
+									<img alt="{{$item->nama}}" src="{{url('/storage/sarana/'.$item->cover)}}" height="175px" width="175px">
 								</span>
 							</div>
 						</div>
 
 					</div>
 
-					<div class="col-md-7">
+					<div class="col-md-9" ]>
 
 						<h2><a class="a1" href=""><strong>{{$item->nama}}</strong></a></h2>
-						<p class="mt-xlg">{!! $item->deskripsi !!}</p>
+						<p class="mt-xlg">@php
+              if (strlen($item->deskripsi) > 100)
+                echo substr($item->deskripsi, 0, 100) . '...';
+                else {
+                  echo $item->deskripsi;
+                }
+            @endphp
+</p>
 
-						<a href="detail_sarana_prasarana.php" class="btn btn-primary btn-icon">Lihat Detail</a>
+						<a href="/layanan/sarana_prasarana/{{$item->id}}" class="btn btn-primary btn-icon">Lihat Detail</a>
 
 					</div>
 
@@ -54,13 +62,7 @@
 				<hr class="tall">
       @endforeach
 
-				<ul class="pagination pagination-lg pull-right">
-					<li><a href="#">«</a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">»</a></li>
-				</ul>
+      {!! $sarana->links() !!}
 
   		</div>
 		</div>

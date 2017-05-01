@@ -11,7 +11,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb">
-									<li><a href="index.php">Beranda</a></li>
+                  <li><a href="index.php">Beranda</a></li>
+									<li><a href="">Layanan</a></li>
 									<li class="active">Bursa Tenaga Kerja</li>
 								</ul>
 							</div>
@@ -41,7 +42,7 @@
 								<article class="post post-medium">
 									<div class="row">
 
-										<div class="col-md-4">
+										<div class="col-md-5">
 											<div class="post-image">
 												<div class="owl-carousel owl-theme" data-plugin-options='{"items":1}'>
 													<div>
@@ -52,14 +53,14 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-7">
 
 											<div class="post-content">
 
 												<h2><a class="a1" href="/btk/{{$item->id}}">{{$item->judul}}</a></h2>
                         @php
-                          if (strlen($item->deskripsi) > 500)
-                            echo substr($item->deskripsi, 0, 500) . '...';
+                          if (strlen($item->deskripsi) > 100)
+                            echo "<p style='word-wrap: break-word;'>".substr($item->deskripsi, 0, 375) . '...</p>';
                             else {
                               echo $item->deskripsi;
                             }
@@ -84,11 +85,7 @@
               @endforeach
 
 								<ul class="pagination pagination-lg pull-right">
-									<li><a href="#">«</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">»</a></li>
+									{!! $btks->links() !!}
 								</ul>
 
 							</div>

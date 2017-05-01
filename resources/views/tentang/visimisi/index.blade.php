@@ -42,38 +42,8 @@
 
 					</div>
 
-					<div class="col-md-3">
-						<aside class="sidebar">
-
-							<div class="tabs mb-xlg">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#popularPosts" data-toggle="tab"><i></i>Berita Terkini</a></li>
-								</ul>
-								<div class="tab-content">
-									<div class="tab-pane active" id="popularPosts">
-										<ul class="simple-post-list">
-											<li>
-												<div class="post-image">
-													<div class="img-thumbnail">
-														<a href="blog-post.html">
-															<img src="img/blog/blog-thumb-1.jpg" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="post-info">
-													<a class="a1" href="blog-post.html">Judul berita</a>
-													<div class="post-meta">
-														 Jan 10, 2015
-													</div>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-						</aside>
-					</div>
+					@include('widget_beritaterkini')
+          
 				</div>
 
 			</div>

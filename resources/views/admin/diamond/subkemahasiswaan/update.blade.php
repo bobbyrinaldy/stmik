@@ -24,11 +24,6 @@ Kemahasiswaan
 
 	<form class="" action="{{url('/admin/subkemahasiswaan/'. $subkemahasiswaan->id .'')}}" method="post" enctype="multipart/form-data">
 
-		<input type="text" name="id_org" value="{{$subkemahasiswaan->id_org}}">
-		{{ ($errors->has('id_org')) ?  $errors->first('id_org') : '' }}
-
-		<br />
-
 		<input type="text" name="nama" value="{{$subkemahasiswaan->nama}}">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
 
@@ -50,7 +45,7 @@ Kemahasiswaan
 		<input type="hidden" name="_method" value="put">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 	</form>
 
 	<!-- End Form -->

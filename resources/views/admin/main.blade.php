@@ -10,6 +10,8 @@
 {{ Html::style('Admin/css/bootstrap.min.css') }}
 {{ Html::style('Admin/css/datepicker3.css') }}
 {{ Html::style('Admin/css/styles.css') }}
+<script src="js/bootstrap-table.js"></script>
+
 
 <!--Icons-->
 {{ Html::script('Admin/js/lumino.glyphs.js') }}
@@ -26,6 +28,7 @@
         var editor_config = {
             path_absolute : "/",
             selector: "textarea",
+            style: "word-wrap: break-word",
             width: 750,
             height: "250",
             plugins: [
@@ -84,7 +87,7 @@
     {{ Html::script('Admin/js/easypiechart.js') }}
     {{ Html::script('Admin/js/easypiechart-data.js') }}
     {{ Html::script('Admin/js/bootstrap-datepicker.js') }}
-
+    {{ Html::script('Admin/js/bootstrap-table.js')}}
 
 
     <script>

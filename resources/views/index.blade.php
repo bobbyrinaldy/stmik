@@ -11,7 +11,7 @@
         <div class="owl-carousel owl-theme" data-plugin-options='{"items": 12, "autoplay": true, "autoplayTimeout": 2500}'>
           @foreach ($carousel as $item)
           <div>
-            <img class="img-responsive" src="{{Storage::url('carousel/'.$item->gambar)}}" alt="">
+            <img width="400px" height="110px" src="{{Storage::url('carousel/'.$item->gambar)}}" alt="">
           </div>
         @endforeach
         </div>
@@ -36,13 +36,13 @@
 
       <div class="row center">
         <div class="col-md-4">
-          <img src="{{Storage::url('lpkia.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -10px;">
+          <img src="{{Storage::url('lpkia1.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -10px;">
         </div>
         <div class="col-md-4">
-          <img src="{{Storage::url('lpkia.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
+          <img src="{{Storage::url('lpkia2.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
         </div>
         <div class="col-md-4">
-          <img src="{{Storage::url('lpkia.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
+          <img src="{{Storage::url('lpkia3.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
         </div>
       </div>
 
@@ -54,8 +54,8 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="feature-box feature-box-style-2">
-                  <div class="feature-box-icon">
-                    <i class="fa fa-building"></i>
+                  <div class='feature-box-icon'>
+                    <i class='fa fa-building'></i>
                   </div>
                   <div class="feature-box-info">
                     <h4 class="mb-none">Fasilitas Lengkap</h4>
@@ -148,7 +148,7 @@
           </p>
         </div>
         <div class="col-md-3 mt-xl">
-          <img class="img-responsive appear-animation" src="{{Storage::url('lulus.jpg')}}" alt="style switcher" data-appear-animation="bounceInRight">
+          <img class="img-responsive appear-animation" src="{{Storage::url('berkualitas.jpg')}}" alt="style switcher" data-appear-animation="bounceInRight">
         </div>
       </div>
 
@@ -156,7 +156,7 @@
 
       <div class="row">
         <div class="col-md-3">
-          <img class="img-responsive mt-xl appear-animation" src="{{Storage::url('beasiswa.jpg')}}" alt="layout styles" data-appear-animation="bounceInLeft">
+          <img class="img-responsive mt-xl appear-animation" src="{{Storage::url('terjangkau.jpg')}}" alt="layout styles" data-appear-animation="bounceInLeft">
         </div>
         <div class="col-md-9">
           <h2 class="mt-xl"><strong>Biaya Terjangkau</strong></h2>
@@ -189,22 +189,21 @@
         @foreach ($berita as $item)
 
           @php
-            $month = $item->created_at;
+            $month = $item->updated_at;
             $postMonth = date('l ,d F Y',strtotime($month));
             $postTime = date('h:m:s',strtotime($month));
           @endphp
 
         <div class="col-md-4">
-          <img src="{{Storage::url($item->cover)}}" width="360px" height="150px">
+          <img src="{{Storage::url('/berita/'.$item->cover)}}" width="360px" height="150px">
 					<div class="recent-posts mt-md mb-lg">
 						<article class="post">
 							<h5><a class="text-dark" href="/berita/{{$item->id}}">{{$item->judul}}</a></h5>
               <div class="post-meta">
                 <span><i class="fa fa-calendar"></i> {{$postMonth}} </span>
 								<span><i class="fa fa-clock-o"></i> {{$postTime}} </span>
-								<span><i class="fa fa-user"></i> By STMIK LPKIA</span>
+								<span><i class="fa fa-user"></i>By STMIK LPKIA</span>
 							</div>
-              <p>{!! $item->deskripsi !!}</p>
 						</article>
 					</div>
 				</div>
@@ -235,30 +234,14 @@
       </div>
       <div class="row center mt-xl">
         <div class="owl-carousel owl-theme" data-plugin-options='{"items": 6, "autoplay": true, "autoplayTimeout": 3000}'>
+        @foreach ($kerjasama as $item)
+
           <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-1.png')}}" alt="">
+            <img height="100px" width="100px" style="padding-left:10px; padding-right: 10px;" src="{{Storage::url('/kerjasama/'.$item->logo)}}" alt="kerjasama logo">
           </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-2.png')}}" alt="">
-          </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-3.png')}}" alt="">
-          </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-4.png')}}" alt="">
-          </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-5.png')}}" alt="">
-          </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-6.png')}}" alt="">
-          </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-4.png')}}" alt="">
-          </div>
-          <div>
-            <img class="img-responsive" src="{{asset('Main/img/logos/logo-2.png')}}" alt="">
-          </div>
+
+        @endforeach
+
         </div>
       </div>
     </div>

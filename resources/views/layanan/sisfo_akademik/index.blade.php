@@ -27,12 +27,26 @@
 				<div class="row">
 					<div class="col-md-9">
 
-						<div class="row">
-							<div class="col-md-12">
-								<p>{!! $sisfo->deskripsi !!}</p>
-							</div>
-						</div>
+            @if (!empty($informatika))
+              <div class="row">
+  							<div class="col-md-12">
+  								<p>{!! $sisfo->deskripsi !!}</p>
+  							</div>
+  						</div>
+            @else
 
+            <section class="call-to-action with-borders button-centered mb-xl">
+              <div class="call-to-action-content">
+                <h3>This<strong> Page</strong> is Currently <strong>Empty !</strong></h3>
+                <p>Please tell the <strong>Administrator</strong></p>
+              </div>
+              <div class="call-to-action-btn">
+                <a href="/" target="_blank" class="btn btn-lg btn-primary"><span class="fa fa-refresh fa-spin"></span> Home</a>
+              </div>
+            </section>
+
+            @endif
+					
 					</div>
 
 					<div class="col-md-3">

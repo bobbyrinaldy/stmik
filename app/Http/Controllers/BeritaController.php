@@ -15,14 +15,33 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
-        $beritas = DB::table('tbl_beritas')->paginate(5);
+        $beritas = DB::table('tbl_beritas')->paginate(10);
         // if (!$beritas) {
         //     abort(404);
         // }
 
+        // return view('admin.diamond.berita.index', ['berita' => $beritas]);
+        $search = \Request::get('search');
+        // $beritas = Berita::wher('judul', 'like' , '%'.$search.'%')->paginate(20);
+
+        if ($search) {
+          # code...
+          $beritas = DB::table('tbl_beritas')
+          ->join('users', 'users.id', '=' ,'tbl_beritas.id_usr')
+          ->select('tbl_beritas.*', 'users.name')
+          ->Where('tbl_beritas.judul', 'like' , '%'.$search .'%')->paginate(20);
+        } else {
+          $beritas = DB::table('tbl_beritas')
+          ->join('users', 'users.id', '=' ,'tbl_beritas.id_usr')
+          ->select('tbl_beritas.*', 'users.name')->paginate(20);
+        }
+
+
+        // dd($kerjasamas);
         return view('admin.diamond.berita.index', ['berita' => $beritas]);
     }
 
@@ -62,7 +81,7 @@ class BeritaController extends Controller
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
             // Storage::put('upload/images/' . $filename, file_get_contents($file));
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/berita/' . $filename, file_get_contents($file));
 
             $beritas->cover = $filename;
         } else {
@@ -133,7 +152,7 @@ class BeritaController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/berita/' . $filename, file_get_contents($file));
 
             $beritas->cover = $filename;
         }

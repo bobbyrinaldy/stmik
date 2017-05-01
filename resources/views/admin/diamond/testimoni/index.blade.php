@@ -27,7 +27,7 @@ Testimoni
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
-		
+
 		@foreach($testimoni as $testimonis)
 			<div class="col-md-14">
 				<div class="panel panel-primary">
@@ -43,9 +43,9 @@ Testimoni
 	                        <input class="icon_close_alt2" type="submit" name="name" value="">
 	                    </form>
 					</div>
-					
+
 					<div class="panel-body">
-						<img src="{{url('../storage/app/upload/images/' . $testimonis->profile. '')}}">
+						<img src="{{Storage::url('testimoni/' . $testimonis->profile. '')}}">
 						<p>{!! $testimonis->komentar !!}</p>
 					</div>
 					<div class="panel-body">
@@ -61,7 +61,7 @@ Testimoni
 
 	<!-- </div> -->
 
-	
+
 
 @endsection
 

@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gallery;
+use App\Sejarah;
 use Storage;
 
 class GalleryController extends Controller
 {
     public function index()
     {
-        $gallery = gallery::all();
+        $gallery = Gallery::all();
+        $sejarah = Sejarah::all()->first();
 
-        return view('admin.emerald.gallery.index', ['gallery' => $gallery]);
+        return view('admin.emerald.gallery.index', [
+            'gallery' => $gallery,
+            'sejarah'=> $sejarah
+            ]);
     }
 
     public function create()
@@ -60,6 +65,9 @@ class GalleryController extends Controller
       $gallery = gallery::all()->sortByDesc('created_at');
       $count = gallery::count();
 
-      return view('/gallery/index',['gallery'=>$gallery, 'count'=>$count]);
+      return view('/gallery/index',[
+        'gallery'=>$gallery,
+        // 'count'=>$count
+      ]);
     }
 }

@@ -26,7 +26,7 @@ Kemahasiswaan
 	<!-- endnav -->
 	<!-- <div class="row"> -->
 	<div class="col-lg-10">
-		
+
 		@foreach($kemahasiswaan as $kemahasiswaans)
 			<div class="col-md-14">
 				<div class="panel panel-info">
@@ -43,8 +43,8 @@ Kemahasiswaan
 	                    </form>
 					</div>
 					<div class="panel-body">
-						<img src="{{url('../storage/app/upload/images/' . $kemahasiswaans->logo. '')}}">
-						<p>{{$kemahasiswaans->deskripsi}}</p>
+						<img height="10%" width="10%" src="{{ Storage::url('kemahasiswaan/'. $kemahasiswaans->logo. '')}}">
+						<p>{!!$kemahasiswaans->deskripsi!!}</p>
 					</div>
 				</div>
 			</div>
@@ -57,7 +57,7 @@ Kemahasiswaan
 	</div>
 
 	<div class="col-lg-10">
-		
+
 		@foreach($subkemahasiswaan as $subkemahasiswaans)
 			<div class="col-md-14">
 				<div class="panel panel-warning">
@@ -74,8 +74,8 @@ Kemahasiswaan
 	                    </form>
 					</div>
 					<div class="panel-body">
-						<img src="{{url('../storage/app/upload/images/' . $subkemahasiswaans->logo. '')}}">
-						<p>{{$subkemahasiswaans->deskripsi}}</p>
+						<img height="10%" width="10%" src="{{Storage::url('kemahasiswaan/' . $subkemahasiswaans->logo. '')}}">
+						<p>{!!$subkemahasiswaans->deskripsi!!}</p>
 					</div>
 				</div>
 			</div>

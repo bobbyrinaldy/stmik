@@ -24,6 +24,11 @@ Bursa Tenaga Kerja
 
 	<form class="" action="{{url('/admin/btk/'. $btk->id .'')}}" method="post" enctype="multipart/form-data">
 
+    <input type="text" name="judul" value="">
+    {{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
+
+    <br />
+
 		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$btk->deskripsi}}</textarea>
 		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
 
@@ -39,7 +44,7 @@ Bursa Tenaga Kerja
 		<input type="hidden" name="_method" value="put">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
 

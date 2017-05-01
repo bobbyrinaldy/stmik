@@ -18,7 +18,7 @@ class SaranaController extends Controller
     {
         //
         // $saranas = Sarana::all();
-        $saranas = DB::table('tbl_sarana_prasaranas')->paginate(5);
+        $saranas = DB::table('tbl_sarana_prasaranas')->paginate(10);
         // if (!$saranas) {
         //     abort(404);
         // }
@@ -65,7 +65,7 @@ class SaranaController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/sarana/' . $filename, file_get_contents($file));
 
             $saranas->cover = $filename;
         } else {
@@ -146,7 +146,7 @@ class SaranaController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/sarana/' . $filename, file_get_contents($file));
 
             $saranas->cover = $filename;
         }
@@ -169,18 +169,26 @@ class SaranaController extends Controller
         if (!$saranas) {
             abort(404);
         }
-        
+
         $saranas->delete();
         return redirect(url('/admin/sarana'));
     }
 
     public function main()
     {
-      $saranas = sarana::all();
+      // $saranas = sarana::all();
+      $saranas = DB::table('tbl_sarana_prasaranas')->paginate(5);
         // if (!$saranas) {
         //     abort(404);
         // }
 
       return view('/layanan/sarana_prasarana/index',['sarana'=>$saranas]);
+    }
+
+    public function detail($id)
+    {
+      $detail = sarana::find($id)->first();
+
+      return view('/layanan/sarana_prasarana/view',['sarana'=>$detail]);
     }
 }

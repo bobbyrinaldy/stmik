@@ -27,7 +27,7 @@ Gallery
 	<div class="col-lg-10">
 
 		@foreach($gallery as $item)
-			<div class="col-md-14">
+			<div class="col-md-6">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						{{$item->judul}}
@@ -36,7 +36,7 @@ Gallery
 						<a href="{{url('/admin/btk/'. $item->id .'/edit')}}" class="btn btn-warning">Edit</a>
 					</div>
 					<div class="panel-body">
-            <img src="{{Storage::url('gallery/'.$item->gambar)}}">
+            <img height="100%" width="100%" src="{{Storage::url('gallery/'.$item->gambar)}}">
 					</div>
 				</div>
 			</div>

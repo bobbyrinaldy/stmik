@@ -23,7 +23,7 @@ Testimoni
 	<!-- form -->
 
 	<form class="" action="{{url('/admin/testimoni/'. $testimoni->id .'')}}" method="post" enctype="multipart/form-data">
-		
+
 		<input type="text" name="nama" value="{{$testimoni->nama}}" placeholder="nama">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
 
@@ -39,8 +39,31 @@ Testimoni
 
 		<br />
 
-		<input type="text" name="tag" value="{{$testimoni->tag}}" placeholder="tag">
-		{{ ($errors->has('tag')) ?  $errors->first('tag') : '' }}
+    <select name="tag" required>
+      @if ($testimoni->tag == 'mahasiswa')
+          <option value="mahasiswa" selected>Mahasiswa</option>
+          <option value="alumni">Alumni</option>
+          <option value="perusahaan">Perusahaan</option>
+          <option value="tokohmasyarakat">Tokoh Masyarakat</option>
+      @elseif ($testimoni->tag == 'alumni')
+        <option value="mahasiswa" selected>Mahasiswa</option>
+        <option value="alumni" selected>Alumni</option>
+        <option value="perusahaan">Perusahaan</option>
+        <option value="tokohmasyarakat">Tokoh Masyarakat</option>
+
+      @elseif ($testimoni->tag == 'perusahaan')
+        <option value="mahasiswa" selected>Mahasiswa</option>
+        <option value="alumni">Alumni</option>
+        <option value="perusahaan" selected>Perusahaan</option>
+        <option value="tokohmasyarakat">Tokoh Masyarakat</option>
+
+      @elseif ($testimoni->tag == 'tokohmasyarakat')
+        <option value="mahasiswa" selected>Mahasiswa</option>
+        <option value="alumni">Alumni</option>
+        <option value="perusahaan">Perusahaan</option>
+        <option value="tokohmasyarakat" selected>Tokoh Masyarakat</option>
+      @endif
+    </select>
 
 		<br />
 
@@ -50,7 +73,7 @@ Testimoni
 		<input type="hidden" name="_method" value="put">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
 

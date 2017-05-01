@@ -14,14 +14,30 @@ class KerjasamaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
-        $kerjasamas = DB::table('tbl_kerjasamas')->paginate(5);
+        // $kerjasamas = DB::table('tbl_kerjasamas')->paginate(20);
+        // $kerjasamas = Kerjasama::all();
         // if (!$kerjasamas) {
         //     abort(404);
         // }
+        // foreach ($kerjasamas as $key) {
+        //     # code...
+        //     dd($key);
+        // }
+        // dd(json_encode($kerjasamas));
+        // dd(json_encode($kerjasamas));
 
+        // return view('admin.diamond.kerjasama.index', ['kerjasama' => $kerjasamas]);
+        // return view('admin.diamond.kerjasama.index', ['kerjasama' => json_encode($kerjasamas)]);
+
+        $search = \Request::get('search');
+        // $kerjasamas = DB::table('tbl_kerjasamas')->Where('perusahaan', '=' , $search)->paginate(20);
+        $kerjasamas = Kerjasama::where('perusahaan', 'like' , '%'.$search.'%')->paginate(20);
+
+        // dd($kerjasamas);
         return view('admin.diamond.kerjasama.index', ['kerjasama' => $kerjasamas]);
     }
 
@@ -64,6 +80,18 @@ class KerjasamaController extends Controller
         $kerjasamas->perusahaan = $request->perusahaan;
         $kerjasamas->deskripsi = $request->isi;
         $kerjasamas->kategori = $request->kategori;
+
+        if($request->gambar) {
+            $images = $request->file('gambar');
+            $file = $images->getRealPath();
+            $filename = $images->getClientOriginalName();
+            Storage::put('public/kerjasama/' . $filename, file_get_contents($file));
+
+            $kerjasamas->logo = $filename;
+        } else {
+            $filename = "defaultkerjasama.jpg";
+        }
+
         $kerjasamas->logo = $filename;
         $kerjasamas->save();
 
@@ -111,6 +139,7 @@ class KerjasamaController extends Controller
         $this->validate($request, [
             'perusahaan'=> 'required',
             'isi' => 'required',
+            'kategori' => 'required',
             ]);
 
         $kerjasamas = Kerjasama::find($id);
@@ -120,6 +149,7 @@ class KerjasamaController extends Controller
 
         $kerjasamas->perusahaan = $request->perusahaan;
         $kerjasamas->deskripsi = $request->isi;
+        $kerjasamas->kategori = $request->kategori;
 
         if($request->gambar) {
             $images = $request->file('gambar');

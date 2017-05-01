@@ -23,7 +23,7 @@
 						</div>
 					</div>
 				</section>
-				
+
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -59,7 +59,7 @@
 											<div class="call-to-action-btn">
 												<a href="/" target="_blank" class="btn btn-lg btn-primary"><span class="fa fa-refresh fa-spin"></span> Home</a>
 											</div>
-							</section>
+										</section>
 									@endif
 								</ul>
 

@@ -27,46 +27,37 @@
 				<div class="row">
 					<div class="col-md-9">
 
-						<div class="row">
-							<div class="col-md-12">
-								<p>{!! $comic->deskripsi !!}</p>
-							</div>
-						</div>
+            @if (!empty($comic))
+              <center>
+                <div class="col-md-12">
+                  <span class="img-thumbnail">
+                    <img height="50%" width="50%" alt="" class="img-responsive" width="300px" src="{{Storage::url('kemahasiswaan/'.$comic->logo)}}">
+                  </span>
+                </div>
+              </center>
+
+              <div class="row">
+  							<div class="col-md-12">
+  								<p>{!! $comic->deskripsi !!}</p>
+  							</div>
+  						</div>
+            @else
+
+            <section class="call-to-action with-borders button-centered mb-xl">
+              <div class="call-to-action-content">
+                <h3>This<strong> Page</strong> is Currently <strong>Empty !</strong></h3>
+                <p>Please tell the <strong>Administrator</strong></p>
+              </div>
+              <div class="call-to-action-btn">
+                <a href="/" target="_blank" class="btn btn-lg btn-primary"><span class="fa fa-refresh fa-spin"></span> Home</a>
+              </div>
+            </section>
+
+            @endif
 
 					</div>
 
-					<div class="col-md-3">
-						<aside class="sidebar">
-
-							<div class="tabs mb-xlg">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#popularPosts" data-toggle="tab"><i></i>Berita Terkini</a></li>
-								</ul>
-								<div class="tab-content">
-									<div class="tab-pane active" id="popularPosts">
-										<ul class="simple-post-list">
-											<li>
-												<div class="post-image">
-													<div class="img-thumbnail">
-														<a href="blog-post.html">
-															<img src="img/blog/blog-thumb-1.jpg" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="post-info">
-													<a class="a1" href="blog-post.html">Judul berita</a>
-													<div class="post-meta">
-														 Jan 10, 2015
-													</div>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-						</aside>
-					</div>
+					@include('widget_beritaterkini')
 				</div>
 
 			</div>

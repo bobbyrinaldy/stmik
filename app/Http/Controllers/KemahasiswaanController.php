@@ -50,7 +50,7 @@ class KemahasiswaanController extends Controller
         $images = $request->file('gambar');
         $file = $images->getRealPath();
         $filename = $images->getClientOriginalName();
-        Storage::put('public/' . $filename, file_get_contents($file));
+        Storage::put('public/kemahasiswaan/' . $filename, file_get_contents($file));
 
         $this->validate($request, [
             'nama' => 'required',
@@ -126,7 +126,7 @@ class KemahasiswaanController extends Controller
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/kemahasiswaan/' . $filename, file_get_contents($file));
 
             $kemahasiswaans->logo = $filename;
         }
@@ -166,9 +166,9 @@ class KemahasiswaanController extends Controller
     public function himakom()
     {
       $himakom = kemahasiswaan::where('nama','HIMAKOM')->orWhere('nama','himakomputer')->orWhere('nama','himakomlpkia')->first();
-      if (!$himakom) {
-            abort(404);
-        }
+      // if (!$himakom) {
+      //       abort(404);
+      //   }
 
 
       return view('/kemahasiswaan/hima/himakom/index',['himakom'=>$himakom]);

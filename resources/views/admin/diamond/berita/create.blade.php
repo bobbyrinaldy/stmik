@@ -27,9 +27,9 @@ Berita
 		<input type="text" name="judul" value="" placeholder="Isi">
 		{{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
 
-		<br />		
+		<br />
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Isi"></textarea>
+		<textarea name="isi" rows="10" cols="40" placeholder="Isi" style="word-wrap: break-word; width: 11em; "></textarea>
 		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
 
 		<br />

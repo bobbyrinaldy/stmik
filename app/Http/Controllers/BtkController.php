@@ -19,9 +19,16 @@ class BtkController extends Controller
         //
 
 
-        $btks = Btk::all();
-        $count = Btk::count();
+        // $btks = Btk::all();
+        // $count = Btk::count();
 
+        // return view('admin.emerald.btk.index', ['btk' => $btks]);
+
+        $search = \Request::get('search');
+        // $kerjasamas = DB::table('tbl_kerjasamas')->Where('perusahaan', '=' , $search)->paginate(20);
+        $btks = Btk::where('judul', 'like' , '%'.$search.'%')->paginate(20);
+
+        // dd($kerjasamas);
         return view('admin.emerald.btk.index', ['btk' => $btks]);
     }
 
@@ -115,23 +122,23 @@ class BtkController extends Controller
     {
         //
         $this->validate($request, [
-            'deskripsi' => 'required',
             'judul' => 'required',
+            'deskripsi' => 'required',
             ]);
 
         $btks = Btk::find($id);
         if (!$btks) {
             abort(404);
         }
-        $btks->deskripsi = $request->deskripsi;
         $btks->judul = $request->judul;
-
+        $btks->deskripsi = $request->deskripsi;
+        $filename = "default.jpg";
         if($request->gambar) {
             $images = $request->file('gambar');
             $file = $images->getRealPath();
             $filename = $images->getClientOriginalName();
             // Storage::put('upload/images/' . $filename, file_get_contents($file));
-            Storage::put('public/' . $filename, file_get_contents($file));
+            Storage::put('public/btk/' . $filename, file_get_contents($file));
 
             $btks->gambar = $filename;
         } else {
@@ -153,11 +160,18 @@ class BtkController extends Controller
     public function destroy($id)
     {
         //
+        $btks = Btk::find($id);
+        if (!$btks) {
+            abort(404);
+        }
+
+        $btks->delete();
+        return redirect(url('/admin/btk'));
     }
 
     public function main()
     {
-      $btks = DB::table('tbl_btks')->paginate(5)->sortByDesc('created_at');
+      $btks = DB::table('tbl_btks')->orderBy('created_at','desc')->paginate(10);
         // if (!$btks) {
         //     abort(404);
         // }
@@ -167,8 +181,13 @@ class BtkController extends Controller
 
     public function detail($id)
     {
-      $detail = btk::find($id)->first();
-
-      return view('/btk/view',['detail'=>$detail]);
+      $detail = btk::find($id);
+      // $widget_berita_latest = Berita::orderBy('updated_at', 'desc')->take(3)->get();
+      // $widget_berita_random = Berita::inRandomOrder()->take(2)->get();
+      return view('/btk/view',[
+        'detail'=>$detail,
+        // 'widget_berita_latest' => $widget_berita_latest,
+        // 'widget_berita_random' => $widget_berita_random,
+      ]);
     }
 }

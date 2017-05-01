@@ -16,11 +16,18 @@ class BeasiswaController extends Controller
     public function index()
     {
         //
-        $beasiswas = DB::table('tbl_beasiswas')->paginate(5);
+        // $beasiswas = DB::table('tbl_beasiswas')->paginate(5);
         // if (!$beasiswas) {
         //     abort(404);
         // }
 
+        // return view('admin.diamond.beasiswa.index', ['beasiswa' => $beasiswas]);
+
+        $search = \Request::get('search');
+        // $kerjasamas = DB::table('tbl_kerjasamas')->Where('perusahaan', '=' , $search)->paginate(20);
+        $beasiswas = Beasiswa::where('nama', 'like' , '%'.$search.'%')->paginate(20);
+
+        // dd($kerjasamas);
         return view('admin.diamond.beasiswa.index', ['beasiswa' => $beasiswas]);
     }
 
@@ -50,7 +57,7 @@ class BeasiswaController extends Controller
             ]);
 
         $beasiswas = new Beasiswa;
-        $beasiswas->nama = $request->isi;
+        $beasiswas->nama = $request->nama;
         $beasiswas->deskripsi = $request->isi;
         $beasiswas->save();
 
@@ -100,13 +107,12 @@ class BeasiswaController extends Controller
             'isi' => 'required',
             ]);
 
-
         $beasiswas = Beasiswa::find($id);
         if (!$beasiswas) {
             abort(404);
         }
-        
-        $beasiswas->nama = $request->isi;
+
+        $beasiswas->nama = $request->nama;
         $beasiswas->deskripsi = $request->isi;
         $beasiswas->save();
 
@@ -134,11 +140,22 @@ class BeasiswaController extends Controller
 
     public function main()
     {
-        $beasiswa = beasiswa::all();
+        $beasiswa = Beasiswa::orderBy('updated_at', 'desc')->paginate(7);
         // if (!$beasiswas) {
         //     abort(404);
         // }
+        // dd($beasiswa)
+      return view('/layanan/beasiswa/index', ['beasiswa'=>$beasiswa]);
+    }
 
-      return view('/layanan/beasiswa/index',['beasiswa'=>$beasiswa]);
+    public function detail($id)
+    {
+      // echo "SUKSES";
+        $beasiswa = Beasiswa::find($id);
+        // if (!$beasiswas) {
+        //     abort(404);
+        // }
+        // dd($beasiswa);
+      return view('layanan/beasiswa/view', ['beasiswa'=>$beasiswa]);
     }
 }

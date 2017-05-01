@@ -23,7 +23,7 @@ Testimoni
 	<!-- form -->
 
 	<form class="" action="{{url('/admin/testimoni')}}" method="post" enctype="multipart/form-data">
-		
+
 		<input type="text" name="nama" value="" placeholder="nama">
 		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
 
@@ -39,8 +39,12 @@ Testimoni
 
 		<br />
 
-		<input type="text" name="tag" value="" placeholder="tag">
-		{{ ($errors->has('tag')) ?  $errors->first('tag') : '' }}
+    <select name="tag" required>
+      <option value="mahasiswa">Mahasiswa</option>
+      <option value="alumni">Alumni</option>
+      <option value="perusahaan">Perusahaan</option>
+      <option value="tokohmasyarakat">Tokoh Masyarakat</option>
+    </select>
 
 		<br />
 
@@ -49,7 +53,7 @@ Testimoni
 		<!-- hidden -->
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
 

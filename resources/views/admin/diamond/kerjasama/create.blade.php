@@ -38,7 +38,6 @@ Kerjasama
 		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
 
 		<br />
-
     <select name="kategori">
       <option value="luar">Luar Negeri</option>
       <option value="dalam">Dalam Negeri</option>

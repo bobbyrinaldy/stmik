@@ -28,7 +28,7 @@ Carousel / Slide Show
 	<div class="col-lg-10">
 
 		@foreach($cr as $item)
-			<div class="col-md-14">
+			<div class="col-md-6">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 
@@ -45,7 +45,7 @@ Carousel / Slide Show
 					</div>
 
 					<div class="panel-body">
-            <img src="{{Storage::url('carousel/'.$item->gambar)}}">
+            		<img height="100%" width="100%" src="{{Storage::url('carousel/'.$item->gambar)}}">
 					</div>
 				</div>
 			</div>

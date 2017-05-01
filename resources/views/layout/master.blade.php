@@ -204,8 +204,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-9">
-							<h4> @section('sejarah') About <strong>STMIK LPKIA</strong></h4>
-							<p><a href="#" class="btn-flat btn-xs">View More <i class="fa fa-arrow-right"></i></a></p>
+							<h4> About <strong>STMIK LPKIA</strong></h4>
+
+							<p> {!!$sejarah->deskripsi!!} <a href="#" class="btn-flat btn-xs">View More <i class="fa fa-arrow-right"></i></a></p>
 							<hr class="light">
 							<div class="row">
 								<div class="col-md-3">
