@@ -17,8 +17,8 @@ class KemahasiswaanController extends Controller
     public function index()
     {
         //
-        $kemahasiswaans = Kemahasiswaan::all();
-        $subKemahasiswaans = Subkemahasiswaan::all();
+        $kemahasiswaans = Kemahasiswaan::orderBy('created_at','desc')->get();
+        $subKemahasiswaans = Subkemahasiswaan::orderBy('created_at','desc')->get();
 
         return view('admin.diamond.kemahasiswaan.index', [
             'kemahasiswaan' => $kemahasiswaans ,

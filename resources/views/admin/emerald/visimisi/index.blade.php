@@ -13,49 +13,53 @@
 
 @section('pageTitle')
 
-Visi Misi
+Visi dan Misi
 
 @endsection
 
 @section('content')
 
-	@if(!empty($add))
-		<div class="col-xs-12 col-md-6 col-lg-3">
-			<a href="{{url('/admin/visimisi/create')}}" class="btn btn-primary">Add</a>
-		</div>
-	@endif
-	<!-- endnav -->
-	<!-- <div class="row"> -->
-	<div class="col-lg-10">
-		
-		@foreach($visimisi as $visimisis)
-			<div class="col-md-14">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						Visi Misi
-					</div>
-					<div>
-						<a href="{{url('/admin/visimisi/'. $visimisis->id .'/edit')}}" class="btn btn-warning">Edit</a>
-					</div>
-					<div class="panel-body">
-						<h3>Visi</h3>
-						<p>{!! $visimisis->visi !!}</p>
-					</div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              @if(!empty($add))
+                  <a href="/admin/visimisi/create" class="btn btn-primary">Create New</a>
+              @else
+                  @foreach ($visimisi as $item)
+                    <a href="{{url('/admin/visimisi/'. $item->id .'/edit')}}" class="btn btn-warning">Edit</a>
+                  @endforeach
+              @endif
+            </div>
+            <div class="panel-body">
+              <table data-toggle="table">
+                  <thead>
+                  <tr>
+                    <th>Visi</th>
+                    <th>Misi</th>
+                  </tr>
+                  </thead>
 
-					<div class="panel-body">
-						<h3>Misi</h3>
-						<p>{!! $visimisis->misi !!}</p>
-					</div>
-					
-				</div>
-			</div>
-		@endforeach
+                  <tbody>
+                    @foreach ($visimisi as $item)
+                    <tr>
+                      <td>{!!$item->visi!!}</td>
+                      <td>{!!$item->misi!!}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+              </table>
+              <br>
 
-	</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 	<!-- </div> -->
 
-	
+
 
 @endsection
 

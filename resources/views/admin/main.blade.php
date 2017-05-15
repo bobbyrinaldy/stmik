@@ -10,6 +10,9 @@
 {{ Html::style('Admin/css/bootstrap.min.css') }}
 {{ Html::style('Admin/css/datepicker3.css') }}
 {{ Html::style('Admin/css/styles.css') }}
+{{ Html::style('Admin/css/bootstrap-table.css') }}
+{{ Html::style('Admin/fa/css/font-awesome.css') }}
+{{ Html::style('Admin/sweetalert.css') }}
 <script src="js/bootstrap-table.js"></script>
 
 
@@ -29,8 +32,8 @@
             path_absolute : "/",
             selector: "textarea",
             style: "word-wrap: break-word",
-            width: 750,
-            height: "250",
+            width: 1060,
+            height: "600",
             plugins: [
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
@@ -52,29 +55,22 @@
     @include('admin/header')
     @include('admin/navigator')
 
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				@yield('rute')
+			</ol>
+		</div><!--/.row-->
 
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-3 main">
-
-        <div class="row">
-            <ol class="breadcrumb">
-                @yield('rute')
-            </ol>
-        </div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">@yield('pageTitle')</h1>
+			</div>
+		</div><!--/.row-->
 
 
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    @yield('pageTitle')
-                </h1>
-            </div>
-        </div><!--/.row-->
-
-        <div class="row">
-            @yield('content')
-        </div>
-
-    </div>
+		@yield('content')
+	</div>	<!--/.main-->
 
 
 
@@ -82,6 +78,10 @@
 
     {{ Html::script('Admin/js/jquery-1.11.1.min.js') }}
     {{ Html::script('Admin/js/bootstrap.min.js') }}
+    {{ Html::script('Admin/sweetalert.min.js') }}
+
+    @yield('js')
+
     {{ Html::script('Admin/js/chart.min.js') }}
     {{ Html::script('Admin/js/chart-data.js') }}
     {{ Html::script('Admin/js/easypiechart.js') }}
@@ -108,6 +108,8 @@
           if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
         })
     </script>
+
+
 
 </body>
 

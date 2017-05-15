@@ -33,7 +33,7 @@
               <div class="row">
   							<div class="col-md-12">
                   <center>
-                    <p><img src="{{Storage::url($strukturorganisasi->gambar)}}" width="100%"></p>
+                    <p><img src="{{Storage::url('struktur_organisasi/'.$strukturorganisasi->gambar)}}" width="700px"alt=""></p>
                   </center>
   							</div>
   						</div>

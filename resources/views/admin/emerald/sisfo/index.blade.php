@@ -7,49 +7,48 @@
 <title>Sisfo</title>
 
 @section('rute')
-                <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-                <li class="active">Icons</li>
+    <li><a href="/administrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+    <li class="active">Sistem Informasi Akademik</li>
 @endsection
 
 @section('pageTitle')
 
-Sisfo
+Sistem Informasi Akademik
 
 @endsection
 
 @section('content')
 
-	@if(!empty($add))
-		<div class="col-xs-12 col-md-6 col-lg-3">
-			<a href="{{url('/admin/sisfo/create')}}" class="btn btn-primary">Add</a>
-		</div>
-	@endif
-	<!-- endnav -->
-	<!-- <div class="row"> -->
-	<div class="col-lg-10">
-		
-		@foreach($sisfo as $sisfos)
-			<div class="col-md-14">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						Sisfo
-					</div>
-					<div>
-						<a href="{{url('/admin/sisfo/'. $sisfos->id .'/edit')}}" class="btn btn-warning">Edit</a>
-					</div>
-					<div class="panel-body">
-						<p>{!! $sisfos->deskripsi !!}</p>
-					</div>
-					
-				</div>
-			</div>
-		@endforeach
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              @if(!empty($add))
+                <a href="{{url('/admin/sisfo/create')}}" class="btn btn-primary">Create New</a>
+              @else
+                  @foreach ($sisfo as $item)
+                    <a href="{{url('/admin/sisfo/'. $item->id .'/edit')}}" class="btn btn-warning">Edit</a>
+                  @endforeach
+              @endif
+            </div>
+            <div class="panel-body">
+              <table data-toggle="table">
 
-	</div>
+                  <tbody>
+                    @foreach ($sisfo as $item)
+                    <tr>
+                      <td>{!!$item->deskripsi!!}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+              </table>
+              <br>
 
-	<!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
 
-	
 
 @endsection
 

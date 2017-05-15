@@ -20,35 +20,47 @@ Sertifikasi
 
 @section('content')
 
-	<!-- form -->
+  <form class="" action="{{url('/admin/sertifikasi/'. $sertifikasi->id .'')}}" method="post" enctype="multipart/form-data">
 
-	<form class="" action="{{url('/admin/sertifikasi/'. $sertifikasi->id .'')}}" method="post" enctype="multipart/form-data">
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Edit Serifikasi  </div>
+					<div class="panel-body">
 
-		<input type="text" name="nama" value="{{$sertifikasi->nama}}" placeholder="nama">
-		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+            <div class="form-group">
+              <label for="">Judul : </label>
+              <input type="text" name="nama" value="{{$sertifikasi->nama}}" placeholder="nama" class="form-control">
+          		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+            </div>
 
-		<br />
+            <div class="form-group">
+              <label for="">Cover : </label>
+              <input type="file" name="gambar" value="" placeholder="namanya">
+          		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            </div>
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Isi">{!! $sertifikasi->deskripsi !!}</textarea>
-		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+            <div class="form-group">
+              <label for="">Deskripsi : </label>
+              <textarea name="isi" rows="10" cols="40" placeholder="Isi">{!! $sertifikasi->deskripsi !!}</textarea>
+          		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+            </div>
 
-		<br />
+            <input type="submit" name="name" value="UPDATE" class="btn btn-warning btn-block">
+            <a href="/admin/sertifikasi" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
 
-		<input type="file" name="gambar" value="" placeholder="namanya">
-		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
-
-		<br />
-
-		<input type="submit" name="name" value="edit">
 
 		<!-- hidden -->
-		<input type="hidden" name="_method" value="put">
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<!-- end -->
-		
-	</form>
+    <input type="hidden" name="_method" value="put">
 
-	<!-- End Form -->
+		<input type="hidden" name="_token" value="{{csrf_token()}}">
+
+  </form>
+
 
 @endsection
 

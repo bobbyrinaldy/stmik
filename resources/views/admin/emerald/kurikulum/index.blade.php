@@ -7,8 +7,8 @@
 <title>Kurikulum</title>
 
 @section('rute')
-                <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-                <li class="active">Icons</li>
+    <li><a href="/administrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+    <li lass="active">Kurikulum</li>
 @endsection
 
 @section('pageTitle')
@@ -19,37 +19,39 @@ Kurikulum
 
 @section('content')
 
-	@if(!empty($add))
-		<div class="col-xs-12 col-md-6 col-lg-3">
-			<a href="{{url('/admin/kurikulum/create')}}" class="btn btn-primary">Add</a>
-		</div>
-	@endif
-	<!-- endnav -->
-	<!-- <div class="row"> -->
-	<div class="col-lg-10">
-		
-		@foreach($kurikulum as $kurikulums)
-			<div class="col-md-14">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						Kurikulum
-					</div>
-					<div>
-						<a href="{{url('/admin/kurikulum/'. $kurikulums->id .'/edit')}}" class="btn btn-warning">Edit</a>
-					</div>
-					<div class="panel-body">
-						<p>{!! $kurikulums->deskripsi !!}</p>
-					</div>
-					
-				</div>
-			</div>
-		@endforeach
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              @if(!empty($add))
+                  <a href="{{url('/admin/kurikulum/create')}}" class="btn btn-primary">Create New</a>
+              @else
+                  @foreach ($kurikulum as $item)
+                    <a href="{{url('/admin/kurikulum/'. $item->id .'/edit')}}" class="btn btn-warning">Edit</a>
+                  @endforeach
+              @endif
+            </div>
+            <div class="panel-body">
+              <table data-toggle="table">
 
-	</div>
+                  <tbody>
+                    @foreach ($kurikulum as $item)
+                    <tr>
+                      <td>{!!$item->deskripsi!!}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+              </table>
+              <br>
+
+            </div>
+          </div>
+        </div>
+      </div>
 
 	<!-- </div> -->
 
-	
+
 
 @endsection
 

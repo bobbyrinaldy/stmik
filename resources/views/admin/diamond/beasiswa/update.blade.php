@@ -7,8 +7,9 @@
 <title>Beasiswa</title>
 
 @section('rute')
-    <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-    <li class="active">Icons</li>
+  <li><a href="/adminnistrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+  <li><a href="/admin/beasiswa">Beasiswa</a></li>
+  <li class="active">Edit</li>
 
 @endsection
 
@@ -22,29 +23,40 @@ Beasiswa
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/beasiswa/'. $beasiswa->id .'')}}" method="post">
 
-		<input type="nama" name="nama" value="{{$beasiswa->nama}}" placeholder="Nama">
-		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+<form class="" action="{{url('/admin/beasiswa/'. $beasiswa->id .'')}}" method="post">
 
-		<br />
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Edit Beasiswa (ID : {{$beasiswa->id}}) </div>
+        <div class="panel-body">
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Isi">{!!$beasiswa->deskripsi!!}"</textarea>
-		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+          <div class="form-group">
+            <label for="">Judul : </label>
+            <input type="nama" name="nama" value="{{$beasiswa->nama}}" placeholder="Judul Beasiswa" class="form-control">
+        		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+          </div>
 
-		<br />
+          <div class="form-group">
+            <label for="">Deskripsi : </label>
+            <textarea name="isi" rows="10" cols="40" placeholder="Isi">{!!$beasiswa->deskripsi!!}"</textarea>
+        		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+          </div>
 
-		<br />
+          <input type="submit" name="name" value="UPDATE" class="btn btn-warning btn-block">
+          <a href="/admin/if" class="btn btn-default btn-block" >CANCEL</a>
+        </div>
+      </div>
+    </div><!-- /.col-->
+  </div><!-- /.row -->
 
-		<input type="submit" name="name" value="edit">
 
-		<!-- hidden -->
-		<input type="hidden" name="_method" value="put">
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<!-- end -->
+  <!-- hidden -->
+  <input type="hidden" name="_method" value="put">
+  <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-	</form>
-
+</form>
 	<!-- End Form -->
 
 @endsection

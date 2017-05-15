@@ -20,34 +20,47 @@ Sarana Dan Prasarana
 
 @section('content')
 
-	<!-- form -->
+  	<form class="" action="{{url('/admin/sarana/'. $sarana->id .'')}}" method="post" enctype="multipart/form-data">
 
-	<form class="" action="{{url('/admin/sarana/'. $sarana->id .'')}}" method="post" enctype="multipart/form-data">
-		
-		<input type="text" name="judul" value="{{$sarana->nama}}" placeholder="Judul">
-		{{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Edit Sarana  </div>
+					<div class="panel-body">
 
-		<br />
+            <div class="form-group">
+              <label for="">Judul : </label>
+              <input type="text" name="judul" value="{{$sarana->nama}}" placeholder="Judul" class="form-control">
+          		{{ ($errors->has('judul')) ?  $errors->first('judul') : '' }}
+            </div>
 
-		<textarea name="isi" rows="10" cols="40" placeholder="Sarana dan prasarana">{{$sarana->deskripsi}}</textarea>
-		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+            <div class="form-group">
+              <label for="">Cover : </label>
+              <input type="file" name="gambar" value="" placeholder="namanya">
+              {{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            </div>
 
-		<br />
+            <div class="form-group">
+              <label for="">Deskripsi : </label>
+              <textarea name="isi" rows="10" cols="40" placeholder="Sarana dan prasarana">{{$sarana->deskripsi}}</textarea>
+          		{{ ($errors->has('isi')) ?  $errors->first('isi') : '' }}
+            </div>
 
-		<input type="file" name="gambar" value="" placeholder="namanya">
-		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            <input type="submit" name="name" value="UPDATE" class="btn btn-warning btn-block">
+            <a href="/admin/if" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
 
-		<br />
-
-		<input type="submit" name="name" value="edit">
 
 		<!-- hidden -->
-		<input type="hidden" name="_method" value="put">
+    <input type="hidden" name="_method" value="put">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<!-- end -->
-		
 
-	</form>
+  </form>
+
+	<!-- form -->
 
 	<!-- End Form -->
 

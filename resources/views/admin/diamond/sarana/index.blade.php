@@ -20,75 +20,93 @@ Sarana Dan Prasarana
 
 @section('content')
 
-	<div class="col-lg-10">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <a href="{{url('/admin/sarana/create')}}" class="btn btn-primary">Add</a>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="col-xs-12 col-md-6 col-lg-3">
-					<a href="{{url('/admin/sarana/create')}}" class="btn btn-primary">Add</a>
-				</div>
+            </div>
+            <div class="panel-body">
+              <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>Cover</th>
+                    <th>Created at</th>
+                    <th>Update at</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
 
-			<form method="GET" url="/admin/sarana" class="navbar-form" role="search">
-				
-		      <div class="input-group custom-search-form">
-		        <input type="text" name="search" class="form-control" placeholder="Cari Sarana . . .">
-		        <span class="input-group-btn">
-		          <button type="submit" class="btn btn-default-sm">
-		          <svg class="glyph stroked eye"><use xlink:href="#stroked-eye"/></svg>
-		          </button>
-		        </span>
-		      </div>
+                  <tbody>
+                    @php
+                    $i=1;
+                    @endphp
+                    @foreach ($sarana as $item)
+                    <tr>
+                      <td>{{$i++}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td width="20%">{!! str_limit($item->deskripsi, 50)!!}</td>
+                      <td><img src="{{Storage::url('sarana/'.$item->cover)}}" width="70px" height="70px" alt=""></td>
+                      <td>{{$item->created_at}}</td>
+                      <td>{{$item->updated_at}}</td>
+                      <td align="center">
+                        <a href="/admin/sarana/{{$item->id}}/edit" class="btn btn-warning btn-simple btn-xs"><li class="fa fa-pencil"></li></a>
+                        <a href="/admin/sarana/{{$item->id}}/delete" data-name="{{$item->nama}}" class="btn btn-danger btn-simple btn-xs delete"><li class="fa fa-trash"></li></a>
+                      </td>
 
-		     </form>
-		     
-			</div>
-			<div class="panel-body">
-					<table class="table">
-					    <thead>
-					    <tr>
-					        <th data-align="right">Nama</th>
-					        <th>Deskripsi</th>
-					        <th>Cover</th>
-					        <th>Aksi</th>
-					    </tr>
-				    	</thead>
+                    </tr>
+                  @endforeach
+                  </tbody>
+              </table>
+              <br>
 
-				    	<tbody>
-				    	@foreach($sarana as $saranas)
-				    	<tr>
-				    		<th>{{$saranas->nama}}</th>
-				    		<th>{!! str_limit($saranas->deskripsi, 35)!!}</th>
-				    		<th><img src="/storage/sarana/{{$saranas->cover}}" height="50px" height="50px"></th>
-				    		<th><a href="{{url('/admin/sarana/'. $saranas->id .'/edit')}}" class="btn btn-warning">Edit</a>
-				    		<a class="btn btn-danger" onclick="event.preventDefault();
-                                    document.getElementById('form-delete').submit();">
-                                            Delete
-                                        </a>
-						<!-- <button type="submit" class="btn btn-danger">Delete</button> -->
-						<form id="form-delete" style="display: none;" class="btn btn-danger" action="{{url('/admin/sarana/'. $saranas->id .'')}}" method="post">
-							<input style="display: inline;" type="hidden" name="_method" value="delete">
-	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
-	                        <input class="icon_close_alt2" type="submit" name="name" value="">
-	                    </form></th>
-				    	</tr>
-				    	@endforeach
-				    	</tbody>
-
-					</table>
-			</div>
-		</div>
-
-		{!! $sarana->links() !!}
-
-	</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 	<!-- NAVIGATOR FOR THIS FITUR-->
-	
+
 
 	<!-- </div> -->
 
-	
+
 
 @endsection
+@section('js')
+  <script type="text/javascript">
 
+    $('.delete').click(function(e) {
+    e.preventDefault(); // Prevent the href from redirecting directly
+    var linkURL = $(this).attr("href");
+    var name = $(this).attr("data-name");
+    warnBeforeRedirect(linkURL,name);
+    });
+     function warnBeforeRedirect(linkURL,name) {
+       swal({
+           title: "Are you sure?",
+           text: "You will delete record with name = "+name+" !",
+           type: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#DD6B55",
+           confirmButtonText: "Yes, delete it!",
+           cancelButtonText: "No, cancel it!",
+           closeOnConfirm: false,
+           closeOnCancel: false
+         },
+        function(isConfirm){
+      if (isConfirm) {
+        swal("Deleted!", "Your record with name "+name+" has been deleted.", "success");
+        window.location.href = linkURL;
+      } else {
+          swal("Cancelled", "Your record with name "+name+" is safe :)", "error");
+      }
+    });
+      }
+</script>
+@endsection
 @stop

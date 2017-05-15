@@ -20,23 +20,35 @@ Sejarah
 
 @section('content')
 
-	<!-- form -->
+  <form class="" action="{{url('/admin/sejarah')}}" method="post">
 
-	<form class="" action="{{url('/admin/sejarah')}}" method="post">
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Create New Sejarah  </div>
+					<div class="panel-body">
 
-		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar"></textarea>
-		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+            <div class="form-group">
+              <textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar"></textarea>
+          		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+            </div>
 
-		<br />
+            <input type="submit" name="name" value="SAVE" class="btn btn-success btn-block">
+            <a href="/admin/sejarah" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
 
-		<input type="submit" name="name" value="post">
 
 		<!-- hidden -->
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
+
+	<!-- form -->
 
 	<!-- End Form -->
 

@@ -7,8 +7,8 @@
 <title>Testimoni</title>
 
 @section('rute')
-                <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-                <li class="active">Icons</li>
+                <li><a href="/administrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+                <li class="active">Testimoni</li>
 
 @endsection
 
@@ -20,46 +20,57 @@ Testimoni
 
 @section('content')
 
-	<!-- NAVIGATOR FOR THIS FITUR-->
-	<div class="col-xs-12 col-md-6 col-lg-3">
-		<a href="{{url('/admin/testimoni/create')}}" class="btn btn-primary">Add</a>
-	</div>
-	<!-- endnav -->
-	<!-- <div class="row"> -->
-	<div class="col-lg-10">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a href="{{url('/admin/testimoni/create')}}" class="btn btn-primary">Add</a>
 
-		@foreach($testimoni as $testimonis)
-			<div class="col-md-14">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						{{$testimonis->nama}}
-					</div>
-					<div>
-						<a href="{{url('/admin/testimoni/'. $testimonis->id .'/edit')}}" class="btn btn-warning">Edit</a>
-						<button type="submit" class="btn btn-danger">Delete</button>
-						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/admin/testimoni/'. $testimonis->id .'')}}" method="post">
-							<input style="display: inline;" type="hidden" name="_method" value="delete">
-	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
-	                        <input class="icon_close_alt2" type="submit" name="name" value="">
-	                    </form>
-					</div>
+        </div>
+        <div class="panel-body">
+          <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Komentar</th>
+                <th>Foto</th>
+                <th>Tag</th>
+                <th>Created at</th>
+                <th>Update at</th>
+                <th>Action</th>
+              </tr>
+              </thead>
 
-					<div class="panel-body">
-						<img src="{{Storage::url('testimoni/' . $testimonis->profile. '')}}">
-						<p>{!! $testimonis->komentar !!}</p>
-					</div>
-					<div class="panel-body">
-						<p>{{$testimonis->tag}}</p>
-					</div>
-				</div>
-			</div>
-		@endforeach
+              <tbody>
+                @php
+                $i=1;
+                @endphp
+                @foreach ($testimoni as $item)
+                <tr>
+                  <td>{{$i++}}</td>
+                  <td>{{$item->nama}}</td>
+                  <td width="10%">{!! str_limit($item->komentar, 70)!!}</td>
+                  <td><img src="{{Storage::url('testimoni/'.$item->profile)}}" width="70px" height="70px" alt=""></td>
+                  <td>{{$item->tag}}</td>
+                  <td>{{$item->created_at}}</td>
+                  <td>{{$item->updated_at}}</td>
+                  <td align="center" width="10%">
+                    <a href="/admin/testimoni/{{$item->id}}/edit" class="btn btn-warning btn-simple btn-xs"><li class="fa fa-pencil"></li></a>
+                    <a href="/admin/testimoni/{{$item->id}}/delete" data-name="{{$item->nama}}" class="btn btn-danger btn-simple btn-xs delete"><li class="fa fa-trash"></li></a>
+                  </td>
 
-		{!! $testimoni->links() !!}
+                </tr>
+              @endforeach
+              </tbody>
+          </table>
+          <br>
 
-	</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<!-- </div> -->
 
 
 

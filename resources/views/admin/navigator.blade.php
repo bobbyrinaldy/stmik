@@ -1,4 +1,4 @@
-<div id="sidebar-collapse" class="col-sm-3 col-lg-3 sidebar">
+<div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
 		<form role="search">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search">
@@ -6,6 +6,8 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="{{url('/administrator')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>Dashboard</a></li>
+
+			<li><a href="{{url('/admin/carousel')}}"><svg class="glyph stroked camera "><use xlink:href="#stroked-camera"/></svg> Carousel</a></li>
 
 			<li class="parent">
 				<a href="#">
@@ -45,7 +47,7 @@
 					</li>
 					<li>
 						<a class="" href="{{url('/admin/if')}}">
-							<svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg>Informatika
+							<svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg>Teknik Informatika
 						</a>
 					</li>
 				</ul>
@@ -70,13 +72,18 @@
 
 					<li>
 						<a class="" href="{{url('/admin/btk')}}">
-							<svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Bursa Tenaga Kerja (BTK)
+							<svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Bursa Tenaga Kerja
 						</a>
 					</li>
 
 					<li>
 						<a class="" href="{{url('/admin/kurikulum')}}">
 							<svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Kurikulum
+						</a>
+					</li>
+					<li>
+						<a class="" href="{{url('/admin/btk')}}">
+							<svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> BTK
 						</a>
 					</li>
 					<li>
@@ -92,19 +99,17 @@
 					</li>
 				</ul>
 			</li>
+			<li><a href="{{url('/admin/gallery')}}"><svg class="glyph stroked camera "><use xlink:href="#stroked-camera"/></svg> Gallery</a></li>
 
 			<li><a href="{{url('/admin/kemahasiswaan')}}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Kemahasiswaan</a></li>
 
 			<li><a href="{{url('/admin/kerjasama')}}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Kerjasama</a></li>
 
-			<li><a href="{{url('/admin/kontak')}}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"/></svg> Hubungi Kami</a></li>
-
 			<li><a href="{{url('/admin/berita')}}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Berita</a></li>
-			<li><a href="{{url('/admin/gallery')}}"><svg class="glyph stroked camera "><use xlink:href="#stroked-camera"/></svg> Gallery</a></li>
 
 			<li><a href="{{url('/admin/testimoni')}}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"/></svg> Testimoni</a></li>
 
-			<li class="parent">
+			{{-- <li class="parent">
 				<a href="#">
 					<span data-toggle="collapse" href="#sub-item-4"><svg class="glyph stroked chevron right"><use xlink:href="#stroked-chevron-right"/></svg> Sinopsis Utama
 				</a>
@@ -115,14 +120,8 @@
 						</a>
 					</li>
 
-					<li>
-						<a href="{{url('/admin/carousel')}}">
-							<svg class="glyph stroked camera "><use xlink:href="#stroked-camera"/></svg> Carousel
-						</a>
-					</li>
 				</ul>
-			</li>
-
+			</li> --}}
 
 			<li><a href="{{url('/superadmin/modifauth')}}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Pengguna</a></li>
 		</ul>

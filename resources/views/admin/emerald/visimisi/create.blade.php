@@ -14,8 +14,6 @@
 
 @section('pageTitle')
 
-Visi Misi
-
 @endsection
 
 @section('content')
@@ -23,25 +21,38 @@ Visi Misi
 	<!-- form -->
 
 	<form class="" action="{{url('/admin/visimisi')}}" method="post">
-	
-		<h3>Visi</h3> <br />
-		<textarea name="visi" rows="10" cols="40" placeholder="Visi"></textarea>
-		{{ ($errors->has('visi')) ?  $errors->first('visi') : '' }}
 
-		<br />
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Create New Visi Misi</div>
+					<div class="panel-body">
 
-		<h3>Misi</h3> <br />
-		<textarea name="misi" rows="10" cols="40" placeholder="Misi"></textarea>
-		{{ ($errors->has('misi')) ?  $errors->first('misi') : '' }}
+            <div class="form-group">
+              <label for="visi"><h3>Visi :</h3></label>
+          		<textarea name="visi" placeholder="Visi" class="form-control"></textarea>
+          		{{ ($errors->has('visi')) ?  $errors->first('visi') : '' }}
+            </div>
 
-		<br />
+            <div class="form-group">
+              <label for="visi"><h3>Misi :</h3></label>
 
-		<input type="submit" name="name" value="post">
+              <textarea name="misi" rows="10" cols="40" placeholder="Misi"></textarea>
+          		{{ ($errors->has('misi')) ?  $errors->first('misi') : '' }}
+            </div>
+
+            <input type="submit" name="name" value="SAVE" class="btn btn-success btn-block">
+            <a href="/admin/visimisi" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+
 
 		<!-- hidden -->
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
 

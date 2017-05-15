@@ -17,7 +17,7 @@ class TestimoniController extends Controller
     public function index()
     {
         //
-        $testimonis = DB::table('tbl_testimonis')->paginate(5);
+        $testimonis = testimoni::orderBy('created_at','desc')->get();
         return view('admin.diamond.testimoni.index', ['testimoni' => $testimonis]);
     }
 

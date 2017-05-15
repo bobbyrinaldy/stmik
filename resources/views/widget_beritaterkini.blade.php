@@ -8,20 +8,23 @@
       <div class="tab-content">
 
         @foreach ($widget_berita_latest as $item)
+          @php
+            $datePost = date('M d,Y',strtotime($item->created_at));
+          @endphp
           <div class="tab-pane active" id="popularPosts">
             <ul class="simple-post-list">
               <li>
                 <div class="post-image">
                   <div class="img-thumbnail">
-                    <a href="blog-post.html">
+                    <a href="/berita/{{$item->id}}">
                       <img src="{{Storage::url('berita/'.$item->cover)}}" alt="{{$item->judul}}" height="35px" width="35">
                     </a>
                   </div>
                 </div>
                 <div class="post-info">
-                  <a class="a1" href="blog-post.html">{{$item->judul}}</a>
+                  <a class="a1" href="/berita/{{$item->id}}">{{$item->judul}}</a>
                   <div class="post-meta">
-                     Jan 10, 2015
+                     {{$datePost}}
                   </div>
                 </div>
               </li>
@@ -30,20 +33,23 @@
         @endforeach
 
         @foreach ($widget_berita_random as $item)
+          @php
+            $datePost = date('M d,Y',strtotime($item->created_at));
+          @endphp
           <div class="tab-pane active" id="popularPosts">
             <ul class="simple-post-list">
               <li>
                 <div class="post-image">
                   <div class="img-thumbnail">
-                    <a href="blog-post.html">
+                    <a href="/berita/{{$item->id}}">
                       <img src="{{Storage::url('berita/'.$item->cover)}}" alt="{{$item->judul}}" height="35px" width="35">
                     </a>
                   </div>
                 </div>
                 <div class="post-info">
-                  <a class="a1" href="blog-post.html">{{$item->judul}}</a>
+                  <a class="a1" href="/berita/{{$item->id}}">{{$item->judul}}</a>
                   <div class="post-meta">
-                     Jan 10, 2015
+                     {{$datePost}}
                   </div>
                 </div>
               </li>

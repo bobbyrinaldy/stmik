@@ -7,8 +7,8 @@
 <title>BeasiswA</title>
 
 @section('rute')
-        <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-        <li class="active">Icons</li>
+  <li><a href="/administrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+  <li class="active">Kemahasiswaan</li>
 @endsection
 
 @section('pageTitle')
@@ -19,71 +19,92 @@ Kemahasiswaan
 
 @section('content')
 
-	<!-- NAVIGATOR FOR THIS FITUR-->
-	<div class="col-xs-12 col-md-6 col-lg-3">
-		<a href="{{url('/admin/kemahasiswaan/create')}}" class="btn btn-primary">Add Himpunan</a>
-	</div>
-	<!-- endnav -->
-	<!-- <div class="row"> -->
-	<div class="col-lg-10">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a href="{{url('/admin/kemahasiswaan/create')}}" class="btn btn-primary">Add Hima</a>
+        </div>
+        <div class="panel-body">
+          <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Deskripsi</th>
+                <th>Logo</th>
+                <th>Action</th>
+              </tr>
+              </thead>
 
-		@foreach($kemahasiswaan as $kemahasiswaans)
-			<div class="col-md-14">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						{{$kemahasiswaans->nama}}
-					</div>
-					<div>
-						<a href="{{url('/admin/kemahasiswaan/'. $kemahasiswaans->id .'/edit')}}" class="btn btn-warning">Edit</a>
-						<button type="submit" class="btn btn-danger">Delete</button>
-						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/admin/kemahasiswaan/'. $kemahasiswaans->id .'')}}" method="post">
-							<input style="display: inline;" type="hidden" name="_method" value="delete">
-	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
-	                        <input class="icon_close_alt2" type="submit" name="name" value="">
-	                    </form>
-					</div>
-					<div class="panel-body">
-						<img height="10%" width="10%" src="{{ Storage::url('kemahasiswaan/'. $kemahasiswaans->logo. '')}}">
-						<p>{!!$kemahasiswaans->deskripsi!!}</p>
-					</div>
-				</div>
-			</div>
-		@endforeach
+              <tbody>
+                @php
+                $i=1;
+                @endphp
+                @foreach ($kemahasiswaan as $item)
+                <tr>
+                  <td>{{$i++}}</td>
+                  <td>{{$item->nama}}</td>
+                  <td width="10%">{!! str_limit($item->deskripsi, 70)!!}</td>
+                  <td><img src="{{Storage::url('kemahasiswaan/'.$item->logo)}}" width="70px" height="70px" alt=""></td>
+                  <td align="center" width="10%">
+                    <a href="/admin/kemahasiswaan/{{$item->id}}/edit" class="btn btn-warning btn-simple btn-xs"><li class="fa fa-pencil"></li></a>
+                    <a href="/admin/kemahasiswaan/{{$item->id}}/delete" data-name="{{$item->nama}}" class="btn btn-danger btn-simple btn-xs delete"><li class="fa fa-trash"></li></a>
+                  </td>
 
-	</div>
+                </tr>
+              @endforeach
+              </tbody>
+          </table>
+          <br>
 
-	<div class="col-xs-12 col-md-6 col-lg-3">
-		<a href="{{url('/admin/subkemahasiswaan/create')}}" class="btn btn-primary">Add Subhima</a>
-	</div>
+        </div>
+      </div>
+    </div>
 
-	<div class="col-lg-10">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a href="{{url('/admin/subkemahasiswaan/create')}}" class="btn btn-primary">Add Subhima</a>
+        </div>
+        <div class="panel-body">
+          <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th>Perusahaan</th>
+                <th>Deskripsi</th>
+                <th>Logo</th>
+                <th>Action</th>
+              </tr>
+              </thead>
 
-		@foreach($subkemahasiswaan as $subkemahasiswaans)
-			<div class="col-md-14">
-				<div class="panel panel-warning">
-					<div class="panel-heading">
-						{{$subkemahasiswaans->id_org}} {{$subkemahasiswaans->nama}}
-					</div>
-					<div>
-						<a href="{{url('/admin/subkemahasiswaan/'. $subkemahasiswaans->id .'/edit')}}" class="btn btn-warning">Edit</a>
-						<button type="submit" class="btn btn-danger">Delete</button>
-						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/admin/subkemahasiswaan/'. $subkemahasiswaans->id .'')}}" method="post">
-							<input style="display: inline;" type="hidden" name="_method" value="delete">
-	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
-	                        <input class="icon_close_alt2" type="submit" name="name" value="">
-	                    </form>
-					</div>
-					<div class="panel-body">
-						<img height="10%" width="10%" src="{{Storage::url('kemahasiswaan/' . $subkemahasiswaans->logo. '')}}">
-						<p>{!!$subkemahasiswaans->deskripsi!!}</p>
-					</div>
-				</div>
-			</div>
-		@endforeach
+              <tbody>
+                @php
+                $i=1;
+                @endphp
+                @foreach ($subkemahasiswaan as $item)
+                <tr>
+                  <td>{{$i++}}</td>
+                  <td>{{$item->nama}}</td>
+                  <td width="10%">{!! str_limit($item->deskripsi, 70)!!}</td>
+                  <td><img src="{{Storage::url('kemahasiswaan/'.$item->logo)}}" width="70px" height="70px" alt=""></td>
+                  <td align="center" width="10%">
+                    <a href="/admin/subkemahasiswaan/{{$item->id}}/edit" class="btn btn-warning btn-simple btn-xs"><li class="fa fa-pencil"></li></a>
+                    <a href="/admin/subkemahasiswaan/{{$item->id}}/delete" data-name="{{$item->nama}}" class="btn btn-danger btn-simple btn-xs delete"><li class="fa fa-trash"></li></a>
+                  </td>
 
-	</div>
+                </tr>
+              @endforeach
+              </tbody>
+          </table>
+          <br>
 
-	<!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 @endsection
 

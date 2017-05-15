@@ -47,7 +47,7 @@
     @include('admin/navigator')
 
 
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-3 main">
+    <div class="col-sm-12 col-sm-offset-1 col-lg-10 col-lg-offset-3 main">
 
         <div class="row">
             <ol class="breadcrumb">

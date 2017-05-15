@@ -20,27 +20,40 @@ Sistem Informasi
 
 @section('content')
 
+  <form class="" action="{{url('/admin/si/'. $si->id .'')}}" method="post">
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Edit Sistem Informasi  </div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <textarea name="deskripsi" placeholder="Komentar">{{$si->deskripsi}}</textarea>
+          		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+            </div>
+
+            <input type="submit" name="name" value="SAVE" class="btn btn-warning btn-block">
+            <a href="/admin/si" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+        </div>
+      </div><!-- /.col-->
+    </div><!-- /.row -->
+
+
+    <!-- hidden -->
+    <input type="hidden" name="_method" value="put">
+
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+  </form>
+
 	<!-- form -->
 
 	<!-- WYSIWYG -->
 
-	<form class="" action="{{url('/admin/si/'. $si->id .'')}}" method="post">
 
-		<textarea name="deskripsi" placeholder="Komentar">{{$si->deskripsi}}</textarea>
-		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
-
-		<br />
-
-		<input type="submit" name="name" value="edit">
-
-		<!-- hidden -->
-		<input type="hidden" name="_method" value="put">
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<!-- end -->
-
-	</form>
-
-	
 
 	<!-- End Form -->
 

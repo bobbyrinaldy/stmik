@@ -13,7 +13,7 @@
 		<meta name="author" content="okler.net">
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="{{asset('Main/img/favicon.ico')}}" type="image/x-icon" />
+		<link rel="shortcut icon" href="{{asset('Main/img/lpkia.ico')}}" type="image/x-icon" />
 		<link rel="apple-touch-icon" href="{{asset('Main/img/apple-touch-icon.png')}}">
 
 		<!-- Mobile Metas -->
@@ -63,7 +63,7 @@
 							<div class="header-column">
 								<div class="header-logo">
 									<a href="/">
-										<img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" data-sticky-top="33" src="{{asset('Main/img/lpkia.png')}}">
+										<img alt="Porto" width="150px" height="70px" data-sticky-width="88px" data-sticky-height="50px" data-sticky-top="33px" src="{{asset('Main/img/lpkia.png')}}">
 									</a>
 								</div>
 							</div>
@@ -206,36 +206,42 @@
 						<div class="col-md-9">
 							<h4> About <strong>STMIK LPKIA</strong></h4>
 
-							<p> {!!$sejarah->deskripsi!!} <a href="#" class="btn-flat btn-xs">View More <i class="fa fa-arrow-right"></i></a></p>
+							<p> @php
+								if (strlen($sejarah->deskripsi) > 200)
+									echo substr($sejarah->deskripsi, 0, 200) . '...';
+									else {
+										echo $sejarah->deskripsi;
+									}
+							@endphp <a href="/tentang/sejarah" class="btn-flat btn-xs">View More <i class="fa fa-arrow-right"></i></a></p>
 							<hr class="light">
 							<div class="row">
 								<div class="col-md-3">
 									<h5>Link Terkait</h5>
 									<ul class="list list-icons list-icons-sm">
-										<li><i class="fa fa-caret-right"></i> <a href="blog-full-width.html">LPKIA</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="blog-large-image.html">E-leaning LPKIA</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="blog-medium-image.html">Stratos LPKIA</a></li>
-                    <li><i class="fa fa-caret-right"></i> <a href="blog-post.html">Bursa Tenaga Kerja LPKIA</a></li>
-                    <li><i class="fa fa-caret-right"></i> <a href="blog-post.html">Prodi Administrasi Bisnis</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="blog-post.html">Prodi Komputer Akuntansi</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="http://lpkia.ac.id" target="blank_">LPKIA</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="http://elearning.lpkia.ac.id" target="blank_">E-leaning LPKIA</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="http://stratos.lpkia.ac.id" target="blank_">Stratos LPKIA</a></li>
+                    <li><i class="fa fa-caret-right"></i> <a href="http://btk.lpkia.ac.id" target="blank_">Bursa Tenaga Kerja LPKIA</a></li>
+                    <li><i class="fa fa-caret-right"></i> <a href="http://adnis.lpkia.ac.id" target="blank_">Prodi Administrasi Bisnis</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="" target="blank_">Prodi Komputer Akuntansi</a></li>
 									</ul>
 								</div>
 								<div class="col-md-3">
 									<h5>Tentang Kami</h5>
 									<ul class="list list-icons list-icons-sm">
-										<li><i class="fa fa-caret-right"></i> <a href="page-full-width.html">Visi & Misi</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="page-left-sidebar.html">Sejarah</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="page-right-sidebar.html">Struktur Organisasi</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/tentang/visimisi">Visi & Misi</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/tentang/sejarah">Sejarah</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/tentang/struktur_organisasi">Struktur Organisasi</a></li>
 									</ul>
 								</div>
 								<div class="col-md-3">
 									<h5>Layanan</h5>
 									<ul class="list list-icons list-icons-sm">
-										<li><i class="fa fa-caret-right"></i> <a href="portfolio-2-columns.html">Sarana & Prasarana</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="portfolio-3-columns.html">Sertifikasi Internasional</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="portfolio-4-columns.html">Kurikulum</a></li>
-                    <li><i class="fa fa-caret-right"></i> <a href="portfolio-single-project.html">Sisfo Akademi</a></li>
-										<li><i class="fa fa-caret-right"></i> <a href="portfolio-single-project.html">Beasiswa</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/layanan/sarana_prasarana">Sarana & Prasarana</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/layanan/sertifikasi_internasional">Sertifikasi Internasional</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/layanan/kurikulum">Kurikulum</a></li>
+                    <li><i class="fa fa-caret-right"></i> <a href="/layanan/sisfo_akademik">Sistem Informasi Akademi</a></li>
+										<li><i class="fa fa-caret-right"></i> <a href="/layanan/beasiswa">Beasiswa</a></li>
 									</ul>
 								</div>
 								<div class="col-md-3">
@@ -258,11 +264,14 @@
 								<li><i class="fa fa-map-marker"></i><p style="color:white;"> <strong>Address:</strong> <br/>Jl. Soekarno Hatta No.456, Batununggal, Bandung Kidul, Kota Bandung, Jawa Barat 40266</p></li>
 								<li><i class="fa fa-envelope"></i> <p style="color:white;"><strong>Email:</strong><a href="mailto:mail@example.com">mail@example.com</p></a></li>
 							</ul>
+
+							<h4>Follow Us</h4>
 							<ul class="social-icons">
-								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-								<li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+								<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="facebook"><i class="fa fa-facebook" style="margin:9px 0px 0px 0px;"></i></a></li>
+								<li class="social-icons-twitter"><a href="http://www.facebook.com/" target="_blank" title="twitter"><i class="fa fa-twitter" style="margin:9px 0px 0px 0px;"></i></a></li>
+								<li class="social-icons-instagram"><a href="http://www.facebook.com/" target="_blank" title="instagram"><i class="fa fa-instagram" style="margin:9px 0px 0px 0px;"></i></a></li>
 							</ul>
+
 						</div>
 					</div>
 				</div>

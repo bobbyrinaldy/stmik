@@ -36,13 +36,13 @@
 
       <div class="row center">
         <div class="col-md-4">
-          <img src="{{Storage::url('lpkia1.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -10px;">
+          <img src="{{Storage::url('home1.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -10px;">
         </div>
         <div class="col-md-4">
-          <img src="{{Storage::url('lpkia2.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
+          <img src="{{Storage::url('home2.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
         </div>
         <div class="col-md-4">
-          <img src="{{Storage::url('lpkia3.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
+          <img src="{{Storage::url('home3.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
         </div>
       </div>
 
@@ -52,64 +52,86 @@
         <div class="row">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-4">
-                <div class="feature-box feature-box-style-2">
-                  <div class='feature-box-icon'>
-                    <i class='fa fa-building'></i>
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <div class="feature-box feature-box-style-2">
+                      <div class='feature-box-icon'>
+                        <i class='fa fa-building'></i>
+                      </div>
+                      <div class="feature-box-info">
+                        <h4 class="mb-none">Fasilitas Lengkap</h4>
+                        <p class="tall">LPKIA merupakan salah satu kampus yang memiliki fasilitas yang cukup lengkap, dimana fasilitas tersebut meliputi ruang belajar sekaligus ruang praktiknya, perpustakaan, sampai free wifi kampus.</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="feature-box-info">
-                    <h4 class="mb-none">Fasilitas Lengkap</h4>
-                    <p class="tall">Lorem ipsum dolor sit amet, consectetur adipiscing <span class="alternative-font">metus.</span> elit. Quisque rutrum pellentesque imperdiet.</p>
+
+                  <div class="col-md-4">
+                    <div class="feature-box feature-box-style-2">
+                      <div class='feature-box-icon'>
+                        <i class='fa fa-location-arrow'></i>
+                      </div>
+                      <div class="feature-box-info">
+                        <h4 class="mb-none">Lokasi Strategis</h4>
+                        <p class="tall">LPKIA berada di tempat yang cukup strategis, dimana LPKIA berada di samping jalan utama (Jl. Soekarno Hatta) sehingga akan sangat mudah dijumpai.</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="feature-box feature-box-style-2">
-                  <div class="feature-box-icon">
-                    <i class="fa fa-file"></i>
+
+                  <div class="col-md-4">
+                    <div class="feature-box feature-box-style-2">
+                      <div class='feature-box-icon'>
+                        <i class='fa fa-star'></i>
+                      </div>
+                      <div class="feature-box-info">
+                        <h4 class="mb-none">Sertifikasi Internasional</h4>
+                        <p class="tall">LPKIA setiap semester mengadakan sertifikasi Internastional dari perusahaan-perusahaan International, seperti Microsoft, Oracle, MicroTIK dan lain-lain, dengan biaya yang lebih murah.</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="feature-box-info">
-                    <h4 class="mb-none">Kurikulum Terbaik</h4>
-                    <p class="tall">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
-                  </div>
+
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="feature-box feature-box-style-2">
-                  <div class="feature-box-icon">
-                    <i class="fa fa-bus"></i>
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <div class="feature-box feature-box-style-2">
+                      <div class='feature-box-icon'>
+                        <i class="fa fa-file"></i>
+                      </div>
+                      <div class="feature-box-info">
+                        <h4 class="mb-none">Kurikulum Terbaik</h4>
+                        <p class="tall">Kurikulum.</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="feature-box-info">
-                    <h4 class="mb-none">Akses Angkutan Umum Mudah</h4>
-                    <p class="tall">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
+
+                  <div class="col-md-4">
+                    <div class="feature-box feature-box-style-2">
+                      <div class='feature-box-icon'>
+                        <i class="fa fa-bus"></i>
+                      </div>
+                      <div class="feature-box-info">
+                        <h4 class="mb-none">Akases Angkutan Umum Mudah</h4>
+                        <p class="tall">Karena LPKIA berada di jalan utama (Jl. Soekarno Hatta) maka akan sangat banyak pilihan angkutan umum yang dapat diakses, selain itu juga di samping kampus LPKIA terdapat halte BUS.</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="feature-box feature-box-style-2">
-                  <div class="feature-box-icon">
-                    <i class="fa fa-location-arrow"></i>
+
+                  <div class="col-md-4">
+                    <div class="feature-box feature-box-style-2">
+                      <div class='feature-box-icon'>
+                        <i class='fa fa-desktop'></i>
+                      </div>
+                      <div class="feature-box-info">
+                        <h4 class="mb-none">Sistem Terkomputerisasi</h4>
+                        <p class="tall">Sistem penbelajaran di LPKIA terlah terkomputerisasi, mulai dari seperti <span class="alternative-font"><a class="a1" href="http://elearning.lpkia.ac.id" target="blank_">E-Learning</a></span>. Mahasiswa dapat membuka materi yang diupload oleh dosen, selain itu juga sistem absensi, penilaian, dan lain-lain telah terkomputerisasi.</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="feature-box-info">
-                    <h4 class="mb-none">Lokasi Strategis</h4>
-                    <p class="tall">Lorem ipsum dolor sit amet, consectetur adipiscing <span class="alternative-font">metus.</span> elit. Quisque rutrum pellentesque imperdiet.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="feature-box feature-box-style-2">
-                  <div class="feature-box-icon">
-                    <i class="fa fa-star"></i>
-                  </div>
-                  <div class="feature-box-info">
-                    <h4 class="mb-none">Bersertifikasi Internasional</h4>
-                    <p class="tall">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
-                  </div>
-                </div>
-                <div class="feature-box feature-box-style-2">
-                  <div class="feature-box-icon">
-                    <i class="fa fa-desktop"></i>
-                  </div>
-                  <div class="feature-box-info">
-                    <h4 class="mb-none">Sistem Terkomputerisasi</h4>
-                    <p class="tall">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
-                  </div>
+
                 </div>
               </div>
             </div>

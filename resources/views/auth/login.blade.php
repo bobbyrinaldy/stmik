@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Forms</title>
+<title>CPANEL | STMIK LPKIA</title>
 
 {{ Html::style('Admin/css/bootstrap.min.css') }}
 {{ Html::style('Admin/css/datepicker3.css') }}

@@ -7,8 +7,9 @@
 <title>Subhima</title>
 
 @section('rute')
-    <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-    <li class="active">Icons</li>
+  <li><a href="/administrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+  <li><a href="/admin/kemahasiswaan">Subhima</a></li>
+  <li class="active">Update</li>
 
 @endsection
 
@@ -22,31 +23,45 @@ Kemahasiswaan
 
 	<!-- form -->
 
-	<form class="" action="{{url('/admin/subkemahasiswaan/'. $subkemahasiswaan->id .'')}}" method="post" enctype="multipart/form-data">
+  <form class="" action="{{url('/admin/subkemahasiswaan/'. $subkemahasiswaan->id .'')}}" method="post" enctype="multipart/form-data">
 
-		<input type="text" name="nama" value="{{$subkemahasiswaan->nama}}">
-		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Edit Subhima (ID : {{$subkemahasiswaan->id}})  </div>
+          <div class="panel-body">
 
-		<br />
+            <div class="form-group">
+              <label for="">Nama : </label>
+              <input type="text" name="nama" value="{{$subkemahasiswaan->nama}}" placeholder="Nama Subhima" class="form-control">
+          		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+            </div>
 
-		<textarea name="deskripsi" rows="10" cols="40" placeholder="deskripsi">{{$subkemahasiswaan->deskripsi}}</textarea>
-		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+            <div class="form-group">
+              <label for="">Logo : </label>
+              <input type="file" name="gambar" value="">
+          		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            </div>
 
-		<br />
+            <div class="form-group">
+              <label for="">Deskripsi : </label>
+              <textarea name="deskripsi" rows="10" cols="40" placeholder="deskripsi">{{$subkemahasiswaan->deskripsi}}</textarea>
+          		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+            </div>
 
-		<input type="file" name="gambar" value="" placeholder="namanya">
-		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            <input type="submit" name="name" value="UPDATE" class="btn btn-warning btn-block">
+            <a href="/admin/kemahasiswaan" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+        </div>
+      </div><!-- /.col-->
+    </div><!-- /.row -->
 
-		<br />
 
-		<input type="submit" name="name" value="edit">
+    <!-- hidden -->
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-		<!-- hidden -->
-		<input type="hidden" name="_method" value="put">
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<!-- end -->
-
-	</form>
+  </form>
 
 	<!-- End Form -->
 

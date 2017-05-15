@@ -19,24 +19,35 @@ Struktur Organisasi
 
 @section('content')
 
-	<!-- form -->
+  <form class="" action="{{url('/admin/strukturorganisasi')}}" method="post" enctype="multipart/form-data">
 
-	<form class="" action="{{url('/admin/strukturorganisasi')}}" method="post" enctype="multipart/form-data">
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Create New Struktur Organisasi  </div>
+					<div class="panel-body">
 
-		<input type="file" name="gambar" value="" placeholder="namanya" required>
-		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            <div class="form-group">
+              <input type="file" name="gambar" value="" placeholder="namanya" class="form-control" required>
+          		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            </div>
 
-		<br />
+            <input type="submit" name="name" value="SAVE" class="btn btn-success btn-block">
+            <a href="/admin/strukturorganisasi" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
 
-		<input type="submit" name="name" value="post">
 
 		<!-- hidden -->
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
 
+
 	</form>
 
-	<!-- End Form -->
+	<!-- form -->
 
 @endsection
 

@@ -20,24 +20,38 @@ Sejarah
 
 @section('content')
 
-	<!-- form -->
+  <form class="" action="{{url('/admin/sejarah/'. $sejarah->id .'')}}" method="post">
 
-	<form class="" action="{{url('/admin/sejarah/'. $sejarah->id .'')}}" method="post">
 
-		<textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$sejarah->deskripsi}}</textarea>
-		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+    <div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Edit Sejarah </div>
+					<div class="panel-body">
 
-		<br />
+            <div class="form-group">
+              <textarea name="deskripsi" rows="10" cols="40" placeholder="Komentar">{{$sejarah->deskripsi}}</textarea>
+          		{{ ($errors->has('deskripsi')) ?  $errors->first('deskripsi') : '' }}
+            </div>
 
-		<input type="submit" name="name" value="edit">
+            <input type="submit" name="name" value="UPDATE" class="btn btn-warning btn-block">
+            <a href="/admin/sejarah" class="btn btn-default btn-block" >CANCEL</a>
+
+          </div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+
 
 		<!-- hidden -->
-		<input type="hidden" name="_method" value="put">
+    <input type="hidden" name="_method" value="put">
+
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<!-- end -->
-		
+
 
 	</form>
+
 
 	<!-- End Form -->
 

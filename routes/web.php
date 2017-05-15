@@ -64,18 +64,26 @@ Route::group(['middleware' => ['auth']], function(){
 	// Master
 	Route::resource('admin/beranda', 'BerandaController');
 	Route::resource('admin/sarana', 'SaranaController');
+	Route::get('admin/sarana/{id}/delete', 'SaranaController@destroy');
 	Route::resource('admin/sertifikasi', 'SertifikasiController');
+	Route::get('admin/sertifikasi/{id}/delete', 'SertifikasiController@destroy');
 	Route::resource('admin/beasiswa', 'BeasiswaController');
+	Route::get('admin/beasiswa/{id}/delete', 'BeasiswaController@destroy');
 	Route::resource('admin/kerjasama', 'KerjasamaController');
+	Route::get('admin/kerjasama/{id}/delete', 'KerjasamaController@destroy');
 	// Route::get('admin/kerjasama/search', 'SearchAdminController@kerjasama');
 	Route::resource('admin/berita', 'BeritaController');
 	Route::resource('admin/testimoni', 'TestimoniController');
 	Route::resource('admin/kemahasiswaan', 'KemahasiswaanController');
+	Route::get('admin/kemahasiswaan/{id}/delete', 'KemahasiswaanController@destroy');
 	Route::resource('admin/subkemahasiswaan', 'SubkemahasiswaanController');
+	Route::get('admin/subkemahasiswaan/{id}/delete', 'SubkemahasiswaanController@destroy');
 	Route::resource('admin/carousel', 'CarouselController');
+	Route::get('admin/carousel/{id}/delete', 'CarouselController@destroy');
 
 	// Master
 	Route::resource('admin/btk', 'BtkController');
+	Route::get('admin/btk/{id}/delete', 'BtkController@destroy');
 	Route::resource('admin/gallery', 'GalleryController');
 	Route::resource('admin/kontak', 'KontakController');
 	Route::resource('admin/si', 'SiController');
@@ -86,6 +94,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::resource('admin/visimisi', 'VisimisiController');
 	Route::resource('admin/strukturorganisasi', 'StrukturorganisasiController');
 	Route::resource('admin/berita', 'BeritaController');
+	Route::get('admin/berita/{id}/delete', 'BeritaController@destroy');
 
 });
 

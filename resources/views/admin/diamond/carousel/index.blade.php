@@ -19,39 +19,51 @@ Carousel / Slide Show
 
 @section('content')
 
-	<!-- NAVIGATOR FOR THIS FITUR-->
-	<div class="col-xs-12 col-md-6 col-lg-3">
-		<a href="{{url('/admin/carousel/create')}}" class="btn btn-primary">Add</a>
-	</div>
-	<!-- endnav -->
-	<!-- <div class="row"> -->
-	<div class="col-lg-10">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a href="{{url('/admin/carousel/create')}}" class="btn btn-primary">Add</a>
+        </div>
+        <div class="panel-body">
+          <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Gambar</th>
+                <th>Created at</th>
+                <th>Update at</th>
+                <th>Action</th>
+              </tr>
+              </thead>
 
-		@foreach($cr as $item)
-			<div class="col-md-6">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
+              <tbody>
+                @php
+                $i=1;
+                @endphp
+                @foreach ($cr as $item)
+                <tr>
+                  <td>{{$i++}}</td>
+                  <td>{{$item->nama}}</td>
+                  <td><img src="{{Storage::url('carousel/'.$item->gambar)}}" width="70px" height="70px" alt=""></td>
+                  <td>{{$item->created_at}}</td>
+                  <td>{{$item->updated_at}}</td>
+                  <td align="center" width="10%">
+                    <a href="/admin/carousel/{{$item->id}}/edit" class="btn btn-warning btn-simple btn-xs"><li class="fa fa-pencil"></li></a>
+                    <a href="/admin/carousel/{{$item->id}}/delete" data-name="{{$item->nama}}" class="btn btn-danger btn-simple btn-xs delete"><li class="fa fa-trash"></li></a>
+                  </td>
 
-						{{$item->nama}}
-					</div>
-					<div>
-						<a href="{{url('/admin/carousel/'. $item->id .'/edit')}}" class="btn btn-warning">Edit</a>
-						<button type="submit" class="btn btn-danger">Delete</button>
-						<form style="margin: 0; padding: 0;" class="btn btn-danger" action="{{url('/admin/kerjasama/'. $item->id .'')}}" method="post">
-							<input style="display: inline;" type="hidden" name="_method" value="delete">
-	                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
-	                        <input class="icon_close_alt2" type="submit" name="name" value="">
-	                    </form>
-					</div>
+                </tr>
+              @endforeach
+              </tbody>
+          </table>
+          <br>
 
-					<div class="panel-body">
-            		<img height="100%" width="100%" src="{{Storage::url('carousel/'.$item->gambar)}}">
-					</div>
-				</div>
-			</div>
-		@endforeach
-
-	</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 	<!-- </div> -->
 

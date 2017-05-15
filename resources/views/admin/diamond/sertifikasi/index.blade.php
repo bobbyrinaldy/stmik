@@ -21,67 +21,54 @@ Sertifikasi
 
 @section('content')
 
-  <div class="col-lg-10">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <a href="{{url('/admin/sertifikasi/create')}}" class="btn btn-primary">Add</a>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <!-- NAVIGATOR FOR THIS FITUR-->
-      	<div class="col-xs-12 col-md-6 col-lg-3">
-      		<a href="{{url('/admin/sertifikasi/create')}}" class="btn btn-primary">Add</a>
-      	</div>
+            </div>
+            <div class="panel-body">
+              <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>Logo</th>
+                    <th>Created at</th>
+                    <th>Update at</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
 
-      <form method="GET" url="/admin/sertifikasi" class="navbar-form" role="search">
+                  <tbody>
+                    @php
+                    $i=1;
+                    @endphp
+                    @foreach ($sertifikasi as $item)
+                    <tr>
+                      <td>{{$i++}}</td>
+                      <td width="5%">{{$item->nama}}</td>
+                      <td>{!! str_limit($item->deskripsi, 70)!!}</td>
+                      <td><img src="{{Storage::url('sertifikasi/'.$item->logo)}}" width="70px" height="70px" alt=""></td>
+                      <td>{{$item->created_at}}</td>
+                      <td>{{$item->updated_at}}</td>
+                      <td align="center" width="10%">
+                        <a href="/admin/sertifikasi/{{$item->id}}/edit" class="btn btn-warning btn-simple btn-xs"><li class="fa fa-pencil"></li></a>
+                        <a href="/admin/sertifikasi/{{$item->id}}/delete" data-name="{{$item->nama}}" class="btn btn-danger btn-simple btn-xs delete"><li class="fa fa-trash"></li></a>
+                      </td>
 
+                    </tr>
+                  @endforeach
+                  </tbody>
+              </table>
+              <br>
 
-          <div class="input-group custom-search-form">
-            <input type="text" name="search" class="form-control" placeholder="Cari Nama . . .">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-default-sm">
-              <svg class="glyph stroked eye"><use xlink:href="#stroked-eye"/></svg>
-              </button>
-            </span>
+            </div>
           </div>
-         </form>
-
+        </div>
       </div>
-      <div class="panel-body">
-          <table class="table">
-              <thead>
-              <tr>
-                  <th data-align="right">Nama</th>
-                  <th>Deskripsi</th>
-                  <th>Logo</th>
-                  <th>Aksi</th>
-              </tr>
-              </thead>
-
-              <tbody>
-              @foreach($sertifikasi as $sertifikasis)
-              <tr>
-                <th>{{$sertifikasis->nama}}</th>
-                <th>{!!str_limit($sertifikasis->deskripsi, 35)!!}</th>
-                <th><img src="/storage/sertifikasi/{{$sertifikasis->logo}}" height="50px" height="50px"></th>
-                <th>
-                  <a href="{{url('/admin/sertifikasi/'. $sertifikasis->id .'/edit')}}" class="btn btn-warning">Edit</a>
-
-            <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
-                  <form style="display: inline;" id="form-delete" action="{{url('/admin/sertifikasi/'. $sertifikasis->id)}}" method="post">
-
-                            <input type="hidden" name="_token" value="{{ csrf_token()}}">
-                            <input class="btn btn-danger" type="submit" name="_method" value="delete">
-                  </form>
-                </th>
-              </tr>
-              @endforeach
-              </tbody>
-
-          </table>
-      </div>
-    </div>
-
-    {!! $sertifikasi->links() !!}
-
-  </div>
 
 
 	<!-- endnav -->

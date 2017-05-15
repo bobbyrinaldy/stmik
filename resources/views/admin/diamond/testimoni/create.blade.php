@@ -7,8 +7,9 @@
 <title>Testimoni</title>
 
 @section('rute')
-                <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-                <li class="active">Icons</li>
+  <li><a href="/administrator"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+  <li><a href="/admin/testimoni">Testimoni</a></li>
+  <li class="active">Create</li>
 
 @endsection
 
@@ -24,39 +25,52 @@ Testimoni
 
 	<form class="" action="{{url('/admin/testimoni')}}" method="post" enctype="multipart/form-data">
 
-		<input type="text" name="nama" value="" placeholder="nama">
-		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Create New Testimoni </div>
+          <div class="panel-body">
 
-		<br />
+            <div class="form-group">
+              <label for="">Nama : </label>
+              <input type="text" name="nama" value="" placeholder="nama" class="form-control">
+          		{{ ($errors->has('nama')) ?  $errors->first('nama') : '' }}
+            </div>
 
-		<textarea name="komentar" rows="10" cols="40" placeholder="Komentar"></textarea>
-		{{ ($errors->has('komentar')) ?  $errors->first('komentar') : '' }}
+            <div class="form-group">
+              <label for="">Foto Profile : </label>
+              <input type="file" name="gambar" value="" placeholder="namanya">
+          		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            </div>
 
-		<br />
+            <div class="form-group">
+              <label for="">Tag : </label>
+              <select name="tag" required class="form-control">
+                <option value="mahasiswa">Mahasiswa</option>
+                <option value="alumni">Alumni</option>
+                <option value="perusahaan">Perusahaan</option>
+                <option value="tokohmasyarakat">Tokoh Masyarakat</option>
+              </select>
+            </div>
 
-		<input type="file" name="gambar" value="" placeholder="namanya">
-		{{ ($errors->has('gambar')) ?  $errors->first('gambar') : '' }}
+            <div class="form-group">
+              <label for="">Deskripsi : </label>
+              <textarea name="komentar" rows="10" cols="40" placeholder="Komentar"></textarea>
+          		{{ ($errors->has('komentar')) ?  $errors->first('komentar') : '' }}
+            </div>
 
-		<br />
-
-    <select name="tag" required>
-      <option value="mahasiswa">Mahasiswa</option>
-      <option value="alumni">Alumni</option>
-      <option value="perusahaan">Perusahaan</option>
-      <option value="tokohmasyarakat">Tokoh Masyarakat</option>
-    </select>
-
-		<br />
-
-		<input type="submit" name="name" value="post">
-
-		<!-- hidden -->
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<!-- end -->
+            <input type="submit" name="name" value="SAVE" class="btn btn-success btn-block">
+            <a href="/admin/kemahasiswaan" class="btn btn-default btn-block" >CANCEL</a>
+          </div>
+        </div>
+      </div><!-- /.col-->
+    </div><!-- /.row -->
 
 
-	</form>
+    <!-- hidden -->
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
 
+  </form>
 	<!-- End Form -->
 
 @endsection
