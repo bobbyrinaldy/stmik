@@ -36,13 +36,13 @@
 
       <div class="row center">
         <div class="col-md-4">
-          <img src="{{Storage::url('home1.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -10px;">
+          <img src="{{asset('Main/img/home/home1.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -10px;">
         </div>
         <div class="col-md-4">
-          <img src="{{Storage::url('home2.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
+          <img src="{{asset('Main/img/home/home2.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
         </div>
         <div class="col-md-4">
-          <img src="{{Storage::url('home3.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
+          <img src="{{asset('Main/img/home/home3.jpg')}}" width="400px" height="200px" class="appear-animation" data-appear-animation="fadeInUp" alt="dark and light" style="margin: 45px 0px -30px;">
         </div>
       </div>
 
